@@ -1,0 +1,12 @@
+---
+import "../styles/global.css";
+import Layout from "../layouts/Layout.astro";
+import Greeting from "../components/Greeting.jsx";
+
+const pageTitle = "Blog RSMKode";
+---
+
+<Layout pageTitle={pageTitle}>
+  <h2>Mi impresionante subtítulo del blog</h2>
+  <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
+</Layout>

@@ -1,0 +1,14 @@
+media_folder: "src/assets/images" # Ubicación donde se almacenarán los archivos en el repositorio
+public_folder: "src/assets/images" # El atributo src para los medios cargados
+collections:
+  - name: "blog" # Usado en rutas, por ejemplo, /admin/collections/blog
+    label: "Blog" # Usado en la interfaz de usuario
+    folder: "src/content/blog" # La ruta a la carpeta donde se almacenan los documentos
+    create: true # Permitir a los usuarios crear nuevos documentos en esta colección
+    fields: # Los campos para cada documento, generalmente al principio
+       - { label: "Layout", name: "layout", widget: "hidden", default: "blog" }
+       - { label: "Title", name: "title", widget: "string" }
+       - { label: "Publish Date", name: "date", widget: "datetime" }
+       - { label: "Featured Image", name: "thumbnail", widget: "image" }
+       - { label: "Rating (scale of 1-5)", name: "rating", widget: "number" }
+       - { label: "Body", name: "body", widget: "markdown" }

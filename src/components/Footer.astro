@@ -1,0 +1,25 @@
+---
+import SocialLink from "../components/SocialLink.astro";
+
+const platforms = ["github", "twitter"];
+const usernames = ["RSMKode", "RedBurnRoger"];
+---
+
+<hr />
+<footer>
+  <p>
+    ¡Más información sobre mis proyectos en
+    <SocialLink platform="github" username="RSMKode" />!
+  </p>
+  <p>
+    ¡Mira mis posts en
+    <SocialLink platform="twitter" username="RedBurnRoger" />!
+  </p>
+</footer>
+<style>
+  footer {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+</style>
