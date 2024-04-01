@@ -158,13 +158,13 @@ a.tag:is(:hover, :focus) {
   }
 
   .nav-links {
-    visibility: hidden;
+    display: none;
     opacity: 0;
     transition: all 0.4s;
   }
 
   .nav-links.expanded {
-    visibility: visible;
+    display: flex;
     opacity: 1;
   }
 }
