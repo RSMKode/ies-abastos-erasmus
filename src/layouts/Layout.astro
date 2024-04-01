@@ -13,9 +13,11 @@ const { pageTitle } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <ViewTransitions />
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"
     ></script>
-    <script is:inline>
+    <script defer>
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", (user) => {
           if (!user) {
@@ -26,8 +28,6 @@ const { pageTitle } = Astro.props;
         });
       }
     </script>
-    <title>{pageTitle}</title>
-    <ViewTransitions />
   </head>
   <body>
     <Header />

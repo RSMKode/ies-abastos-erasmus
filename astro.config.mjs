@@ -6,6 +6,6 @@ import netlify from "@astrojs/netlify";
 export default defineConfig({
   site: "https://ies-erasmus.netlify.app",
   integrations: [preact()],
-  output: "hybrid",
-  adapter: netlify(),
+  // output: "hybrid",
+  // adapter: netlify(),
 });
