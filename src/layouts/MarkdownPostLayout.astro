@@ -13,7 +13,11 @@ const { frontmatter } = Astro.props;
       <em>{frontmatter.description}</em>
     </p>
     <p>Escrito por: <a href="/about/">{frontmatter.author}</a></p>
-    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+    <img
+      src={frontmatter.image?.url}
+      width="300"
+      alt={frontmatter.image?.alt}
+    />
     <div class="tag-container">
       {
         frontmatter.tags.map((tag) => (
