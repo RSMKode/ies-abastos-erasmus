@@ -2,21 +2,21 @@
 import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
 import { fade } from "astro:transitions";
+import { Image } from "astro:assets";
 
 const { frontmatter } = Astro.props;
 ---
 
 <Layout pageTitle={frontmatter.title}>
-  <main>
+  <main class="blog-post">
     <p>Publicado el: {frontmatter.pubDate.slice(0, 10)}</p>
     <p transition:animate={fade({ duration: "2s" })}>
       <em>{frontmatter.description}</em>
     </p>
     <p>Escrito por: <a href="/about/">{frontmatter.author}</a></p>
     <img
-      src={frontmatter.image?.url}
-      width="300"
-      alt={frontmatter.image?.alt}
+      src={frontmatter.image}
+      alt={frontmatter.image_url ?? "Imagen de portada"}
     />
     <div class="tag-container">
       {
