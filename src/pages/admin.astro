@@ -1,3 +1,10 @@
+---
+// import "@/styles/global.css";
+
+const allowedUsers = import.meta.env.PUBLIC_ALLOWED_USERS.split(", ");
+console.log(allowedUsers);
+---
+
 <!doctype html>
 <html lang="es">
   <head>
@@ -5,30 +12,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
     <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
-    <!-- <script
-      is:inline
-      src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script> -->
     <title>Administrador de contenidos</title></head
   >
-
   <body>
+    <a class="volver" href="/">VOLVER</a>
+    <style>
+      a.volver {
+        position: fixed;
+        display: flex;
+        place-content: center;
+        width: 100%;
+        padding: 0.5rem;
+        text-decoration: none;
+      }
+    </style>
     <!-- Include the script that builds the page and powers Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-    <!-- netlify identity -->
+    <!-- Netlify Identity Widget -->
     <script
       is:inline
       src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
     <!-- Customize the netlify identity widget to refresh on logout preventing users from using the cms when not logged in and then seeing an error -->
-    <!-- <script is:inline>
+    <script is:inline>
       netlifyIdentity.on("logout", () => location.reload());
-    </script> -->
+    </script>
 
+    <!-- Comprueba que el usuario tenga permiso -->
+    <script>
+      // Se importa la lista de usuarios permitidos desde el archivo .env
+      const allowedUsers = import.meta.env.PUBLIC_ALLOWED_USERS.split(", ");
+      // console.log("allowedUsers", allowedUsers);
+
+      // Se comprueba si el usuario logueado está en la lista de usuarios permitidos
+      // @ts-expect-error netlifyIdentity is defined globally
+      netlifyIdentity.on("login", (user) => {
+        console.log(user);
+        console.log(localStorage);
+        // if (user.email != "rogersanchom@gmail.com") {
+        if (!allowedUsers.includes(user.email)) {
+          // Si no está en la lista de usuarios permitidos se cierra la sesión, se borra la cookie y se redirige a la página principal
+          // @ts-expect-error netlifyIdentity is defined globally
+          netlifyIdentity.logout();
+          localStorage.removeItem("gotrue.user");
+          window.location.href = "/";
+          alert("No tienes permisos para acceder a esta página");
+        }
+      });
+    </script>
     <!-- CSS in preview panel -->
     <script>
       // @ts-expect-error CMS is defined globally
       // eslint-disable-next-line
-      CMS.registerPreviewStyle("/admin/global.css");
+      if (CMS) CMS.registerPreviewStyle("/admin/global.css");
     </script>
     <!-- Only showing body in preview panel -->
     <!-- <script src="@utils/preview.js"></script> -->
