@@ -20,6 +20,9 @@ dependencies:
   decap-cms-app:
     specifier: ^3.1.6
     version: 3.1.6(@types/react@18.2.73)(graphql@15.8.0)(react-dom@18.2.0)(react@18.2.0)
+  netlify-identity-widget:
+    specifier: ^1.9.2
+    version: 1.9.2
   preact:
     specifier: ^10.20.1
     version: 10.20.1
@@ -5245,6 +5248,10 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /netlify-identity-widget@1.9.2:
+    resolution: {integrity: sha512-IbS1JHhs7BflCCvp3C9f6tmNSZqbyBhZ4Gs5+Qxt4IlPybTOVv0PqJ4TAsA7uxh1R+oXOAmk0OOMAkEaPYeCtA==}
+    dev: false
 
   /nlcst-to-string@3.1.1:
     resolution: {integrity: sha512-63mVyqaqt0cmn2VcI2aH6kxe1rLAmSROqHMA0i4qqg1tidkfExgpb0FGMikMCn86mw5dFtBtEANfmSSK7TjNHw==}

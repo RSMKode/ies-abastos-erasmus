@@ -15,6 +15,7 @@
     "@astrojs/rss": "^4.0.5",
     "astro": "^4.5.12",
     "decap-cms-app": "^3.1.6",
+    "netlify-identity-widget": "^1.9.2",
     "preact": "^10.20.1"
   }
 }
