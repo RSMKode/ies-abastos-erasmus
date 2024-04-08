@@ -13,9 +13,18 @@
     "@astrojs/netlify": "^5.2.0",
     "@astrojs/preact": "^3.1.1",
     "@astrojs/rss": "^4.0.5",
+    "@astrojs/tailwind": "^5.1.0",
+    "@fontsource-variable/onest": "^5.0.3",
+    "@iconify-json/mdi": "^1.1.66",
+    "@iconify-json/tabler": "^1.1.109",
+    "@midudev/tailwind-animations": "^0.0.7",
     "astro": "^4.5.12",
     "decap-cms-app": "^3.1.6",
     "netlify-identity-widget": "^1.9.2",
-    "preact": "^10.20.1"
+    "preact": "^10.20.1",
+    "tailwindcss": "^3.4.3"
+  },
+  "devDependencies": {
+    "astro-icon": "^1.1.0"
   }
 }
