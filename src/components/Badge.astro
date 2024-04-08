@@ -1,0 +1,10 @@
+---
+console.log(Astro.props.class);
+---
+
+<span
+  class={"w-fit h-fit text-xs font-medium px-2.5 py-0.5 rounded " +
+    Astro.props.class}
+>
+  <slot />
+</span>

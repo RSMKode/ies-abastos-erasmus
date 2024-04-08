@@ -1,8 +1,9 @@
 ---
-import "../styles/global.css";
-import Layout from "../layouts/Layout.astro";
+import Layout from "@/layouts/Layout.astro";
 
-const pageTitle = "Sobre mi: RSMKode";
+const pageTitle = "Sobre nosotros";
+const pageDescription = "Página about de IES Abastos Erasmus+";
+
 const identity = {
   firstName: "Roger",
   country: "España",
@@ -30,7 +31,7 @@ const fontWeight = "bold";
 const textCase = "uppercase";
 ---
 
-<Layout pageTitle={pageTitle}>
+<Layout pageTitle={pageTitle} pageDescription={pageDescription}>
   <h2>¡Y mi nuevo sitio Astro!</h2>
 
   <p>

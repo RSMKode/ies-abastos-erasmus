@@ -1,19 +1,17 @@
 ---
-import "../styles/global.css";
-import Layout from "../layouts/Layout.astro";
-import Greeting from "../components/Greeting.jsx";
+import "@/styles/global.css";
+import Layout from "@/layouts/Layout.astro";
+import Greeting from "@/components/Greeting.jsx";
 
-const pageTitle = "Blog RSMKode";
+const pageTitle = "IES Abastos | Erasmus+";
+const pageDescription = "Proyectos Erasmus+ de IES Abastos";
 ---
 
-<Layout pageTitle={pageTitle}>
+<Layout pageTitle={pageTitle} pageDescription={pageDescription}>
   <h2>Mi impresionante subtítulo del blog</h2>
   <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
   PRUEBA DE VIDEO
   <iframe
     src="https://drive.google.com/file/d/1Ieifgl_U0x12cdwqjxGCN728aTQU-u4s/preview"
-    width="640"
-    height="480"
-  >
-  </iframe>
+    class="w-[40rem] aspect-video bg-gray-800 rounded border"></iframe>
 </Layout>
