@@ -16,7 +16,12 @@ prueba de blog post
 
 ### hello
 
-* a
+
+
+![prueba](src/assets/images/uploads/code-wallpaper.png "12312323")
+
+a
+
 * a
 * a
 * a
