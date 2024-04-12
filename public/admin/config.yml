@@ -1,3 +1,6 @@
+site_url: "https://localhost:4321/"
+# site_url: "https://ies-abastos-erasmus.netlify.app/"
+# display_url: "https://localhost:4321/"
 backend:
   name: git-gateway
   branch: main # Branch to update (optional; defaults to master)
@@ -6,11 +9,19 @@ media_folder: "src/assets/images/uploads"
 # El atributo src para los medios cargados
 public_folder: "src/assets/images/uploads"
 locale: es
+
 collections:
   - name: "ka1" # Usado en rutas, por ejemplo, /admin/collections/blog
+    # slug: "{{year}}-{{month}}-{{day}}_{{slug}}" # Archivos en la carpeta de documentos tendrán un nombre similar a 2020-01-07-my-post.md
     label: "KA1" # Usado en la interfaz de usuario de /admin
     folder: "/src/pages/posts/ka1" # La ruta a la carpeta donde se almacenan los documentos
     create: true # Permitir a los usuarios crear nuevos documentos en esta colección
+    view_filters:
+      - { label: "KA1", field: tags, pattern: "KA1" }
+      - { label: "KA2", field: tags, pattern: "KA2" }
+      - { label: "KA3", field: tags, pattern: "KA3" }
+      - { label: "FP", field: tags, pattern: "FP" }
+      - { label: "Escolar", field: tags, pattern: "Escolar" }
     fields: # Los campos para cada documento, generalmente en el frontmatter
       - {
           label: "Layout",
@@ -18,6 +29,8 @@ collections:
           widget: "hidden",
           default: "/src/layouts/MarkdownPostLayout.astro",
         }
+        # añadir slug
+
       - { label: "Titulo", name: "title", widget: "string" }
       - { label: "Fecha de Publicación", name: "pubDate", widget: "datetime" }
       - { label: "Descripción", name: "description", widget: "string" }

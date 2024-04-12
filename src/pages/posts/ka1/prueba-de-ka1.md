@@ -6,17 +6,15 @@ description: Esto es una prueba
 image: asdasdasd
 image_alt: asdasd
 tags:
-  - Educación Superior
+  - FP
 ---
 # aaaaaa[](google.com)
 
-# [](<sadfasdf sdfsdsdf>)Hola que tal
+## [](<sadfasdf sdfsdsdf>)Hola que tal
 
 prueba de blog post
 
 ### hello
-
-
 
 ![prueba](src/assets/images/uploads/code-wallpaper.png "12312323")
 
