@@ -1,11 +1,15 @@
 ---
 layout: /src/layouts/MarkdownPostLayout.astro
-title: Mi segunda publicación en el blog
 author: Roger Sancho
+title: Mi segunda publicación en el blog
 description: "Después de aprender un poco de Astro, ¡no podía parar!"
-image: "https://docs.astro.build/assets/arc.webp"
-image_alt: "Miniatura de los arcos de Astro."
 pubDate: 2022-07-08
-tags: ["astro", "bloguear", "aprender en público", "éxitos"]
+image_url: "https://docs.astro.build/assets/arc.webp"
+image_alt: "Miniatura de los arcos de Astro."
+type:
+    - KA2
+tags:
+    - FP
 ---
+
 Después de una exitosa primera semana aprendiendo Astro, decidí probar un poco más. Escribí e importé un pequeño componente de memoria.

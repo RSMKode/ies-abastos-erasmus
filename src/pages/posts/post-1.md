@@ -1,12 +1,15 @@
 ---
 layout: /src/layouts/MarkdownPostLayout.astro
-title: 'Mi primera publicación en el blog'
+author: Roger Sancho
+title: Mi primera publicación en el blog
+description: Este es la primera publicación de mi nuevo blog Astro.
 pubDate: 2022-07-01
-description: 'Este es la primera publicación de mi nuevo blog Astro.'
-author: 'Roger Sancho'
-image: 'https://docs.astro.build/assets/full-logo-dark.png'
+image_url: 'https://docs.astro.build/assets/full-logo-dark.png'
 image_alt: 'El logotipo completo de Astro.'
-tags: ["astro", "bloguear", "aprender en público"]
+type:
+    - KA1
+tags:
+    - Escolar
 ---
 
 ¡Bienvenido a mi _nuevo blog_ sobre el aprendizaje de Astro! Aquí, voy a compartir mi viaje de aprendizaje a medida que construyo un nuevo sitio web.

@@ -1,27 +1,46 @@
-site_url: "https://localhost:4321/"
+site_url: "http://localhost:4321/"
 # site_url: "https://ies-abastos-erasmus.netlify.app/"
-# display_url: "https://localhost:4321/"
+display_url: "Main Site"
 backend:
   name: git-gateway
   branch: main # Branch to update (optional; defaults to master)
 # Ubicación donde se almacenarán los archivos en el repositorio
-media_folder: "src/assets/images/uploads"
+media_folder: "/public/assets/images/uploads"
 # El atributo src para los medios cargados
-public_folder: "src/assets/images/uploads"
+public_folder: "/assets/images/uploads"
 locale: es
-
 collections:
-  - name: "ka1" # Usado en rutas, por ejemplo, /admin/collections/blog
-    # slug: "{{year}}-{{month}}-{{day}}_{{slug}}" # Archivos en la carpeta de documentos tendrán un nombre similar a 2020-01-07-my-post.md
-    label: "KA1" # Usado en la interfaz de usuario de /admin
-    folder: "/src/pages/posts/ka1" # La ruta a la carpeta donde se almacenan los documentos
+  - name: "post" # Usado en rutas, por ejemplo, /admin/collections/blog
+    slug: "{{year}}-{{month}}-{{day}}_{{author}}_{{title}}" # Archivos en la carpeta de documentos tendrán un nombre similar a 2020-01-07_autor_my-post.md
+    label: "Post" # Usado en la interfaz de usuario de /admin
+    folder: "/src/pages/posts" # La ruta a la carpeta donde se almacenan los documentos
     create: true # Permitir a los usuarios crear nuevos documentos en esta colección
+    view_groups: # Agrupar documentos por proyecto
+      - { label: "KA1", field: type, pattern: "KA1" }
+      - { label: "KA2", field: type, pattern: "KA2" }
+      - { label: "KA3", field: type, pattern: "KA3" }
+      - {
+          label: "Capacity Building",
+          field: type,
+          pattern: "Capacity Building",
+        }
     view_filters:
-      - { label: "KA1", field: tags, pattern: "KA1" }
-      - { label: "KA2", field: tags, pattern: "KA2" }
-      - { label: "KA3", field: tags, pattern: "KA3" }
+      # - { label: "KA1", field: type, pattern: "KA1" }
+      # - { label: "KA2", field: type, pattern: "KA2" }
+      # - { label: "KA3", field: type, pattern: "KA3" }
+      # - {
+      #     label: "Capacity Building",
+      #     field: type,
+      #     pattern: "Capacity Building",
+      #   }
       - { label: "FP", field: tags, pattern: "FP" }
       - { label: "Escolar", field: tags, pattern: "Escolar" }
+      - {
+          label: "Educación Superior",
+          field: tags,
+          pattern: "Educación Superior",
+        }
+    summary: "{{title}} - {{type[0]}} - {{tags[0]}} - {{author}} - {{pubDate | date('DD-MM-YYYY')}}"
     fields: # Los campos para cada documento, generalmente en el frontmatter
       - {
           label: "Layout",
@@ -29,16 +48,41 @@ collections:
           widget: "hidden",
           default: "/src/layouts/MarkdownPostLayout.astro",
         }
-        # añadir slug
-
+      - { label: "Autor", name: "author", widget: "string" }
       - { label: "Titulo", name: "title", widget: "string" }
       - { label: "Fecha de Publicación", name: "pubDate", widget: "datetime" }
       - { label: "Descripción", name: "description", widget: "string" }
-      - { label: "Imagen", name: "image", widget: "image" }
+      - {
+          label: "Video URL",
+          name: "video_url",
+          widget: "string",
+          required: false,
+          hint: "URL de un video de YouTube o Google Drive",
+        }
+      - {
+          label: "Imagen",
+          name: "image_url",
+          widget: "image",
+          required: false,
+          hint: "Imagen destacada del post. Recomendable optimizarla antes de subirla.",
+        }
       - {
           label: "Descripción de la imagen",
           name: "image_alt",
           widget: "string",
+          required: false,
+          hint: "Texto alternativo para la imagen. Si se adjunta una imagen, este campo es recomendable.",
+        }
+      - {
+          label: "Tipo de Proyecto",
+          name: "type",
+          widget: "select",
+          multiple: true,
+          min: 1,
+          max: 2,
+          options: ["KA1", "KA2", "KA3", "Capacity Building"],
+          default: ["KA1"],
+          hint: "Selecciona un tipo de proyecto",
         }
       - {
           label: "Categoría",
@@ -49,16 +93,12 @@ collections:
           max: 2,
           options: ["Escolar", "FP", "Educación Superior"],
           default: ["FP"],
-          # - { label: "Escolar", value: "0" }
-          # - { label: "FP", value: "1" }
-          # - { label: "Educación Superior", value: "2" }
+          hint: "Selecciona una categoría",
         }
-      - { label: "Cuerpo del Post", name: "body", widget: "markdown" }
+      - {
+          label: "Cuerpo del Post",
+          name: "body",
+          widget: "markdown",
+          hint: "Escribe el contenido del post",
+        }
       # - { label: "Rating (scale of 1-5)", name: "rating", widget: "number" }
-      # - {
-      #     label: "Categorías",
-      #     name: "tags",
-      #     widget: "list",
-      #     label_singular: "Añadir categoría",
-      #     field: { label: Categoría, name: tag, widget: string },
-      #   }
