@@ -35,11 +35,12 @@ const pageTitle = "Decap CMS";
 
     <!-- <Header /> -->
     <div id="nc-root"></div>
-    <style>
+    <!-- <style>
+      ul,
       li {
-        list-style: circle;
+        list-style: circle !important;
       }
-    </style>
+    </style> -->
     <!-- <Footer /> -->
     <!-- Include the script that builds the page and powers Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
@@ -79,9 +80,9 @@ const pageTitle = "Decap CMS";
     <script>
       // @ts-expect-error CMS is defined globally
       // eslint-disable-next-line
-      if (CMS) CMS.registerPreviewStyle("/admin/global.css");
+      CMS.registerPreviewStyle("/admin/global.css");
     </script>
     <!-- Only showing body in preview panel -->
-    <!-- <script src="@utils/preview.js"></script> -->
+    <script src="@/utils/preview.js"></script>
   </body>
 </html>
