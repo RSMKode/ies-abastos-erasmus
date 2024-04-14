@@ -6,6 +6,7 @@ description: "Después de aprender un poco de Astro, ¡no podía parar!"
 pubDate: 2022-07-08
 image_url: "https://docs.astro.build/assets/arc.webp"
 image_alt: "Miniatura de los arcos de Astro."
+video_url: "https://drive.google.com/file/d/1Ieifgl_U0x12cdwqjxGCN728aTQU-u4s/view?usp=sharing"
 type:
     - KA2
 tags:

@@ -10,35 +10,83 @@ interface Props {
     pubDate: string;
     description: string;
     author: string;
-    image: string;
-    image_alt: string;
+    image_url?: string;
+    image_alt?: string;
+    video_url?: string;
+    type: string[];
     tags: string[];
   };
 }
 
 const { frontmatter } = Astro.props;
+const {
+  title,
+  pubDate,
+  description,
+  author,
+  image_url,
+  image_alt,
+  video_url,
+  type,
+  tags,
+} = frontmatter;
+
+function fixVideoURL(video_url: string) {
+  if (video_url.includes("drive.google.com")) {
+    return video_url.replace("view?usp=sharing", "preview");
+  } else if (video_url.includes("youtube.com")) {
+    return video_url.replace("watch?v=", "embed/");
+  } else {
+    return video_url;
+  }
+}
+let fixedVideoURL;
+if (video_url) {
+  fixedVideoURL = fixVideoURL(video_url);
+}
 ---
 
-<Layout pageTitle={frontmatter.title} pageDescription={frontmatter.description}>
+<Layout pageTitle={title} pageDescription={description}>
   <main class="blog-post">
-    <p>Publicado el: {frontmatter.pubDate.slice(0, 10)}</p>
-    <p transition:animate={fade({ duration: "2s" })}>
-      <em>{frontmatter.description}</em>
-    </p>
-    <p>Escrito por: <a href="/about/">{frontmatter.author}</a></p>
-    <img
-      src={frontmatter.image}
-      alt={frontmatter.image_alt ?? "Imagen de portada"}
-    />
+    <div class="type-container">
+      {
+        type.map((type) => (
+          <a class="type" href={`/types/${type}`}>
+            {type}
+          </a>
+        ))
+      }
+    </div>
     <div class="tag-container">
       {
-        frontmatter.tags.map((tag) => (
+        tags.map((tag) => (
           <a class="tag" href={`/tags/${tag}`}>
             {tag}
           </a>
         ))
       }
     </div>
+    <p>Publicado el: {pubDate.slice(0, 10)}</p>
+    <p transition:animate={fade({ duration: "2s" })}>
+      <em>{description}</em>
+    </p>
+    <p>Escrito por: <a href="/about/">{author}</a></p>
+    {
+      fixedVideoURL && (
+        <iframe
+          src={fixedVideoURL}
+          class="w-full aspect-video bg-gray-800 rounded border"
+        />
+      )
+    }
+    {
+      image_url && (
+        <img
+          src={image_url}
+          alt={image_alt ?? `Imagen de portada de ${title}`}
+        />
+      )
+    }
     <slot />
   </main>
 </Layout>

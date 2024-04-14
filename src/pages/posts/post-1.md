@@ -6,6 +6,7 @@ description: Este es la primera publicación de mi nuevo blog Astro.
 pubDate: 2022-07-01
 image_url: 'https://docs.astro.build/assets/full-logo-dark.png'
 image_alt: 'El logotipo completo de Astro.'
+video_url: "https://drive.google.com/file/d/1nzcqcYYVt4ld5OTIV-NSBOwVn4yR0jPO/view?usp=sharing"
 type:
     - KA1
 tags:
