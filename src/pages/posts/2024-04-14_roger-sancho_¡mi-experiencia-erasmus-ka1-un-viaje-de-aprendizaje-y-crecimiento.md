@@ -4,7 +4,7 @@ author: Roger Sancho
 title: "¡Mi experiencia Erasmus+ KA1: Un viaje de aprendizaje y crecimiento!"
 description: "¡Mi experiencia Erasmus+ KA1: Un viaje de aprendizaje y crecimiento!"
 pubDate: 2024-04-14T18:22:00.000Z
-image_url: https://www3.gobiernodecanarias.org/medusa/edublog/cprofestenerifesur/wp-content/uploads/sites/105/2023/01/imagen-erasmus.png
+image_url: /assets/images/uploads/wallpaper-musica.jpg
 image_alt: Erasmus+ KA1
 type:
   - KA1
