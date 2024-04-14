@@ -1,6 +1,6 @@
-site_url: "http://localhost:4321/"
-# site_url: "https://ies-abastos-erasmus.netlify.app/"
-display_url: "Main Site"
+# site_url: "http://localhost:4321/"
+site_url: "https://ies-abastos-erasmus.netlify.app/"
+# display_url: "Main Site"
 backend:
   name: git-gateway
   branch: main # Branch to update (optional; defaults to master)
@@ -11,19 +11,21 @@ public_folder: "/assets/images/uploads"
 locale: es
 collections:
   - name: "post" # Usado en rutas, por ejemplo, /admin/collections/blog
-    slug: "{{year}}-{{month}}-{{day}}_{{author}}_{{title}}" # Archivos en la carpeta de documentos tendrán un nombre similar a 2020-01-07_autor_my-post.md
+    slug: "{{year}}-{{month}}-{{day}}_{{author}}_{{slug}}" # Archivos en la carpeta de documentos tendrán un nombre similar a 2020-01-07_autor_my-post.md
     label: "Post" # Usado en la interfaz de usuario de /admin
     folder: "/src/pages/posts" # La ruta a la carpeta donde se almacenan los documentos
     create: true # Permitir a los usuarios crear nuevos documentos en esta colección
     view_groups: # Agrupar documentos por proyecto
-      - { label: "KA1", field: type, pattern: "KA1" }
-      - { label: "KA2", field: type, pattern: "KA2" }
-      - { label: "KA3", field: type, pattern: "KA3" }
-      - {
-          label: "Capacity Building",
-          field: type,
-          pattern: "Capacity Building",
-        }
+      - { label: "Type", field: type }
+      - { label: "Tags", field: tags }
+      # - { label: "KA1", field: type, pattern: "ka1" }
+      # - { label: "KA2", field: type, pattern: "KA2" }
+      # - { label: "KA3", field: type, pattern: "KA3" }
+      # - {
+      #     label: "Capacity Building",
+      #     field: type,
+      #     pattern: "Capacity Building",
+      #   }
     view_filters:
       # - { label: "KA1", field: type, pattern: "KA1" }
       # - { label: "KA2", field: type, pattern: "KA2" }
@@ -48,17 +50,15 @@ collections:
           widget: "hidden",
           default: "/src/layouts/MarkdownPostLayout.astro",
         }
-      - { label: "Autor", name: "author", widget: "string" }
-      - { label: "Titulo", name: "title", widget: "string" }
-      - { label: "Fecha de Publicación", name: "pubDate", widget: "datetime" }
-      - { label: "Descripción", name: "description", widget: "string" }
       - {
-          label: "Video URL",
-          name: "video_url",
+          label: "Autor",
+          name: "author",
           widget: "string",
-          required: false,
-          hint: "URL de un video de YouTube o Google Drive",
+          default: "IES Abastos Erasmus+",
         }
+      - { label: "Titulo", name: "title", widget: "string" }
+      - { label: "Descripción", name: "description", widget: "string" }
+      - { label: "Fecha de Publicación", name: "pubDate", widget: "datetime" }
       - {
           label: "Imagen",
           name: "image_url",
@@ -72,6 +72,13 @@ collections:
           widget: "string",
           required: false,
           hint: "Texto alternativo para la imagen. Si se adjunta una imagen, este campo es recomendable.",
+        }
+      - {
+          label: "Video URL",
+          name: "video_url",
+          widget: "string",
+          required: false,
+          hint: "URL de un video de YouTube o Google Drive",
         }
       - {
           label: "Tipo de Proyecto",
