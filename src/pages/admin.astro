@@ -1,4 +1,6 @@
 ---
+import "@fontsource-variable/onest";
+
 // import "@/styles/global.css";
 
 import Header from "@/components/Header.astro";
@@ -32,18 +34,19 @@ const pageTitle = "Decap CMS";
         href="/">VOLVER</a
       >
     </div> -->
-
-    <!-- <Header /> -->
-    <div id="nc-root"></div>
     <!-- <style>
       ul,
       li {
         list-style: circle !important;
       }
     </style> -->
+
+    <!-- <Header /> -->
+    <div id="nc-root"></div>
     <!-- <Footer /> -->
     <!-- Include the script that builds the page and powers Decap CMS -->
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script is:inline src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"
+    ></script>
     <!-- Netlify Identity Widget -->
     <script
       is:inline
@@ -63,8 +66,8 @@ const pageTitle = "Decap CMS";
       // Se comprueba si el usuario logueado está en la lista de usuarios permitidos
       // @ts-expect-error netlifyIdentity is defined globally
       netlifyIdentity.on("login", (user) => {
-        console.log(user);
-        console.log(localStorage);
+        // console.log(user);
+        // console.log(localStorage);
         // if (user.email != "rogersanchom@gmail.com") {
         if (!allowedUsers.includes(user.email)) {
           // Si no está en la lista de usuarios permitidos se cierra la sesión, se borra la cookie y se redirige a la página principal
@@ -79,8 +82,8 @@ const pageTitle = "Decap CMS";
     <!-- CSS in preview panel -->
     <script>
       // @ts-expect-error CMS is defined globally
-      // eslint-disable-next-line
       CMS.registerPreviewStyle("/admin/global.css");
+      console.log("miau");
     </script>
     <!-- Only showing body in preview panel -->
     <script src="@/utils/preview.js"></script>

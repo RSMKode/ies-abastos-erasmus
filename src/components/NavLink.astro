@@ -1,11 +1,20 @@
 ---
 import { Icon } from "astro-icon/components";
 
+interface Props {
+  nombre: string;
+  link: string;
+  icono: string;
+}
+
 const { nombre, link, icono } = Astro.props;
+
+const isActive = Astro.url.pathname === link;
 ---
 
 <a
-  class="flex items-start justify-center text-secondary border border-transparent hover:text-accent-1 hover:border-current font-medium px-2 py-1 rounded-lg gap-1 hover:scale-[1.05] active:scale-[1] transition-all duration-300"
+  class={"flex items-start justify-center text-secondary border border-transparent hover:text-accent-1 hover:border-current font-medium px-2 py-1 rounded-lg gap-1 hover:scale-[1.05] active:scale-[1] transition duration-300 hover:shadow hover:shadow-current " +
+    (isActive ? "text-accent-1" : "")}
   href={link}
   title={nombre}
 >

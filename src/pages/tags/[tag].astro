@@ -2,27 +2,30 @@
 import Layout from "@/layouts/Layout.astro";
 import PostLink from "@/components/PostLink.astro";
 
-export async function getStaticPaths() {
-  const allPosts = await Astro.glob("/src/pages/posts/**/*.md");
+// export async function getStaticPaths() {
+//   const allPosts = await Astro.glob("/src/pages/posts/**/*.md");
 
-  const uniqueTags = [
-    ...new Set(allPosts.map((post) => post.frontmatter.tags).flat()),
-  ];
+//   const uniqueTags = [
+//     ...new Set(allPosts.map((post) => post.frontmatter.tags).flat()),
+//   ];
 
-  return uniqueTags.map((tag) => {
-    const filteredPosts = allPosts.filter((post) =>
-      post.frontmatter.tags?.includes(tag)
-    );
-    return {
-      params: { tag },
-      props: { posts: filteredPosts },
-    };
-  });
-}
+//   return uniqueTags.map((tag) => {
+//     const filteredPosts = allPosts.filter((post) =>
+//       post.frontmatter.tags?.includes(tag)
+//     );
+//     return {
+//       params: { tag },
+//       props: { posts: filteredPosts },
+//     };
+//   });
+// }
 
 const { tag } = Astro.params;
-const { posts } = Astro.props;
 
+const allPosts = await Astro.glob("/src/pages/posts/**/*.md");
+const filteredPosts = allPosts.filter((post) =>
+  post.frontmatter.tags?.includes(tag)
+);
 const pageTitle = `Categoría: ${tag}`;
 ---
 
@@ -30,7 +33,7 @@ const pageTitle = `Categoría: ${tag}`;
   <p>Entradas etiquetadas con {tag}</p>
   <ul>
     {
-      posts.map((post) => (
+      filteredPosts.map((post) => (
         <PostLink url={post.url} title={post.frontmatter.title} />
       ))
     }

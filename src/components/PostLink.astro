@@ -1,7 +1,60 @@
 ---
-const { title, url } = Astro.props;
+// interface Props {
+//   url: string;
+//   postInfo: {
+//     title: string;
+//     pubDate: string;
+//     description: string;
+//     author: string;
+//     image_url?: string;
+//     image_alt?: string;
+//     video_url?: string;
+//     type: string[];
+//     tags: string[];
+//   };
+// }
+
+const { url, postInfo } = Astro.props;
+
+const {
+  author,
+  title,
+  description,
+  pubDate,
+  image_url,
+  image_alt,
+  video_url,
+  type,
+  tags,
+} = postInfo;
+
+const date = new Date(pubDate);
+const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
 ---
 
-<li>
-  <a href={url}>{title}</a>
-</li>
+<a href={url}>
+  <article
+    class="flex flex-col gap-2 bg-indigo-950 p-4 rounded-lg w-full h-full border-2 border-transparent hover:border-accent-1 hover:shadow-lg hover:shadow-black/50 hover:scale-[1.01] transition duration-300"
+  >
+    <header class="flex flex-col gap-1">
+      <h4 class="text-lg text-secondary/70">{author}</h4>
+      <h3 class="text-2xl">{title}</h3>
+    </header>
+    <section class="flex flex-col gap-2">
+      <div></div>
+      <p>{description}</p>
+      {
+        image_url && (
+          <img
+            src={image_url}
+            alt={image_alt ?? `Imagen de portada de ${title}`}
+            class="w-full h-auto rounded"
+          />
+        )
+      }
+    </section>
+    <footer>
+      <p>{formattedDate}</p>
+    </footer>
+  </article>
+</a>

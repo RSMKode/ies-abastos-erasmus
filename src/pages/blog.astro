@@ -4,6 +4,7 @@ import Layout from "@/layouts/Layout.astro";
 import PostLink from "@/components/PostLink.astro";
 import TagIndex from "@/components/TagIndex.astro";
 const allPosts = await Astro.glob("/src/pages/posts/**/*.md");
+console.log(allPosts);
 
 const pageTitle = "Blog";
 const pageDescription = "Conjunto de entradas del blog";
@@ -12,12 +13,13 @@ const pageDescription = "Conjunto de entradas del blog";
 <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
   <TagIndex />
   <p>Aquí es donde publicaré sobre mi viaje de aprendizaje Astro.</p>
-  <ul>
+  <ul class="grid grid-cols-3 gap-3">
     {
       allPosts.map((post) => (
-        <PostLink url={post.url} title={post.frontmatter.title} />
+        <li>
+          <PostLink url={post.url} postInfo={post.frontmatter} />
+        </li>
       ))
     }
   </ul>
 </Layout>
-<script></script>

@@ -2,27 +2,31 @@
 import Layout from "@/layouts/Layout.astro";
 import PostLink from "@/components/PostLink.astro";
 
-export async function getStaticPaths() {
-  const allPosts = await Astro.glob("/src/pages/posts/**/*.md");
+// export async function getStaticPaths() {
+//   const allPosts = await Astro.glob("/src/pages/posts/**/*.md");
 
-  const uniqueTypes = [
-    ...new Set(allPosts.map((post) => post.frontmatter.type).flat()),
-  ];
+//   const uniqueTypes = [
+//     ...new Set(allPosts.map((post) => post.frontmatter.type).flat()),
+//   ];
 
-  return uniqueTypes.map((type) => {
-    const filteredPosts = allPosts.filter((post) =>
-      post.frontmatter.type?.includes(type)
-    );
-    return {
-      params: { type },
-      props: { posts: filteredPosts },
-    };
-  });
-}
+//   return uniqueTypes.map((type) => {
+//     const filteredPosts = allPosts.filter((post) =>
+//       post.frontmatter.type?.includes(type)
+//     );
+//     return {
+//       params: { type },
+//       props: { posts: filteredPosts },
+//     };
+//   });
+// }
 
 const { type } = Astro.params;
-const { posts } = Astro.props;
+// const { posts } = Astro.props;
 
+const allPosts = await Astro.glob("/src/pages/posts/**/*.md");
+const filteredPosts = allPosts.filter((post) =>
+  post.frontmatter.type?.includes(type)
+);
 const pageTitle = `Tipo: ${type}`;
 ---
 
@@ -30,8 +34,8 @@ const pageTitle = `Tipo: ${type}`;
   <p>Entradas etiquetadas con {type}</p>
   <ul>
     {
-      posts.map((post) => (
-        <PostLink url={post.url} title={post.frontmatter.title} />
+      filteredPosts.map((post) => (
+        <PostLink url={post.url} postInfo={post.frontmatter} />
       ))
     }
   </ul>

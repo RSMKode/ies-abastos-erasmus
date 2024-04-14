@@ -47,7 +47,7 @@ if (video_url) {
 ---
 
 <Layout pageTitle={title} pageDescription={description}>
-  <main class="blog-post">
+  <section class="">
     <div class="type-container">
       {
         type.map((type) => (
@@ -88,5 +88,13 @@ if (video_url) {
       )
     }
     <slot />
-  </main>
+  </section>
 </Layout>
+<style>
+  ul {
+    list-style: disc;
+  }
+  li {
+    margin: 0 2rem;
+  }
+</style>

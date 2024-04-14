@@ -8,7 +8,7 @@ import tailwind from "@astrojs/tailwind";
 // https://astro.build/config
 export default defineConfig({
   site: "https://ies-erasmus.netlify.app",
-  integrations: [preact(), icon(), tailwind()]
-  // output: "hybrid",
-  // adapter: netlify(),
+  integrations: [preact(), icon(), tailwind()],
+  output: "server",
+  adapter: netlify(),
 });
