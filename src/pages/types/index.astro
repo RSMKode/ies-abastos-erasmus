@@ -1,0 +1,23 @@
+---
+import Layout from "@/layouts/Layout.astro";
+const allPosts = await Astro.glob("/src/pages/posts/**/*.md");
+const types = [
+  ...new Set(allPosts.map((post) => post.frontmatter.type).flat()),
+];
+
+const pageTitle = "Índice de tipos de proyectos Erasmus+";
+const pageDescription =
+  "Índice de tipos de proyectos Erasmus+ de los artículos del blog";
+---
+
+<Layout pageTitle={pageTitle} pageDescription={pageDescription}>
+  <section class="type-container">
+    {
+      types.map((type) => (
+        <a class="type" href={`/types/${type}`}>
+          {type}
+        </a>
+      ))
+    }
+  </section>
+</Layout>
