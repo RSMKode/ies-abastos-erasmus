@@ -29,6 +29,12 @@ export default {
         "spin-slower": "spin 35s ease infinite",
         "spin-slow": "spin 25s ease-in-out infinite reverse",
       },
+      gridTemplateColumns: {
+        'auto-fill': 'repeat(auto-fill, minmax(20rem, 1fr))',
+        'auto-fill-13': 'repeat(auto-fill, minmax(13rem, 1fr))',
+        'auto-fit': 'repeat(auto-fit, minmax(20rem, 1fr))',
+        'auto-fit-13': 'repeat(auto-fit, minmax(13rem, 1fr))'
+      }
     },
   },
   plugins: [animations],

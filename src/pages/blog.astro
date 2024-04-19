@@ -13,7 +13,7 @@ const pageDescription = "Conjunto de entradas del blog";
 <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
   <TagIndex />
   <p>Aquí es donde publicaré sobre mi viaje de aprendizaje Astro.</p>
-  <ul class="grid grid-cols-3 gap-3">
+  <ul class="grid gap-4 grid-cols-auto-fill">
     {
       allPosts.map((post) => (
         <li>
