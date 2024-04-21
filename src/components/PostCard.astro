@@ -39,7 +39,7 @@ const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYe
 ---
 
 <article
-  class="flex flex-col bg-blue-950 rounded-lg h-full border-2 border-transparent hover:border-accent-1 hover:shadow-lg hover:scale-[1.01] transition duration-300 group shadow-accent-1 hover:[box-shadow:_0_0_8px_var(--tw-shadow-color)] overflow-hidden relative"
+  class={"flex flex-col bg-blue-950 rounded-lg h-full border-2 border-transparent hover:border-accent-1 hover:shadow-lg hover:scale-[1.01] transition duration-300 group shadow-accent-1 hover:[box-shadow:_0_0_8px_var(--tw-shadow-color)] overflow-hidden relative " + Astro.props.class} style={Astro.props.style}
 >
   {linkUrl && <a href={linkUrl} class="absolute inset-0 z-10" />}
   {

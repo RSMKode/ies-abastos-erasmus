@@ -3,12 +3,16 @@ import PostCard from "@/components/PostCard.astro";
 
 const { posts } = Astro.props;
 console.log(posts);
+let contador = 0;
 ---
 
 <section class="grid gap-4 grid-cols-auto-fill">
   {
-    posts.map((post) => (
-        <PostCard linkUrl={post.url} postInfo={post.frontmatter} />
-    ))
+    posts.map((post, index) => { 
+      let animationDelay = index * 100;
+      return (
+        <PostCard linkUrl={post.url} postInfo={post.frontmatter} class={`animate-fade-in-up`} style={`animation-delay: ${animationDelay}ms`}/>
+
+    )})
   }
 </section>
