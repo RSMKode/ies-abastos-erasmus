@@ -3,77 +3,45 @@ import Layout from "@/layouts/Layout.astro";
 
 const pageTitle = "Sobre nosotros";
 const pageDescription = "Página about de IES Abastos Erasmus+";
-
-const identity = {
-  firstName: "Roger",
-  country: "España",
-  occupation: "estudiante de 2º de DAW y enfermero",
-  hobbies: ["Programar", "Dibujar", "Leer comics", "Jugar a videojuegos"],
-};
-
-const skills = [
-  "HTML",
-  "CSS",
-  "JavaScript",
-  "TypeScript",
-  "React",
-  "Astro",
-  "SQL",
-  "Redacción de documentos",
-];
-
-const happy = true;
-const finished = true;
-const goal = 3;
-
-const skillColor = "purple";
-const fontWeight = "bold";
-const textCase = "uppercase";
 ---
 
 <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
-  <h2>¡Y mi nuevo sitio Astro!</h2>
-
+  <section class="flex flex-col gap-4 text-lg">
+  <h2 class="text-xl font-bold">Historia y entorno</h2>
   <p>
-    Estoy trabajando en el tutorial introductorio de Astro. Esta es la segunda
-    página de mi sitio web, ¡y es la primera que he construido yo mismo!
+    El <strong class="text-accent-1">I.E.S. Abastos</strong> es un centro de educación secundaria, bachillerato y
+    ciclos formativos de grado medio y superior situado en la calle Alberique nº
+    18 de Valencia, en las antiguas instalaciones del Mercado de Abastos de la
+    ciudad. Dichas instalaciones albergan además un complejo cultural-deportivo,
+    diversas oficinas municipales, una sede de la Universidad Popular y una
+    Comisaría de Policía. Estamos situados en un enclave urbano privilegiado que
+    cuenta con estupendas conexiones con el transporte público urbano: bus,
+    metro, Valenbisi, etc. que facilita la llegada de los alumnos que vivan en
+    otras zonas de Valencia o en su área metropolitana.
   </p>
 
   <p>
-    Este sitio se irá actualizando a medida que vaya completando más partes del
-    tutorial, ¡así que no dejes de visitarlo para ver cómo va mi viaje!
+    Contamos con un alumnado de una extracción social media, habiendo aumentado
+    considerablemente el número de alumnos de procedencia extracomunitaria en
+    los últimos años hasta situarse en torno al 18% del total de alumnos
+    matriculados en la actualidad, fenómeno éste que no hace sino reflejar
+    nuestra realidad social actual.
   </p>
-  <p>He aquí algunos datos sobre mí:</p>
-  <>
-    <li>Me llamo {identity.firstName}.</li>
-    <li>Vivo en {identity.country} y soy {identity.occupation}.</li>
-    <li>
-      Varias de mis aficiones son:
-      <ul>
-        {identity.hobbies.map((hobby) => <li class="hobby">{hobby}</li>)}
-      </ul>
-    </li>
-  </>
-  <p>Mis habilidades son:</p>
-  <ul>
-    {skills.map((skill) => <li class="skill">{skill}</li>)}
-  </ul>
-  {happy && <p>¡Estoy feliz de aprender Astro!</p>}
 
-  {finished && <p>¡He terminado este tutorial!</p>}
+  El edificio data de los años 40 y fue proyectado por el arquitecto Javier
+  Goerlich Lleó, autor entre otros del edificio Banco de Valencia, el Teatro
+  Talia, el colegio Mayor Luis Vives, la Puerta del Mar o la restauración de la
+  Iglesia de San Agustín. Tiene un estilo arquitectónico entre funcionalista y
+  neocasticista. >
 
-  {
-    goal === 3 ? (
-      <p>Mi objetivo es terminar en {goal} días.</p>
-    ) : (
-      <p>Mi objetivo no son 3 días.</p>
-    )
-  }
-  <style define:vars={{ skillColor, fontWeight, textCase }}>
-    .skill {
-      color: var(--skillColor);
-      font-weight: var(--fontWeight);
-      text-transform: var(--textCase);
-    }
-  </style>
+  <p>
+    En los años 80 se hizo una restauración completa, destinando el ala norte al
+    instituto. Cuando el instituto fue inaugurado, en 1991, lo hizo como dos
+    centros formativos diferenciados, el Instituto de Bachillerato Cavanilles y
+    el Instituto de Formación Profesional Manuel Sánchez Ayuso, ocupando cada
+    uno de ellos un ala del nuevo edificio. En el año 2002 estos dos centros
+    fueron fusionados pasando a funcionar como uno sólo, dando lugar al actual
+    IES Abastos.
+  </p>
+</section>
 </Layout>
