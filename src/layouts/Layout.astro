@@ -44,8 +44,8 @@ const { pageTitle, pageDescription } = Astro.props;
 
   <body>
     <Header />
-    <main class="w-full max-w-7xl p-6">
-      <h1 transition:animate="slide">{pageTitle}</h1>
+    <main class="flex flex-col gap-4 w-full max-w-7xl p-6">
+      <h1 class="text-3xl text-accent-1 font-bold" transition:animate="slide">{pageTitle}</h1>
       <slot />
     </main>
     <Footer />
