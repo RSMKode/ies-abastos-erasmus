@@ -2,12 +2,12 @@
 import datos from "@/data/data.json";
 
 import { Icon } from "astro-icon/components";
+import CustomSeparator from "./CustomSeparator.astro";
 ---
-
 <footer
 class="w-full max-w-7xl flex flex-col gap-4 p-6"
 >
-<hr class="custom-separator w-full h-[0.2rem] rounded-[30%] text-accent-1"/>
+<CustomSeparator class="text-accent-1"/>
 <section class="flex flex-col sm:flex-row justify-between">
   <div class="flex flex-col gap-2 justify-center opacity-50">
     <p>© 2024 {datos.pageTitle}.</p>
