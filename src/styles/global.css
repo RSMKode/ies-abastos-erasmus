@@ -40,6 +40,16 @@ body {
   place-items: center;
   min-height: 100dvh;
 }
+
+hr{
+  /* Esto es para tener estilos custom en los separadores */
+  border: none;
+  
+}
+
+hr.custom-separator{
+  background: radial-gradient(circle, currentColor 0%, currentColor 65%, transparent 98%  );
+}
 h1,
 h2,
 h3,

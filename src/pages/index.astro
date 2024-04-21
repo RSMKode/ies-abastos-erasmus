@@ -2,16 +2,19 @@
 import "@/styles/global.css";
 import Layout from "@/layouts/Layout.astro";
 import Greeting from "@/components/Greeting.jsx";
+import TagIndex from "@/components/TagIndex.astro";
+import PostsGrid from "@/components/PostsGrid.astro";
+
+const allPosts = await Astro.glob("/src/pages/posts/**/*.md");
 
 const pageTitle = "IES Abastos | Erasmus+";
 const pageDescription = "Proyectos Erasmus+ de IES Abastos";
 ---
 
 <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
-  <h2>Mi impresionante subtítulo del blog</h2>
-  <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
-  PRUEBA DE VIDEO
-  <iframe
-    src="https://drive.google.com/file/d/1Ieifgl_U0x12cdwqjxGCN728aTQU-u4s/preview"
-    class="max-w-[40rem] aspect-video bg-gray-800 rounded border"></iframe>
+  <!-- <TagIndex /> -->
+  <h2 class="text-xl font-bold">Conjunto de entradas del blog:</h2>
+  <PostsGrid posts={allPosts} />
+  <!-- <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} /> -->
+
 </Layout>

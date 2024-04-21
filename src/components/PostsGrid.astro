@@ -1,0 +1,14 @@
+---
+import PostCard from "@/components/PostCard.astro";
+
+const { posts } = Astro.props;
+console.log(posts);
+---
+
+<section class="grid gap-4 grid-cols-auto-fill">
+  {
+    posts.map((post) => (
+        <PostCard linkUrl={post.url} postInfo={post.frontmatter} />
+    ))
+  }
+</section>
