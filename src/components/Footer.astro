@@ -5,9 +5,11 @@ import { Icon } from "astro-icon/components";
 ---
 
 <footer
-  class="w-full max-w-7xl flex flex-col sm:flex-row justify-between px-6 pb-6"
+class="w-full max-w-7xl flex flex-col gap-4 p-6"
 >
-  <div class="flex flex-col justify-center opacity-50">
+<hr class="custom-separator w-full h-[0.2rem] rounded-[30%] text-accent-1"/>
+<section class="flex flex-col sm:flex-row justify-between">
+  <div class="flex flex-col gap-2 justify-center opacity-50">
     <p>© 2024 {datos.pageTitle}.</p>
     <p class="gap-x-1 flex sm:items-center">
       <span>Powered by</span>
@@ -22,7 +24,7 @@ import { Icon } from "astro-icon/components";
       </span>
     </p>
   </div>
-  <div class="flex flex-col justify-center sm:items-center">
+  <div class="flex flex-col gap-2 justify-center sm:items-center">
     <p class="opacity-50">
       {datos.updated}
     </p>
@@ -37,4 +39,7 @@ import { Icon } from "astro-icon/components";
       <Icon name="mdi:github" class="size-6" />
     </a>
   </div>
+</section>
 </footer>
+<style>
+</style>
