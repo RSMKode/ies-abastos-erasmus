@@ -1,0 +1,50 @@
+---
+// import { AstroProps } from "astro//types";
+
+// interface Props extends AstroProps {
+//   linkUrl: string;
+//   tagName: string;
+//   tagImage: string;
+// }
+
+const { linkUrl, name, imageUrl } = Astro.props;
+---
+
+<article
+  class={"flex flex-col bg-blue-950 rounded-lg h-full border-2 border-transparent hover:text-accent-1 hover:border-accent-1 hover:shadow-lg hover:scale-[1.01] transition duration-300 group shadow-accent-1 hover:[box-shadow:_0_0_8px_var(--tw-shadow-color)] overflow-hidden relative " +
+    Astro.props.class}
+  style={Astro.props.style}
+>
+  {linkUrl && <a href={linkUrl} class="absolute inset-0 z-10" />}
+  {
+    imageUrl && (
+      <header class="">
+        <img
+          src={imageUrl}
+          alt={`Imagen de portada de ${name}`}
+          class="object-cover"
+        />
+      </header>
+    )
+  }
+  <section
+    class="relative flex flex-col gap-2 p-4 shadow-black [text-shadow:_2px_2px_5px_var(--tw-shadow-color)]"
+  >
+    {
+      imageUrl && (
+        <img
+          src={imageUrl}
+          alt={`Imagen de portada de ${name}`}
+          class="mirror absolute inset-0 w-full h-min duration-500 opacity-0  blur group-hover:opacity-50  -z-10 -scale-y-100"
+        />
+      )
+    }
+    <h3 class="text-xl">{name}</h3>
+  </section>
+</article>
+<style>
+  .mirror {
+    mask-image: linear-gradient(to top, black 60%, transparent 90%);
+    /* filter: blur(8px); */
+  }
+</style>

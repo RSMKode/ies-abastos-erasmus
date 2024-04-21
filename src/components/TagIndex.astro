@@ -1,17 +1,23 @@
 ---
-const allPosts = await Astro.glob("/src/pages/posts/*.md");
-const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
+import {projects as projectsData, tags as tagsData} from "@/data/tags-data.json";
+import TagCard from "./TagCard.astro";
 
-const title = "Índice de etiquetas";
+const { tags, isProjectIndex } = Astro.props;
+
+const linkUrlPrefix = isProjectIndex ? `/projects/` : `/tags/`;
+const imageGroup = isProjectIndex ? projectsData : tagsData;
+
 ---
 
-<h2>{title}</h2>
-<section class="tag-container">
+<section class="grid gap-4 grid-cols-auto-fit-sm">
   {
-    tags.map((tag) => (
-      <a href={`/tags/${tag}`} class="">
-        {tag}
-      </a>
-    ))
+    tags.map((tag, index) => { 
+      let animationDelay = index * 100;
+      return (
+        <TagCard name={tag} linkUrl={`${linkUrlPrefix}${tag}`} imageUrl={imageGroup[tag]?.image}
+        class={`animate-fade-in-up`} style={`animation-delay: ${animationDelay}ms`}/>
+
+    )})
   }
 </section>
+

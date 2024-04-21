@@ -1,4 +1,5 @@
 ---
+import TagIndex from "@/components/TagIndex.astro";
 import Layout from "@/layouts/Layout.astro";
 const allPosts = await Astro.glob("/src/pages/posts/**/*.md");
 const projects = [
@@ -11,13 +12,6 @@ const pageDescription =
 ---
 
 <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
-  <section class="project-container">
-    {
-      projects.map((project) => (
-        <a class="project" href={`/projects/${project}`}>
-          {project}
-        </a>
-      ))
-    }
-  </section>
+  <TagIndex tags={projects} isProjectIndex={true}/>
+
 </Layout>

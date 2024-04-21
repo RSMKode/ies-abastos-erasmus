@@ -1,0 +1,27 @@
+{
+    "projects":{
+        "KA1": {
+            "imageUrl": "https://www3.gobiernodecanarias.org/medusa/edublog/cprofestenerifesur/wp-content/uploads/sites/105/2023/01/imagen-erasmus.png"
+        },
+        "KA2": {
+            "imageUrl": "https://iessierranevada.org/wp-content/uploads/2019/03/erasmuska2.png"
+        },
+        "KA3": {
+            "imageUrl": ""
+        },
+        "Capacity Building": {
+            "imageUrl": ""
+        }
+    },
+    "tags":{
+        "Escolar": {
+            "imageUrl": ""
+        },
+        "FP": {
+            "imageUrl": ""
+        },
+        "Educacion Superior": {
+            "imageUrl": ""
+        }  
+    }
+}
