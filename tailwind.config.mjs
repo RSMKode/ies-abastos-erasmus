@@ -16,7 +16,7 @@ export default {
         accent: {
           // 1: "rgb(var(--color-accent-1) / <alpha-value>)",
           // 1: "rgb(250 204 21 / <alpha-value>)",
-          1: colors.yellow[300],
+          DEFAULT: colors.yellow[300],
           2: colors.rose[900],
         },
         // bkg: "hsl(var(--color-bkg) / <alpha-value>)",

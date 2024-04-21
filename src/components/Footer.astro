@@ -7,7 +7,7 @@ import CustomSeparator from "./CustomSeparator.astro";
 <footer
 class="w-full max-w-7xl flex flex-col gap-4 p-6"
 >
-<CustomSeparator class="text-accent-1"/>
+<CustomSeparator class="text-accent"/>
 <section class="flex flex-col sm:flex-row justify-between">
   <div class="flex flex-col gap-2 justify-center opacity-50">
     <p>© 2024 {datos.pageTitle}.</p>
@@ -29,7 +29,7 @@ class="w-full max-w-7xl flex flex-col gap-4 p-6"
       {datos.updated}
     </p>
     <a
-      class="size-fit flex gap-1 items-center px-2 py-1 border-2 border-white opacity-50 rounded-full cursor-pointer hover:text-accent-1 hover:border-current hover:opacity-100 hover:scale-105 active:scale-100 transition duration-200"
+      class="size-fit flex gap-1 items-center px-2 py-1 border-2 border-white opacity-50 rounded-full cursor-pointer hover:text-accent hover:border-current hover:opacity-100 hover:scale-105 active:scale-100 transition duration-200"
       href={datos.links.repo.url}
       target="_blank"
       rel="noreferrer"

@@ -1,7 +1,7 @@
 :root {
   color-scheme: light;
   --color-primary: 203 139 198;
-  --color-accent-1: 250 204 21;
+  --color-accent: 250 204 21;
   /*rgb(250 204 21) */
   --color-bkg: 350, 10%, 10%;
   /*hsl(350, 10%, 10%)*/
