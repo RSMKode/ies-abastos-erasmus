@@ -1,6 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import PostLink from "@/components/PostLink.astro";
+import PostLink from "@/components/PostCard.astro";
+import PostsGrid from "@/components/PostsGrid.astro";
 
 // export async function getStaticPaths() {
 //   const allPosts = await Astro.glob("/src/pages/posts/**/*.md");
@@ -32,11 +33,5 @@ const pageTitle = `Tipo: ${type}`;
 
 <Layout pageTitle={pageTitle} pageDescription={pageTitle}>
   <p>Entradas etiquetadas con {type}</p>
-  <ul>
-    {
-      filteredPosts.map((post) => (
-        <PostLink url={post.url} postInfo={post.frontmatter} />
-      ))
-    }
-  </ul>
+  <PostsGrid posts={filteredPosts} />
 </Layout>
