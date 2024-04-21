@@ -15,23 +15,23 @@ collections:
     folder: "/src/pages/posts" # La ruta a la carpeta donde se almacenan los documentos
     create: true # Permitir a los usuarios crear nuevos documentos en esta colección
     view_groups: # Agrupar documentos por proyecto
-      - { label: "Type", field: type }
+      - { label: "Project", field: project }
       - { label: "Tags", field: tags }
-      # - { label: "KA1", field: type, pattern: "ka1" }
-      # - { label: "KA2", field: type, pattern: "KA2" }
-      # - { label: "KA3", field: type, pattern: "KA3" }
+      # - { label: "KA1", field: project, pattern: "ka1" }
+      # - { label: "KA2", field: project, pattern: "KA2" }
+      # - { label: "KA3", field: project, pattern: "KA3" }
       # - {
       #     label: "Capacity Building",
-      #     field: type,
+      #     field: project,
       #     pattern: "Capacity Building",
       #   }
     view_filters:
-      # - { label: "KA1", field: type, pattern: "KA1" }
-      # - { label: "KA2", field: type, pattern: "KA2" }
-      # - { label: "KA3", field: type, pattern: "KA3" }
+      # - { label: "KA1", field: project, pattern: "KA1" }
+      # - { label: "KA2", field: project, pattern: "KA2" }
+      # - { label: "KA3", field: project, pattern: "KA3" }
       # - {
       #     label: "Capacity Building",
-      #     field: type,
+      #     field: project,
       #     pattern: "Capacity Building",
       #   }
       - { label: "FP", field: tags, pattern: "FP" }
@@ -41,7 +41,7 @@ collections:
           field: tags,
           pattern: "Educación Superior",
         }
-    summary: "{{title}} - {{type[0]}} - {{tags[0]}} - {{author}} - {{pubDate | date('DD-MM-YYYY')}}"
+    summary: "{{title}} - {{project[0]}} - {{tags[0]}} - {{author}} - {{pubDate | date('DD-MM-YYYY')}}"
     fields: # Los campos para cada documento, generalmente en el frontmatter
       - {
           label: "Layout",
@@ -81,7 +81,7 @@ collections:
         }
       - {
           label: "Tipo de Proyecto",
-          name: "type",
+          name: "project",
           widget: "select",
           multiple: true,
           min: 1,

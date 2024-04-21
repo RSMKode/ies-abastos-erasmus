@@ -6,7 +6,7 @@ description: "Esta entrada aparecerá sola!"
 pubDate: 2022-08-08
 image_url: "https://docs.astro.build/default-og-image.png"
 image_alt: "La palabra 'astro' contra una ilustración de planetas y estrellas."
-type:
+project:
     - Capacity Building
 tags:
     - Escolar

@@ -13,7 +13,7 @@ interface Props {
     image_url?: string;
     image_alt?: string;
     video_url?: string;
-    type: string[];
+    project: string[];
     tags: string[];
   };
 }
@@ -27,7 +27,7 @@ const {
   image_url,
   image_alt,
   video_url,
-  type,
+  project,
   tags,
 } = frontmatter;
 
@@ -48,11 +48,11 @@ if (video_url) {
 
 <Layout pageTitle={title} pageDescription={description}>
   <section class="">
-    <div class="type-container">
+    <div class="project-container">
       {
-        type.map((type) => (
-          <a class="type" href={`/types/${type}`}>
-            {type}
+        project.map((project) => (
+          <a class="project" href={`/projects/${project}`}>
+            {project}
           </a>
         ))
       }

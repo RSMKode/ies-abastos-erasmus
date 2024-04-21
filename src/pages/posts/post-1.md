@@ -2,12 +2,12 @@
 layout: /src/layouts/MarkdownPostLayout.astro
 author: Roger Sancho
 title: Mi primera publicación en el blog
-description: Este es la primera publicación de mi nuevo blog Astro.
+description: Esta es la primera publicación de mi nuevo blog Astro.
 pubDate: 2022-07-01
-image_url: 'https://docs.astro.build/assets/full-logo-dark.png'
+image_url: 'https://docs.astro.build/assets/rays.webp'
 image_alt: 'El logotipo completo de Astro.'
 video_url: "https://drive.google.com/file/d/1nzcqcYYVt4ld5OTIV-NSBOwVn4yR0jPO/view?usp=sharing"
-type:
+project:
     - KA1
 tags:
     - Escolar

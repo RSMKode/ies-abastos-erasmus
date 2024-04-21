@@ -13,7 +13,7 @@ import Badge from "./Badge.astro";
 //     image_url?: string;
 //     image_alt?: string;
 //     video_url?: string;
-//     type: string[];
+//     project: string[];
 //     tags: string[];
 //   };
 // }
@@ -28,18 +28,20 @@ const {
   image_url,
   image_alt,
   video_url,
-  type,
+  project,
   tags,
 } = postInfo;
 
-console.log(type);
+console.log(project);
 
 const date = new Date(pubDate);
 const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
 ---
 
 <article
-  class={"flex flex-col bg-blue-950 rounded-lg h-full border-2 border-transparent hover:border-accent-1 hover:shadow-lg hover:scale-[1.01] transition duration-300 group shadow-accent-1 hover:[box-shadow:_0_0_8px_var(--tw-shadow-color)] overflow-hidden relative " + Astro.props.class} style={Astro.props.style}
+  class={"flex flex-col bg-blue-950 rounded-lg h-full border-2 border-transparent hover:border-accent-1 hover:shadow-lg hover:scale-[1.01] transition duration-300 group shadow-accent-1 hover:[box-shadow:_0_0_8px_var(--tw-shadow-color)] overflow-hidden relative " +
+    Astro.props.class}
+  style={Astro.props.style}
 >
   {linkUrl && <a href={linkUrl} class="absolute inset-0 z-10" />}
   {
@@ -74,17 +76,23 @@ const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYe
         class="flex flex-wrap gap-2 [text-shadow:none] text-blue-950 font-bold"
       >
         {
-          type &&
-            type.map((type) => (
-              <a class="z-20 hover:scale-110 hover:brightness-125 transition" href={`/types/${type}`}>
-                <Badge class="bg-accent-1">{type}</Badge>
+          project &&
+            project.map((project) => (
+              <a
+                class="z-20 group hover:scale-110 hover:brightness-125 transition duration-200"
+                href={`/projects/${project}`}
+              >
+                <Badge class="bg-accent-1">{project}</Badge>
               </a>
             ))
         }
         {
           tags &&
             tags.map((tag) => (
-              <a class="z-20 hover:scale-110 hover:brightness-125 transition" href={`/tags/${tag}`}>
+              <a
+                class="z-20 hover:scale-110 hover:brightness-125 transition duration-200"
+                href={`/tags/${tag}`}
+              >
                 <Badge class="bg-accent-1 ">{tag}</Badge>
               </a>
             ))

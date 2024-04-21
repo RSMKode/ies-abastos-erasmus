@@ -7,7 +7,7 @@ pubDate: 2022-07-15
 image_url: "https://docs.astro.build/assets/rays.webp"
 image_alt: "Miniatura de los rayos de Astro."
 video_url: https://youtube.com/shorts/aXyKVecwunc?si=bBn90wbk0bDY6AfE
-type:
+project:
     - KA3
 tags:
     - Educación Superior
