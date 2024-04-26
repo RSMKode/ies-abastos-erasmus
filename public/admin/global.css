@@ -31,12 +31,16 @@ html {
   background-color: #192634;
   background-image: linear-gradient(45deg, #192634 20%, #180e27 100%);
   color: #fff;
+  min-height: 100%;
 }
 body {
+  min-height: 100dvh;
+  padding: 2rem;
+  /*
   display: flex;
   flex-direction: column;
   place-items: center;
-  min-height: 100dvh;
+  */
 }
 
 div{
