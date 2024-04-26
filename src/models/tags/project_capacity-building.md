@@ -1,4 +1,5 @@
 ---
 layout: /src/layouts/MarkdownPostLayout.astro
-name: Categoría
+name: Capacity Building
+type: project
 ---

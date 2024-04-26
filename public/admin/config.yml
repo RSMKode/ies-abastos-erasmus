@@ -9,10 +9,10 @@ media_folder: "/public/assets/images/uploads"
 public_folder: "/assets/images/uploads"
 locale: es
 collections:
-  - name: "post" # Usado en rutas, por ejemplo, /admin/collections/blog
+  - name: "projects" # Usado en rutas, por ejemplo, /admin/collections/blog
     slug: "{{year}}-{{month}}-{{day}}_{{author}}_{{slug}}" # Archivos en la carpeta de documentos tendrán un nombre similar a 2020-01-07_autor_my-post.md
-    label: "Post" # Usado en la interfaz de usuario de /admin
-    folder: "/src/pages/posts" # La ruta a la carpeta donde se almacenan los documentos
+    label: "Proyectos" # Usado en la interfaz de usuario de /admin
+    folder: "/src/pages/projects" # La ruta a la carpeta donde se almacenan los documentos
     create: true # Permitir a los usuarios crear nuevos documentos en esta colección
     view_groups: # Agrupar documentos por proyecto
       - { label: "Project", field: project }
@@ -90,21 +90,170 @@ collections:
           default: ["KA1"],
           hint: "Selecciona un tipo de proyecto",
         }
-      - {
-          label: "Categoría",
-          name: "tags",
-          widget: "select",
-          multiple: true,
-          min: 1,
-          max: 2,
-          options: ["Escolar", "FP", "Educación Superior"],
-          default: ["FP"],
-          hint: "Selecciona una categoría",
-        }
+      # - {
+      #     label: "Categoría",
+      #     name: "tags",
+      #     widget: "select",
+      #     multiple: true,
+      #     min: 1,
+      #     max: 2,
+      #     options: ["Escolar", "FP", "Educación Superior"],
+      #     default: ["FP"],
+      #     hint: "Selecciona una categoría",
+      #   }
       - {
           label: "Cuerpo del Post",
           name: "body",
           widget: "markdown",
           hint: "Escribe el contenido del post",
         }
+      - {
+          label: "Categoría",
+          name: "tags",
+          widget: "relation",
+          collection: "tags",
+          value_field: "name",
+          search_fields: ["name"],
+          display_fields: ["name"],
+          multiple: true,
+          hint: "Relaciona",
+        }
       # - { label: "Rating (scale of 1-5)", name: "rating", widget: "number" }
+
+  - name: "posts" # Usado en rutas, por ejemplo, /admin/collections/blog
+    slug: "{{year}}-{{month}}-{{day}}_{{author}}_{{slug}}" # Archivos en la carpeta de documentos tendrán un nombre similar a 2020-01-07_autor_my-post.md
+    label: "Posts" # Usado en la interfaz de usuario de /admin
+    folder: "/src/pages/posts" # La ruta a la carpeta donde se almacenan los documentos
+    create: true # Permitir a los usuarios crear nuevos documentos en esta colección
+    view_groups: # Agrupar documentos por proyecto
+      - { label: "Project", field: project }
+      - { label: "Tags", field: tags }
+      # - { label: "KA1", field: project, pattern: "ka1" }
+      # - { label: "KA2", field: project, pattern: "KA2" }
+      # - { label: "KA3", field: project, pattern: "KA3" }
+      # - {
+      #     label: "Capacity Building",
+      #     field: project,
+      #     pattern: "Capacity Building",
+      #   }
+    view_filters:
+      # - { label: "KA1", field: project, pattern: "KA1" }
+      # - { label: "KA2", field: project, pattern: "KA2" }
+      # - { label: "KA3", field: project, pattern: "KA3" }
+      # - {
+      #     label: "Capacity Building",
+      #     field: project,
+      #     pattern: "Capacity Building",
+      #   }
+      - { label: "FP", field: tags, pattern: "FP" }
+      - { label: "Escolar", field: tags, pattern: "Escolar" }
+      - {
+          label: "Educación Superior",
+          field: tags,
+          pattern: "Educación Superior",
+        }
+    summary: "{{title}} - {{project}} - {{author}} - {{pubDate | date('DD-MM-YYYY')}}"
+    fields: # Los campos para cada documento, generalmente en el frontmatter
+      - {
+          label: "Layout",
+          name: "layout",
+          widget: "hidden",
+          default: "/src/layouts/MarkdownPostLayout.astro",
+        }
+      - {
+          label: "Autor",
+          name: "author",
+          widget: "string",
+          default: "IES Abastos Erasmus+",
+        }
+      - { label: "Titulo", name: "title", widget: "string" }
+      - { label: "Descripción", name: "description", widget: "string" }
+      - { label: "Fecha de Publicación", name: "pubDate", widget: "datetime" }
+      - {
+          label: "Imagen",
+          name: "image_url",
+          widget: "image",
+          required: false,
+          hint: "Imagen destacada del post. Recomendable optimizarla antes de subirla.",
+        }
+      - {
+          label: "Descripción de la imagen",
+          name: "image_alt",
+          widget: "string",
+          required: false,
+          hint: "Texto alternativo para la imagen. Si se adjunta una imagen, este campo es recomendable.",
+        }
+      - {
+          label: "Video URL",
+          name: "video_url",
+          widget: "string",
+          required: false,
+          hint: "URL de un video de YouTube o Google Drive",
+        }
+      - {
+          label: "Tipo de Proyecto",
+          name: "project",
+          widget: "select",
+          multiple: true,
+          min: 1,
+          max: 2,
+          options: ["KA1", "KA2", "KA3", "Capacity Building"],
+          default: ["KA1"],
+          hint: "Selecciona un tipo de proyecto",
+        }
+      # - {
+      #     label: "Categoría",
+      #     name: "tags",
+      #     widget: "select",
+      #     multiple: true,
+      #     min: 1,
+      #     max: 2,
+      #     options: ["Escolar", "FP", "Educación Superior"],
+      #     default: ["FP"],
+      #     hint: "Selecciona una categoría",
+      #   }
+      - {
+          label: "Cuerpo del Post",
+          name: "body",
+          widget: "markdown",
+          hint: "Escribe el contenido del post",
+        }
+      - {
+          label: "Categoría",
+          name: "tags",
+          widget: "relation",
+          collection: "tags",
+          value_field: "name",
+          search_fields: ["name"],
+          display_fields: ["name"],
+          multiple: true,
+          hint: "Relaciona",
+        }
+      # - { label: "Rating (scale of 1-5)", name: "rating", widget: "number" }
+  - name: "categories" # Usado en rutas, por ejemplo, /admin/collections/blog
+    slug: "{{type}}_{{slug}}_{{day}}-{{month}}-{{year}}" # Archivos en la carpeta de documentos tendrán un nombre similar a 2020-01-07_autor_my-post.md
+    label: "Categorías" # Usado en la interfaz de usuario de /admin
+    folder: "/src/pages/categories" # La ruta a la carpeta donde se almacenan los documentos
+    create: true # Permitir a los usuarios crear nuevos documentos en esta colección
+    view_groups: # Agrupar documentos por proyecto
+      - { label: "Tipo", field: type }
+    summary: "{{type}}: {{name}}"
+    fields: # Los campos para cada documento, generalmente en el frontmatter
+      - {
+          label: "Layout",
+          name: "layout",
+          widget: "hidden",
+          default: "/src/layouts/MarkdownPostLayout.astro",
+        }
+      - { label: "Name", name: "name", widget: "string"}
+      - {
+          label: "Tipo de Categoría",
+          name: "type",
+          widget: "select",
+          options:
+            [
+              { label: "Proyecto", value: "project" },
+              { label: "Etiqueta", value: "label" },
+            ],
+          hint: "Tipo de proyecto como KA1 o KA2 y etiqueta como FP o Escolar",
+        }
