@@ -4,154 +4,156 @@ backend:
   name: git-gateway
   branch: main # Branch to update (optional; defaults to master)
 # Ubicación donde se almacenarán los archivos en el repositorio
-media_folder: "/public/assets/images/uploads"
+media_folder: "/public/assets/images/"
 # El atributo src para los medios cargados
-public_folder: "/assets/images/uploads"
+public_folder: "/assets/images/"
 locale: es
 collections:
-  - name: "projects" # Usado en rutas, por ejemplo, /admin/collections/blog
-    slug: "{{year}}-{{month}}-{{day}}_{{author}}_{{slug}}" # Archivos en la carpeta de documentos tendrán un nombre similar a 2020-01-07_autor_my-post.md
-    label: "Proyectos" # Usado en la interfaz de usuario de /admin
-    folder: "/src/pages/projects" # La ruta a la carpeta donde se almacenan los documentos
+  - name: "authors" # Usado en rutas, por ejemplo, /admin/collections/blog
+    slug: "{{name}}" # Archivos en la carpeta de documentos tendrán un nombre similar a autorName_authorLastName.md
+    label: "Autores" # Usado en la interfaz de usuario de /admin
+    label_singular: "Autor" # Usado en la interfaz de usuario de /admin
+    folder: "/src/pages/authors" # La ruta a la carpeta donde se almacenan los documentos
+    # identifier_field: "name"
     create: true # Permitir a los usuarios crear nuevos documentos en esta colección
     view_groups: # Agrupar documentos por proyecto
-      - { label: "Project", field: project }
-      - { label: "Tags", field: tags }
-      # - { label: "KA1", field: project, pattern: "ka1" }
-      # - { label: "KA2", field: project, pattern: "KA2" }
-      # - { label: "KA3", field: project, pattern: "KA3" }
-      # - {
-      #     label: "Capacity Building",
-      #     field: project,
-      #     pattern: "Capacity Building",
-      #   }
-    view_filters:
-      # - { label: "KA1", field: project, pattern: "KA1" }
-      # - { label: "KA2", field: project, pattern: "KA2" }
-      # - { label: "KA3", field: project, pattern: "KA3" }
-      # - {
-      #     label: "Capacity Building",
-      #     field: project,
-      #     pattern: "Capacity Building",
-      #   }
-      - { label: "FP", field: tags, pattern: "FP" }
-      - { label: "Escolar", field: tags, pattern: "Escolar" }
-      - {
-          label: "Educación Superior",
-          field: tags,
-          pattern: "Educación Superior",
-        }
-    summary: "{{title}} - {{project[0]}} - {{tags[0]}} - {{author}} - {{pubDate | date('DD-MM-YYYY')}}"
+      - { label: "Tipo", field: type }
+    summary: "{{name}}"
     fields: # Los campos para cada documento, generalmente en el frontmatter
       - {
           label: "Layout",
           name: "layout",
           widget: "hidden",
-          default: "/src/layouts/MarkdownPostLayout.astro",
+          default: "/src/layouts/AuthorLayout.astro",
+        }
+      - { label: "Nombre Completo", name: "name", widget: "string" }
+      
+  - name: "categories" # Usado en rutas, por ejemplo, /admin/collections/blog
+    slug: "{{type}}_{{slug}}" # Archivos en la carpeta de documentos tendrán un nombre similar a ka1_my-category.md
+    label: "Categorías" # Usado en la interfaz de usuario de /admin
+    label_singular: "Categoría" # Usado en la interfaz de usuario de /admin
+    folder: "/src/pages/categories" # La ruta a la carpeta donde se almacenan los documentos
+    identifier_field: name
+    create: true # Permitir a los usuarios crear nuevos documentos en esta colección
+    view_groups: # Agrupar documentos por proyecto
+      - { label: "Tipo", field: type }
+    summary: "{{type | label}}: {{name}}"
+    fields: # Los campos para cada documento, generalmente en el frontmatter
+      - {
+          label: "Layout",
+          name: "layout",
+          widget: "hidden",
+          default: "/src/layouts/CategoryLayout.astro",
+        }
+      - { label: "Nombre", name: "name", widget: "string" }
+      - {
+          label: "Tipo de Categoría",
+          name: "type",
+          widget: "select",
+          options:
+            [
+              { label: "Proyecto", value: "project" },
+              { label: "Etiqueta", value: "tag" },
+            ],
+          hint: "Tipo de proyecto como KA1 o KA2 y etiqueta como FP o Escolar",
+        }
+
+  - name: "projects" # Usado en rutas, por ejemplo, /admin/collections/blog
+    slug: "{{type}}_{{author}}_{{slug}}" # Archivos en la carpeta de documentos tendrán un nombre similar a 2020-01-07_autor_my-post.md
+    label: "Proyectos" # Usado en la interfaz de usuario de /admin
+    label_singular: "Proyecto" # Usado en la interfaz de usuario de /admin
+    folder: "/src/pages/projects" # La ruta a la carpeta donde se almacenan los documentos
+    identifier_field: title
+    create: true # Permitir a los usuarios crear nuevos documentos en esta colección
+    view_groups: # Agrupar documentos por tipo de proyecto y etiqueta
+      - { label: "Tipo de Proyecto", field: type }
+      - { label: "Etiqueta", field: tag }
+    summary: "{{title}} - {{type}} - {{tag}} - {{author}} - {{date | date('DD-MM-YYYY')}}"
+    fields: # Los campos para cada documento, generalmente en el frontmatter
+      - {
+          label: "Layout",
+          name: "layout",
+          widget: "hidden",
+          default: "/src/layouts/ProjectLayout.astro",
         }
       - {
           label: "Autor",
           name: "author",
-          widget: "string",
-          default: "IES Abastos Erasmus+",
+          widget: "relation",
+          collection: "authors",
+          value_field: "name",
+          search_fields: ["name"],
+          display_fields: ["name"],
+          # multiple: true,
+          # min: 1,
+          # max: 2,
+          hint: "Selecciona un tipo de proyecto. Por ejemplo, KA1 o KA2",
         }
       - { label: "Titulo", name: "title", widget: "string" }
       - { label: "Descripción", name: "description", widget: "string" }
-      - { label: "Fecha de Publicación", name: "pubDate", widget: "datetime" }
+      - { label: "Fecha de Inicio", name: "date", widget: "datetime" }
       - {
           label: "Imagen",
-          name: "image_url",
+          name: "images",
           widget: "image",
+          allow_multiple: true,
           required: false,
-          hint: "Imagen destacada del post. Recomendable optimizarla antes de subirla.",
-        }
-      - {
-          label: "Descripción de la imagen",
-          name: "image_alt",
-          widget: "string",
-          required: false,
-          hint: "Texto alternativo para la imagen. Si se adjunta una imagen, este campo es recomendable.",
+          hint: "Imagenes destacadas del proyecto. Recomendable optimizarlas antes de subirlas.",
         }
       - {
           label: "Video URL",
           name: "video_url",
           widget: "string",
           required: false,
-          hint: "URL de un video de YouTube o Google Drive",
+          hint: "URL de un video subido previamente a Google Drive",
         }
       - {
           label: "Tipo de Proyecto",
-          name: "project",
-          widget: "select",
-          multiple: true,
-          min: 1,
-          max: 2,
-          options: ["KA1", "KA2", "KA3", "Capacity Building"],
-          default: ["KA1"],
-          hint: "Selecciona un tipo de proyecto",
+          name: "type",
+          widget: "relation",
+          collection: "categories",
+          value_field: "name",
+          filter: { type: "project" },
+          search_fields: ["name"],
+          display_fields: ["name"],
+          # multiple: true,
+          # min: 1,
+          # max: 2,
+          hint: "Selecciona un tipo de proyecto. Por ejemplo, KA1 o KA2",
         }
-      # - {
-      #     label: "Categoría",
-      #     name: "tags",
-      #     widget: "select",
-      #     multiple: true,
-      #     min: 1,
-      #     max: 2,
-      #     options: ["Escolar", "FP", "Educación Superior"],
-      #     default: ["FP"],
-      #     hint: "Selecciona una categoría",
-      #   }
       - {
-          label: "Cuerpo del Post",
+          label: "Etiqueta del Proyecto",
+          name: "tag",
+          widget: "relation",
+          collection: "category",
+          value_field: "name",
+          filter: { type: "tag" },
+          search_fields: ["name"],
+          display_fields: ["name"],
+          # multiple: true,
+          # min: 1,
+          # max: 2,
+          hint: "Selecciona un etiqueta para el proyecto. Por ejemplo, FP o Escolar",
+        }
+      - {
+          label: "Cuerpo del Proyecto",
           name: "body",
           widget: "markdown",
           hint: "Escribe el contenido del post",
         }
-      - {
-          label: "Categoría",
-          name: "tags",
-          widget: "relation",
-          collection: "tags",
-          value_field: "name",
-          search_fields: ["name"],
-          display_fields: ["name"],
-          multiple: true,
-          hint: "Relaciona",
-        }
-      # - { label: "Rating (scale of 1-5)", name: "rating", widget: "number" }
 
   - name: "posts" # Usado en rutas, por ejemplo, /admin/collections/blog
-    slug: "{{year}}-{{month}}-{{day}}_{{author}}_{{slug}}" # Archivos en la carpeta de documentos tendrán un nombre similar a 2020-01-07_autor_my-post.md
+    slug: "{{year}}-{{month}}-{{day}}_{{project}}_{{author}}_{{slug}}" # Archivos en la carpeta de documentos tendrán un nombre similar a 2020-01-07_autor_my-post.md
     label: "Posts" # Usado en la interfaz de usuario de /admin
+    label_singular: "Post" # Usado en la interfaz de usuario de /admin
     folder: "/src/pages/posts" # La ruta a la carpeta donde se almacenan los documentos
     create: true # Permitir a los usuarios crear nuevos documentos en esta colección
     view_groups: # Agrupar documentos por proyecto
       - { label: "Project", field: project }
-      - { label: "Tags", field: tags }
-      # - { label: "KA1", field: project, pattern: "ka1" }
-      # - { label: "KA2", field: project, pattern: "KA2" }
-      # - { label: "KA3", field: project, pattern: "KA3" }
-      # - {
-      #     label: "Capacity Building",
-      #     field: project,
-      #     pattern: "Capacity Building",
-      #   }
-    view_filters:
-      # - { label: "KA1", field: project, pattern: "KA1" }
-      # - { label: "KA2", field: project, pattern: "KA2" }
-      # - { label: "KA3", field: project, pattern: "KA3" }
-      # - {
-      #     label: "Capacity Building",
-      #     field: project,
-      #     pattern: "Capacity Building",
-      #   }
-      - { label: "FP", field: tags, pattern: "FP" }
-      - { label: "Escolar", field: tags, pattern: "Escolar" }
-      - {
-          label: "Educación Superior",
-          field: tags,
-          pattern: "Educación Superior",
-        }
+    # view_filters:
+    # - { label: "KA1", field: project, pattern: "KA1" }
+    # - { label: "KA2", field: project, pattern: "KA2" }
+    # - { label: "KA3", field: project, pattern: "KA3" }
     summary: "{{title}} - {{project}} - {{author}} - {{pubDate | date('DD-MM-YYYY')}}"
     fields: # Los campos para cada documento, generalmente en el frontmatter
       - {
@@ -170,18 +172,24 @@ collections:
       - { label: "Descripción", name: "description", widget: "string" }
       - { label: "Fecha de Publicación", name: "pubDate", widget: "datetime" }
       - {
+          label: "Proyecto Relacionado",
+          name: "project",
+          widget: "relation",
+          collection: "projects",
+          value_field: "title",
+          search_fields: ["title", "author", "type", "tag"],
+          display_fields: ["title", "author", "type", "tag"],
+          # multiple: true,
+          # min: 1,
+          # max: 2,
+          hint: "Puedes buscar por título, autor, tipo o etiqueta del proyecto relacionado.",
+        }
+      - {
           label: "Imagen",
           name: "image_url",
           widget: "image",
           required: false,
           hint: "Imagen destacada del post. Recomendable optimizarla antes de subirla.",
-        }
-      - {
-          label: "Descripción de la imagen",
-          name: "image_alt",
-          widget: "string",
-          required: false,
-          hint: "Texto alternativo para la imagen. Si se adjunta una imagen, este campo es recomendable.",
         }
       - {
           label: "Video URL",
@@ -191,69 +199,8 @@ collections:
           hint: "URL de un video de YouTube o Google Drive",
         }
       - {
-          label: "Tipo de Proyecto",
-          name: "project",
-          widget: "select",
-          multiple: true,
-          min: 1,
-          max: 2,
-          options: ["KA1", "KA2", "KA3", "Capacity Building"],
-          default: ["KA1"],
-          hint: "Selecciona un tipo de proyecto",
-        }
-      # - {
-      #     label: "Categoría",
-      #     name: "tags",
-      #     widget: "select",
-      #     multiple: true,
-      #     min: 1,
-      #     max: 2,
-      #     options: ["Escolar", "FP", "Educación Superior"],
-      #     default: ["FP"],
-      #     hint: "Selecciona una categoría",
-      #   }
-      - {
           label: "Cuerpo del Post",
           name: "body",
           widget: "markdown",
           hint: "Escribe el contenido del post",
-        }
-      - {
-          label: "Categoría",
-          name: "tags",
-          widget: "relation",
-          collection: "tags",
-          value_field: "name",
-          search_fields: ["name"],
-          display_fields: ["name"],
-          multiple: true,
-          hint: "Relaciona",
-        }
-      # - { label: "Rating (scale of 1-5)", name: "rating", widget: "number" }
-  - name: "categories" # Usado en rutas, por ejemplo, /admin/collections/blog
-    slug: "{{type}}_{{slug}}_{{day}}-{{month}}-{{year}}" # Archivos en la carpeta de documentos tendrán un nombre similar a 2020-01-07_autor_my-post.md
-    label: "Categorías" # Usado en la interfaz de usuario de /admin
-    folder: "/src/pages/categories" # La ruta a la carpeta donde se almacenan los documentos
-    create: true # Permitir a los usuarios crear nuevos documentos en esta colección
-    view_groups: # Agrupar documentos por proyecto
-      - { label: "Tipo", field: type }
-    summary: "{{type}}: {{name}}"
-    fields: # Los campos para cada documento, generalmente en el frontmatter
-      - {
-          label: "Layout",
-          name: "layout",
-          widget: "hidden",
-          default: "/src/layouts/MarkdownPostLayout.astro",
-        }
-      - { label: "Name", name: "name", widget: "string"}
-      - {
-          label: "Tipo de Categoría",
-          name: "type",
-          widget: "select",
-          options:
-            [
-              { label: "Proyecto", value: "project" },
-              { label: "Etiqueta", value: "label" },
-            ],
-          hint: "Tipo de proyecto como KA1 o KA2 y etiqueta como FP o Escolar",
         }

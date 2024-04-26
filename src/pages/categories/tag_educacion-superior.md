@@ -1,5 +1,5 @@
 ---
 layout: /src/layouts/CategoryLayout.astro
-name: COVE
-type: project
+name: Educacion Superior
+type: tag
 ---

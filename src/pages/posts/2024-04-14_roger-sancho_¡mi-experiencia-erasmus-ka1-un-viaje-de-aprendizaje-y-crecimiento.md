@@ -1,15 +1,12 @@
 ---
-image_alt: Erasmus+ KA1
 layout: /src/layouts/MarkdownPostLayout.astro
 author: Roger Sancho
 title: "¡Mi experiencia Erasmus+ KA1: Un viaje de aprendizaje y crecimiento!"
 description: Descripcion del post
 pubDate: 2024-04-14T18:22:00.000Z
-project:
-  - Proyecto 1
 image_url: /assets/images/uploads/wallpaper-musica.jpg
-tags:
-  - FP
+project: Proyecto 1
+tag: FP
 ---
 **¡Hola a todos!**
 

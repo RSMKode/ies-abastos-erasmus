@@ -1,5 +1,5 @@
 ---
 layout: /src/layouts/CategoryLayout.astro
-name: COVE
-type: project
+name: FP
+type: tag
 ---
