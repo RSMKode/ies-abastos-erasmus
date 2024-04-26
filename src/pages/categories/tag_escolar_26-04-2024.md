@@ -1,5 +1,5 @@
 ---
 layout: /src/layouts/MarkdownPostLayout.astro
-name: FP
+name: Educación Superior
 type: tag
 ---
