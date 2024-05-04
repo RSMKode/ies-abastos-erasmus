@@ -1,0 +1,16 @@
+---
+import TagIndex from "@/components/TagIndex.astro";
+import Layout from "@/layouts/Layout.astro";
+const categories = await Astro.glob("src/pages/categories/**/*.md");
+const projectTypes = categories.filter(
+  (category) => category.frontmatter.type === "project"
+);
+console.log(projectTypes);
+const pageTitle = "Índice de tipos de proyectos Erasmus+";
+const pageDescription =
+  "Índice de tipos de proyectos Erasmus+ de los proyectos y artículos del blog";
+---
+
+<Layout {pageTitle} {pageDescription}>
+  <TagIndex tags={projectTypes} />
+</Layout>

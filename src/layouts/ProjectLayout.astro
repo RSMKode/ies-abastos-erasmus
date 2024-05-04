@@ -1,0 +1,55 @@
+---
+import '@/styles/global.css';
+import Layout from '@/layouts/Layout.astro';
+import { fade } from 'astro:transitions';
+import PostsGrid from '@/components/PostsGrid.astro';
+import TagIndex from '@/components/TagIndex.astro';
+import CustomSeparator from '@/components/CustomSeparator.astro';
+import { getEntry } from 'astro:content';
+
+const { frontmatter } = Astro.props;
+const { title, date, description, author, imageUrl, videoUrl, type, tag } =
+  frontmatter;
+
+const pageTitle = `Proyecto: ${title}`;
+const pageDescription = `Página del proyecto ${title} de ${type} y ${tag} creado por ${author} el ${date}.`;
+
+console.log(frontmatter);
+const typeA = await getEntry('categories', frontmatter.type);
+console.log(typeA);
+---
+
+<Layout {pageTitle} {pageDescription} showTitle={!false}>
+  <header class="flex flex-col gap-2">
+    <p>Autor: <strong class="text-accent">{author}</strong></p>
+    <p>Fecha: <strong class="">{date}</strong></p>
+    <p>{description}</p>
+  </header>
+  <section class="content">
+    <h1 class="text-2xl text-accent font-bold">{title}</h1>
+    <slot />
+  </section>
+  <CustomSeparator class="text-accent" />
+</Layout>
+<!-- <PostsGrid posts={mappedFilteredPosts} tiny={true} /> -->
+<!-- <TagIndex tags={filteredCategories} class="w-1/2" /> -->
+<!-- {
+  filteredCategories.map(category => {
+    const { frontmatter, url } = category;
+    const { name } = frontmatter;
+    return (
+      <a href={url} class="text-accent hover:underline">
+        {name}
+      </a>
+    );
+  })
+} -->
+
+<style>
+  ul {
+    list-style: disc;
+  }
+  li {
+    margin: 0 2rem;
+  }
+</style>

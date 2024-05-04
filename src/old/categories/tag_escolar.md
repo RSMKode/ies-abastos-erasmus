@@ -1,5 +1,5 @@
 ---
 layout: /src/layouts/CategoryLayout.astro
-name: Educacion Superior
+name: Escolar
 type: tag
 ---

@@ -9,6 +9,6 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   site: "https://ies-erasmus.netlify.app",
   integrations: [preact(), icon(), tailwind()],
-  output: "server",
+  output: "hybrid",
   adapter: netlify(),
 });

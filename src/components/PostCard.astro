@@ -1,5 +1,6 @@
 ---
-import Badge from "./Badge.astro";
+import Badge from './Badge.astro';
+// import { normalizeProjectTag } from "@/lib/utils";
 
 // import Badge from "./Badge.astro";
 
@@ -10,45 +11,46 @@ import Badge from "./Badge.astro";
 //     pubDate: string;
 //     description: string;
 //     author: string;
-//     image_url?: string;
+//     imageUrl?: string;
 //     image_alt?: string;
-//     video_url?: string;
+//     videoUrl?: string;
 //     project: string[];
 //     tags: string[];
 //   };
 // }
 
-const { linkUrl, postInfo } = Astro.props;
+const { linkUrl, postInfo, tiny } = Astro.props;
 
 const {
   author,
   title,
   description,
   pubDate,
-  image_url,
+  imageUrl,
   image_alt,
-  video_url,
+  videoUrl,
   project,
-  tags,
 } = postInfo;
 
-console.log(project);
+const { url: projectUrl, frontmatter } = project;
+const { title: projectTitle, type: projectType, tag: projectTag } = frontmatter;
+const tags = [projectType, projectTag];
 
 const date = new Date(pubDate);
 const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
 ---
 
 <article
-  class={"flex flex-col bg-blue-950 rounded-lg h-full border-2 border-transparent hover:border-accent hover:shadow-lg hover:scale-[1.01] transition duration-300 group shadow-accent hover:[box-shadow:_0_0_8px_var(--tw-shadow-color)] overflow-hidden relative " +
+  class={'flex bg-blue-950 rounded-lg h-full border-2 border-transparent hover:border-accent hover:shadow-lg hover:scale-[1.01] transition duration-300 group shadow-accent hover:[box-shadow:_0_0_8px_var(--tw-shadow-color)] overflow-hidden relative ' +
+    (tiny ? 'flex-row ' : 'flex-col ') +
     Astro.props.class}
-  style={Astro.props.style}
->
+  style={Astro.props.style}>
   {linkUrl && <a href={linkUrl} class="absolute inset-0 z-10" />}
   {
-    image_url && (
+    imageUrl && !tiny && (
       <header class="">
         <img
-          src={image_url}
+          src={imageUrl}
           alt={image_alt ?? `Imagen de portada de ${title}`}
           class="object-cover"
         />
@@ -56,50 +58,51 @@ const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYe
     )
   }
   <section
-    class="relative flex flex-col gap-2 p-4 shadow-black [text-shadow:_2px_2px_5px_var(--tw-shadow-color)]"
-  >
+    class="relative flex flex-col gap-2 p-4 shadow-black [text-shadow:_2px_2px_5px_var(--tw-shadow-color)] w-full">
     {
-      image_url && (
+      imageUrl && (
         <img
-          src={image_url}
+          src={imageUrl}
           alt={image_alt ?? `Imagen de portada de ${title}`}
-          class="mirror absolute inset-0 w-full h-min duration-500 opacity-0  blur group-hover:opacity-50  -z-10 -scale-y-100"
+          class={
+            'absolute inset-0 w-full h-min duration-500 opacity-0 blur group-hover:opacity-50 -z-10 ' +
+            (!tiny && '-scale-y-100 mirror')
+          }
         />
       )
     }
+
     <header class="flex flex-col gap-1 text-accent">
       <h4 class="text-lg text-secondary/70">{author}</h4>
       <h3 class="text-xl">{title}</h3>
     </header>
-    <section class="flex flex-col gap-2">
+
+    <section class="flex flex-col gap-2 w-full">
       <div
-        class="flex flex-wrap gap-2 [text-shadow:none] text-blue-950 font-bold"
-      >
+        class="flex flex-wrap gap-2 [text-shadow:none] text-blue-950 font-bold">
         {
-          project &&
-            project.map((project) => (
-              <a
-                class="z-20 group hover:scale-110 hover:brightness-125 transition duration-200"
-                href={`/projects/${project}`}
-              >
-                <Badge class="bg-accent">{project}</Badge>
-              </a>
-            ))
+          project && project.url && (
+            <a
+              class="z-20 group hover:scale-110 hover:brightness-125 transition duration-200"
+              href={project.url}>
+              <Badge class="bg-accent">{project.frontmatter?.title}</Badge>
+            </a>
+          )
         }
         {
-          tags &&
-            tags.map((tag) => (
+          tags.length > 0 &&
+            tags.map(tag => (
               <a
                 class="z-20 hover:scale-110 hover:brightness-125 transition duration-200"
-                href={`/tags/${tag}`}
-              >
-                <Badge class="bg-accent ">{tag}</Badge>
+                href={tag.url}>
+                <Badge class="bg-accent ">{tag.name}</Badge>
               </a>
             ))
         }
       </div>
-      <p>{description}</p>
+      <p class="text-ellipsis">{description}</p>
     </section>
+
     <footer>
       <p>{formattedDate}</p>
     </footer>

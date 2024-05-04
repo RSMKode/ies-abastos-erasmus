@@ -4,13 +4,10 @@ author: Roger Sancho
 title: Mi primera publicación en el blog
 description: Esta es la primera publicación de mi nuevo blog Astro.
 pubDate: 2022-07-01
-image_url: 'https://docs.astro.build/assets/rays.webp'
+imageUrl: 'https://docs.astro.build/assets/rays.webp'
 image_alt: 'El logotipo completo de Astro.'
-video_url: "https://drive.google.com/file/d/1nzcqcYYVt4ld5OTIV-NSBOwVn4yR0jPO/view?usp=sharing"
-project:
-    - KA1
-tags:
-    - Escolar
+videoUrl: 'https://drive.google.com/file/d/1nzcqcYYVt4ld5OTIV-NSBOwVn4yR0jPO/view?usp=sharing'
+project: Proyecto 1
 ---
 
 ¡Bienvenido a mi _nuevo blog_ sobre el aprendizaje de Astro! Aquí, voy a compartir mi viaje de aprendizaje a medida que construyo un nuevo sitio web.

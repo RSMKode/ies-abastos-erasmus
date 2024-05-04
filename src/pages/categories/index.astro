@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+
+import TagIndex from '@/components/TagIndex.astro';
+import Layout from '@/layouts/Layout.astro';
+
+// const allCategories = await Astro.glob("src/pages/categories/**/*.md");
+
+// const tags = allCategories.filter(
+//   category => category.frontmatter.type === 'tag'
+// );
+// const projectTypes = allCategories.filter(
+//   category => category.frontmatter.type === 'project'
+// );
+
+const tags = await getCollection(
+  'categories',
+  category => category.data.type === 'tag'
+);
+const projectTypes = await getCollection(
+  'categories',
+  category => category.data.type === 'project'
+);
+
+const pageTitle = 'Índice de categorías';
+const pageDescription =
+  'Índice de categorías de los proyectos y artículos del blog';
+---
+
+<Layout {pageTitle} {pageDescription}>
+  <h2 class="text-2xl font-bold">Tipos de Proyecto</h2>
+  <TagIndex tags={projectTypes} />
+  <h2 class="text-2xl font-bold">Etiquetas</h2>
+  <TagIndex tags={tags} />
+</Layout>

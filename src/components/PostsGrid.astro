@@ -1,16 +1,22 @@
 ---
 import PostCard from "@/components/PostCard.astro";
 
-const { posts } = Astro.props;
+const { posts, tiny } = Astro.props;
 ---
 
 <section class="grid gap-4 grid-cols-auto-fill">
   {
-    posts.map((post, index) => { 
+    posts.map((post, index) => {
       let animationDelay = index * 150;
       return (
-        <PostCard linkUrl={post.url} postInfo={post.frontmatter} class={`animate-fade-in-up`} style={`animation-delay: ${animationDelay}ms`}/>
-
-    )})
+        <PostCard
+          {tiny}
+          linkUrl={post.url}
+          postInfo={post.frontmatter}
+          class={`animate-fade-in-up`}
+          style={`animation-delay: ${animationDelay}ms`}
+        />
+      );
+    })
   }
 </section>

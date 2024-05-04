@@ -1,0 +1,98 @@
+---
+import '@/styles/global.css';
+import Layout from '@/layouts/Layout.astro';
+import { fade } from 'astro:transitions';
+import PostsGrid from '@/components/PostsGrid.astro';
+import TagIndex from '@/components/TagIndex.astro';
+import CustomSeparator from '@/components/CustomSeparator.astro';
+
+const { frontmatter } = Astro.props;
+const { title, date, description, author, imageUrl, videoUrl, type, tag } =
+  frontmatter;
+
+// const thisProject = await Astro.glob(Astro.url.pathname);
+const allPosts = await Astro.glob('/src/pages/posts/**/*.md');
+const allCategories = await Astro.glob('/src/pages/categories/**/*.md');
+
+const filteredPosts = allPosts.filter(post => {
+  const { project: projectTitle } = post.frontmatter;
+  return title === projectTitle;
+});
+
+const filteredCategories = allCategories.filter(category => {
+  const { name } = category.frontmatter;
+  return name === type || name === tag;
+});
+
+// const mappedFilteredPosts = mapPosts({
+//   posts: filteredPosts,
+//   projects: thisProject,
+//   categories: allCategories,
+// });
+const mappedFilteredPosts = filteredPosts.map(post => {
+  const projectTypeUrl = filteredCategories?.find(category => {
+    const { name } = category.frontmatter;
+    return name === type;
+  }).url;
+
+  const projectTagUrl = filteredCategories.find(category => {
+    const { name } = category.frontmatter;
+    return name === tag;
+  }).url;
+
+  return {
+    ...post,
+    frontmatter: {
+      ...post.frontmatter,
+      project: {
+        // url: Astro.url.href,
+        frontmatter: {
+          ...frontmatter,
+          type: { url: projectTypeUrl, name: type },
+          tag: { url: projectTagUrl, name: tag },
+        },
+      },
+    },
+  };
+});
+
+console.log(filteredPosts);
+
+const pageTitle = `Proyecto: ${title}`;
+const pageDescription = `Página del proyecto ${title} de ${type} y ${tag} creado por ${author} el ${date}.`;
+---
+
+<Layout {pageTitle} {pageDescription} showTitle={!false}>
+  <header class="flex flex-col gap-2">
+    <!-- <TagIndex tags={filteredCategories} class="w-1/2" /> -->
+    {
+      filteredCategories.map(category => {
+        const { frontmatter, url } = category;
+        const { name } = frontmatter;
+        return (
+          <a href={url} class="text-accent hover:underline">
+            {name}
+          </a>
+        );
+      })
+    }
+    <p>Autor: <strong class="text-accent">{author}</strong></p>
+    <p>Fecha: <strong class="">{date.slice(0, 10)}</strong></p>
+    <p>{description}</p>
+  </header>
+  <section class="content">
+    <h1 class="text-2xl text-accent font-bold">{title}</h1>
+    <slot />
+  </section>
+  <CustomSeparator class="text-accent" />
+  <PostsGrid posts={mappedFilteredPosts} tiny={true} />
+</Layout>
+
+<style>
+  ul {
+    list-style: disc;
+  }
+  li {
+    margin: 0 2rem;
+  }
+</style>

@@ -1,20 +1,19 @@
 ---
-import "@/styles/global.css";
-import Layout from "@/layouts/Layout.astro";
-import Greeting from "@/components/Greeting.jsx";
-import TagIndex from "@/components/TagIndex.astro";
-import PostsGrid from "@/components/PostsGrid.astro";
+import '@/styles/global.css';
+import Layout from '@/layouts/Layout.astro';
+import Greeting from '@/components/Greeting.jsx';
+import TagIndex from '@/components/TagIndex.astro';
+import PostsGrid from '@/components/PostsGrid.astro';
 
-const allPosts = await Astro.glob("/src/pages/posts/**/*.md");
+// const allPosts = await Astro.glob("/src/pages/posts/**/*.md");
 
-const pageTitle = "IES Abastos | Erasmus+";
-const pageDescription = "Proyectos Erasmus+ de IES Abastos";
+const pageTitle = 'IES Abastos | Erasmus+';
+const pageDescription = 'Proyectos Erasmus+ de IES Abastos';
 ---
 
-<Layout pageTitle={pageTitle} pageDescription={pageDescription}>
+<Layout {pageTitle} {pageDescription}>
   <!-- <TagIndex /> -->
   <h2 class="text-xl font-bold">Conjunto de entradas del blog:</h2>
-  <PostsGrid posts={allPosts} />
+  <!-- <PostsGrid posts={allPosts} /> -->
   <!-- <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} /> -->
-
 </Layout>

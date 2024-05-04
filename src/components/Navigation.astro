@@ -1,6 +1,6 @@
 ---
-import ThemeSwitch from "@/components/ThemeSwitch.astro";
-import NavLink from "@/components/NavLink.astro";
+import ThemeSwitch from '@/components/ThemeSwitch.astro';
+import NavLink from '@/components/NavLink.astro';
 ---
 
 <a href="/"><h1 class="text-2xl lg:text-4xl font-bold"></h1></a>
@@ -10,8 +10,12 @@ import NavLink from "@/components/NavLink.astro";
   <!--data-astro-reload si queremos recargar lapágina entera -->
   <!-- <NavLink nombre="About" link="/about" icono="mdi:company" /> -->
   <NavLink nombre="About" link="/about" icono="mdi:blog" />
-  <NavLink nombre="Proyectos" link="/projects" icono="mdi:text-box-multiple-outline" />
-  <NavLink nombre="Categorías" link="/tags" icono="tabler:tag" />
+  <NavLink
+    nombre="Proyectos"
+    link="/projects"
+    icono="mdi:text-box-multiple-outline"
+  />
+  <NavLink nombre="Categorías" link="/categories" icono="tabler:tag" />
   <NavLink nombre="Admin" link="/admin" icono="tabler:user" />
   <ThemeSwitch />
 </nav>

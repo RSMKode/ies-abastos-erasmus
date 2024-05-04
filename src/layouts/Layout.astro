@@ -9,10 +9,12 @@ import "@/styles/global.css";
 
 interface Props {
   pageTitle: string;
+  showTitle?: boolean;
   pageDescription?: string;
 }
 
 const { pageTitle, pageDescription } = Astro.props;
+const showTitle = Astro.props.showTitle ?? true;
 
 // console.log(Astro.request);
 ---
@@ -45,7 +47,13 @@ const { pageTitle, pageDescription } = Astro.props;
   <body>
     <Header />
     <main class="flex flex-col gap-4 w-full max-w-7xl p-6">
-      <h1 class="text-3xl text-accent font-bold" transition:animate="slide">{pageTitle}</h1>
+      {
+        showTitle && (
+          <h1 class="text-3xl text-accent font-bold" transition:animate="slide">
+            {pageTitle}
+          </h1>
+        )
+      }
       <slot />
     </main>
     <Footer />

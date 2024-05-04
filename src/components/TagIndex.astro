@@ -1,23 +1,30 @@
 ---
-import {projects as projectsData, tags as tagsData} from "@/data/tags-data.json";
-import TagCard from "./TagCard.astro";
+import {
+  projects as projectsData,
+  tags as tagsData,
+} from '@/data/tags-data.json';
+import TagCard from './TagCard.astro';
+import type { CollectionEntry } from 'astro:content';
 
-const { tags, isProjectIndex } = Astro.props;
-
-const linkUrlPrefix = isProjectIndex ? `/projects/` : `/tags/`;
-const imageGroup = isProjectIndex ? projectsData : tagsData;
-
+const { tags, class: className } = Astro.props;
 ---
 
-<section class="grid gap-4 grid-cols-auto-fit-sm">
+<section class={'grid gap-4 grid-cols-auto-fit-sm ' + className}>
   {
-    tags.map((tag, index) => { 
+    tags.map((tag, index) => {
       let animationDelay = index * 100;
-      return (
-        <TagCard name={tag} linkUrl={`${linkUrlPrefix}${tag}`} imageUrl={imageGroup[tag]?.image}
-        class={`animate-fade-in-up`} style={`animation-delay: ${animationDelay}ms`}/>
+      const { slug, data } = tag;
+      const { name, type, imageUrl } = data;
 
-    )})
+      return (
+        <TagCard
+          name={name}
+          linkUrl={`/categories/${slug}`}
+          imageUrl={imageUrl}
+          class={`animate-fade-in-up`}
+          style={`animation-delay: ${animationDelay}ms`}
+        />
+      );
+    })
   }
 </section>
-
