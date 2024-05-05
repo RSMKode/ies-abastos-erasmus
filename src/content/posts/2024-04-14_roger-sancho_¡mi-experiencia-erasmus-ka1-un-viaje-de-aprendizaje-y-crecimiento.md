@@ -1,5 +1,4 @@
 ---
-layout: /src/layouts/MarkdownPostLayout.astro
 author: Roger Sancho
 title: '¡Mi experiencia Erasmus+ KA1: Un viaje de aprendizaje y crecimiento!'
 description: Descripcion del post

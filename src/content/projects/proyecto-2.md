@@ -1,5 +1,4 @@
 ---
-layout: /src/layouts/ProjectLayout.astro
 author: IES Abastos Erasmus+
 title: Proyecto 2
 description: Este es el proyecto 2

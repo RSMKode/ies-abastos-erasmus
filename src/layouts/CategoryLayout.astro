@@ -28,6 +28,12 @@ const filteredProjects = await getCollection('projects', project => {
 });
 filteredProjects?.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 
+const filteredPosts = await getCollection('posts', post => {
+  return filteredProjects.some(
+    project => project.slug === post.data.project.slug
+  );
+});
+
 const pageTitle =
   categoryType === 'tag'
     ? 'Categoría: ' + categoryName
@@ -49,6 +55,13 @@ const pageDescription = `Proyectos y posts etiquetados con la categoría ${categ
   <!-- <CustomSeparator class="text-accent my-4" /> -->
   <section class="flex flex-col gap-4">
     <h2 class="text-2xl font-bold">Posts relacionados</h2>
+    {
+      filteredPosts.length > 0 ? (
+        <CardGrid posts={filteredPosts} isTiny />
+      ) : (
+        <p>No hay posts relacionados</p>
+      )
+    }
   </section>
 </Layout>
 <style>

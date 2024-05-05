@@ -1,5 +1,4 @@
 ---
-layout: /src/layouts/ProjectLayout.astro
 author: Roger
 title: Prueba Proyecto 2
 description: asdfasdfsa f sadf asd fsa dfa

@@ -1,5 +1,4 @@
 ---
-layout: /src/layouts/MarkdownPostLayout.astro
 author: Roger Sancho
 title: Mi segunda publicación en el blog
 description: 'Después de aprender un poco de Astro, ¡no podía parar!'

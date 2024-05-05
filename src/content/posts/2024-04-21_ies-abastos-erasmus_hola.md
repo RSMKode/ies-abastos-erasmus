@@ -1,5 +1,4 @@
 ---
-layout: /src/layouts/MarkdownPostLayout.astro
 author: IES Abastos Erasmus+
 title: Hola
 description: Que tal

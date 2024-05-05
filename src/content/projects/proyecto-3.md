@@ -1,5 +1,4 @@
 ---
-layout: /src/layouts/ProjectLayout.astro
 author: IES Abastos Erasmus+
 title: Proyecto 3
 description: Este es el proyecto 3

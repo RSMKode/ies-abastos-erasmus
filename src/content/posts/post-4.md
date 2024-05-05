@@ -1,5 +1,4 @@
 ---
-layout: /src/layouts/MarkdownPostLayout.astro
 author: Roger Sancho
 title: Mi cuarta entrada en el blog
 description: 'Esta entrada aparecerá sola!'

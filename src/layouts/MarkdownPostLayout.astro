@@ -24,7 +24,7 @@ const {
   pubDate,
   description,
   author,
-  image,
+  images,
   imageAlt,
   videoUrl,
   project,
@@ -65,8 +65,8 @@ if (videoUrl) {
       )
     }
     {
-      image && (
-        <img src={image} alt={imageAlt ?? `Imagen de portada de ${title}`} />
+      images && (
+        <img src={images} alt={imageAlt ?? `Imagen de portada de ${title}`} />
       )
     }
   </header>

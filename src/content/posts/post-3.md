@@ -1,5 +1,4 @@
 ---
-layout: /src/layouts/MarkdownPostLayout.astro
 author: Roger Sancho
 title: Mi tercera publicación en el blog
 description: 'Tuve algunos problemas, pero preguntar en la comunidad me ayudó mucho.'

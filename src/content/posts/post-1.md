@@ -1,5 +1,4 @@
 ---
-layout: /src/layouts/MarkdownPostLayout.astro
 author: Roger Sancho
 title: Mi primera publicación en el blog
 description: Esta es la primera publicación de mi nuevo blog Astro.
