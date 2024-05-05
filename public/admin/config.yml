@@ -40,7 +40,7 @@ collections:
         }
 
   - name: 'projects' # Usado en rutas, por ejemplo, /admin/collections/blog
-    slug: '{{type}}_{{author}}_{{slug}}' # Archivos en la carpeta de documentos tendrán un nombre similar a 2020-01-07_autor_my-post.md
+    slug: '{{type}}_{{tag}}_{{slug}}' # Archivos en la carpeta de documentos tendrán un nombre similar a 2020-01-07_autor_my-post.md
     label: 'Proyectos' # Usado en la interfaz de usuario de /admin
     label_singular: 'Proyecto' # Usado en la interfaz de usuario de /admin
     folder: '/src/content/projects' # La ruta a la carpeta donde se almacenan los documentos
@@ -99,7 +99,7 @@ collections:
           name: 'type',
           widget: 'relation',
           collection: 'categories',
-          value_field: '{{ slug }}',
+          value_field: '{{slug}}',
           search_fields: ['name'],
           display_fields: ['name'],
           filters: [{ field: 'type', values: ['project'] }],
@@ -113,7 +113,7 @@ collections:
           name: 'tag',
           widget: 'relation',
           collection: 'categories',
-          value_field: 'name',
+          value_field: '{{slug}}',
           search_fields: ['name'],
           display_fields: ['name'],
           filters: [{ field: 'type', values: ['tag'] }],
