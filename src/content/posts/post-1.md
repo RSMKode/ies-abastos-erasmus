@@ -7,7 +7,7 @@ pubDate: 2022-07-01
 imageUrl: 'https://docs.astro.build/assets/rays.webp'
 image_alt: 'El logotipo completo de Astro.'
 videoUrl: 'https://drive.google.com/file/d/1nzcqcYYVt4ld5OTIV-NSBOwVn4yR0jPO/view?usp=sharing'
-project: Proyecto 1
+project: ka1_escolar_proyecto-1
 ---
 
 ¡Bienvenido a mi _nuevo blog_ sobre el aprendizaje de Astro! Aquí, voy a compartir mi viaje de aprendizaje a medida que construyo un nuevo sitio web.

@@ -7,7 +7,7 @@ pubDate: 2022-07-08
 imageUrl: 'https://docs.astro.build/assets/arc.webp'
 image_alt: 'Miniatura de los arcos de Astro.'
 videoUrl: 'https://drive.google.com/file/d/1Ieifgl_U0x12cdwqjxGCN728aTQU-u4s/view?usp=sharing'
-project: Proyecto 2
+project: ka2_fp_proyecto-2
 ---
 
 Después de una exitosa primera semana aprendiendo Astro, decidí probar un poco más. Escribí e importé un pequeño componente de memoria.

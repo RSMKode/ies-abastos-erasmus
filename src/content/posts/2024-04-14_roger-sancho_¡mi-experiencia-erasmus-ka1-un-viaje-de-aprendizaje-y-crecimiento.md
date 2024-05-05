@@ -5,7 +5,7 @@ title: '¡Mi experiencia Erasmus+ KA1: Un viaje de aprendizaje y crecimiento!'
 description: Descripcion del post
 pubDate: 2024-04-14T18:22:00.000Z
 imageUrl: /assets/images/uploads/wallpaper-musica.jpg
-project: Proyecto 1
+project: ka1_escolar_proyecto-1
 ---
 
 **¡Hola a todos!**
