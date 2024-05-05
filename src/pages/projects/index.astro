@@ -11,17 +11,14 @@ const currentProjects = await getCollection(
   'projects',
   project => project.data.inProgress === true
 );
-currentProjects.sort((a, b) =>
-  new Date(a.data.date) > new Date(b.data.date) ? -1 : 1
-);
+
+currentProjects.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 
 const pastProjects = await getCollection(
   'projects',
   project => project.data.inProgress === false
 );
-pastProjects.sort((a, b) =>
-  new Date(a.data.date) > new Date(b.data.date) ? -1 : 1
-);
+pastProjects.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 
 const pageTitle = 'IES Abastos | Erasmus+';
 const pageDescription = 'Proyectos Erasmus+ de IES Abastos';

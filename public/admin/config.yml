@@ -20,12 +20,6 @@ collections:
       - { label: 'Tipo', field: type }
     summary: '{{type | label}}: {{name}}'
     fields: # Los campos para cada documento, generalmente en el frontmatter
-      # - {
-      #     label: 'Layout',
-      #     name: 'layout',
-      #     widget: 'hidden',
-      #     default: '/src/layouts/CategoryLayout.astro',
-      #   }
       - { label: 'Nombre', name: 'name', widget: 'string' }
       - {
           label: 'Tipo de Categoría',
@@ -57,31 +51,12 @@ collections:
       - { label: 'Etiqueta', field: tag }
     summary: "{{title}} - {{type}} - {{tag}} - {{author}} - {{date | date('DD-MM-YYYY')}}"
     fields: # Los campos para cada documento, generalmente en el frontmatter
-      # - {
-      #     label: 'Layout',
-      #     name: 'layout',
-      #     widget: 'hidden',
-      #     default: '/src/layouts/ProjectLayout.astro',
-      #   }
       - {
           label: 'Autor',
           name: 'author',
           widget: 'string',
           default: 'IES Abastos Erasmus+',
         }
-      # - {
-      #     label: "Autor",
-      #     name: "author",
-      #     widget: "relation",
-      #     collection: "authors",
-      #     value_field: "name",
-      #     search_fields: ["name"],
-      #     display_fields: ["name"],
-      #     # multiple: true,
-      #     # min: 1,
-      #     # max: 2,
-      #     hint: "Selecciona un tipo de proyecto. Por ejemplo, KA1 o KA2",
-      #   }
       - { label: 'Titulo', name: 'title', widget: 'string' }
       - { label: 'Descripción', name: 'description', widget: 'string' }
       - { label: 'Fecha de Inicio', name: 'date', widget: 'datetime' }
@@ -150,18 +125,8 @@ collections:
     create: true # Permitir a los usuarios crear nuevos documentos en esta colección
     view_groups: # Agrupar documentos por proyecto
       - { label: 'Project', field: project }
-    # view_filters:
-    # - { label: "KA1", field: project, pattern: "KA1" }
-    # - { label: "KA2", field: project, pattern: "KA2" }
-    # - { label: "KA3", field: project, pattern: "KA3" }
     summary: "{{title}} - {{project}} - {{author}} - {{pubDate | date('DD-MM-YYYY')}}"
     fields: # Los campos para cada documento, generalmente en el frontmatter
-      # - {
-      #     label: 'Layout',
-      #     name: 'layout',
-      #     widget: 'hidden',
-      #     default: '/src/layouts/MarkdownPostLayout.astro',
-      #   }
       - {
           label: 'Autor',
           name: 'author',
@@ -179,9 +144,6 @@ collections:
           value_field: '{{ slug }}',
           search_fields: ['title', 'author', 'type', 'tag'],
           display_fields: ['title', 'author', 'type', 'tag'],
-          # multiple: true,
-          # min: 1,
-          # max: 2,
           hint: 'Puedes buscar por título, autor, tipo o etiqueta del proyecto relacionado.',
         }
       - {

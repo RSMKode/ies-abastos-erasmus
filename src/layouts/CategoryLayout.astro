@@ -26,9 +26,7 @@ const filteredProjects = await getCollection('projects', project => {
     return project;
   }
 });
-filteredProjects?.sort((a, b) =>
-  new Date(a.data.date) > new Date(b.data.date) ? -1 : 1
-);
+filteredProjects?.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 
 const pageTitle =
   categoryType === 'tag'

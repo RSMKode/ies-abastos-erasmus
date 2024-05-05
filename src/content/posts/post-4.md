@@ -3,7 +3,7 @@ layout: /src/layouts/MarkdownPostLayout.astro
 author: Roger Sancho
 title: Mi cuarta entrada en el blog
 description: 'Esta entrada aparecerá sola!'
-pubDate: 2022-08-08
+pubDate: 2022-08-08T22:34:00.000Z
 images: 'https://docs.astro.build/default-og-image.png'
 project: prueba-proyecto
 ---

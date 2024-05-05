@@ -7,7 +7,7 @@ import CardGrid from '@/components/CardGrid.astro';
 import { getCollection } from 'astro:content';
 
 const allPosts = await getCollection('posts');
-// console.log(allPosts);
+allPosts.sort((a, b) => (a.data.pubDate > b.data.pubDate ? -1 : 1));
 
 const pageTitle = 'IES Abastos | Erasmus+';
 const pageDescription = 'Proyectos Erasmus+ de IES Abastos';
