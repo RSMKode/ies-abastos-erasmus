@@ -20,12 +20,12 @@ collections:
       - { label: 'Tipo', field: type }
     summary: '{{type | label}}: {{name}}'
     fields: # Los campos para cada documento, generalmente en el frontmatter
-      - {
-          label: 'Layout',
-          name: 'layout',
-          widget: 'hidden',
-          default: '/src/layouts/CategoryLayout.astro',
-        }
+      # - {
+      #     label: 'Layout',
+      #     name: 'layout',
+      #     widget: 'hidden',
+      #     default: '/src/layouts/CategoryLayout.astro',
+      #   }
       - { label: 'Nombre', name: 'name', widget: 'string' }
       - {
           label: 'Tipo de Categoría',
@@ -38,9 +38,15 @@ collections:
             ],
           hint: 'Tipo de proyecto como KA1 o KA2 y etiqueta como FP o Escolar',
         }
+      - {
+          label: 'Cuerpo de la categoría',
+          name: 'body',
+          widget: 'markdown',
+          hint: 'Escribe el contenido de la categoría',
+        }
 
   - name: 'projects' # Usado en rutas, por ejemplo, /admin/collections/blog
-    slug: '{{type}}_{{tag}}_{{slug}}' # Archivos en la carpeta de documentos tendrán un nombre similar a 2020-01-07_autor_my-post.md
+    # slug: '{{slug}}_{{type}}_{{tag}}' # Archivos en la carpeta de documentos tendrán un nombre similar a 'proyecto_tipo_tag'
     label: 'Proyectos' # Usado en la interfaz de usuario de /admin
     label_singular: 'Proyecto' # Usado en la interfaz de usuario de /admin
     folder: '/src/content/projects' # La ruta a la carpeta donde se almacenan los documentos
@@ -51,12 +57,12 @@ collections:
       - { label: 'Etiqueta', field: tag }
     summary: "{{title}} - {{type}} - {{tag}} - {{author}} - {{date | date('DD-MM-YYYY')}}"
     fields: # Los campos para cada documento, generalmente en el frontmatter
-      - {
-          label: 'Layout',
-          name: 'layout',
-          widget: 'hidden',
-          default: '/src/layouts/ProjectLayout.astro',
-        }
+      # - {
+      #     label: 'Layout',
+      #     name: 'layout',
+      #     widget: 'hidden',
+      #     default: '/src/layouts/ProjectLayout.astro',
+      #   }
       - {
           label: 'Autor',
           name: 'author',
@@ -89,7 +95,7 @@ collections:
         }
       - {
           label: 'Video URL',
-          name: 'video_url',
+          name: 'videoUrl',
           widget: 'string',
           required: false,
           hint: 'URL de un video subido previamente a Google Drive',
@@ -123,10 +129,17 @@ collections:
           hint: 'Selecciona un etiqueta para el proyecto. Por ejemplo, FP o Escolar',
         }
       - {
+          label: 'En curso',
+          name: 'inProgress',
+          widget: 'boolean',
+          default: 'true',
+          hint: 'Indica si el proyecto está en curso o finalizado',
+        }
+      - {
           label: 'Cuerpo del Proyecto',
           name: 'body',
           widget: 'markdown',
-          hint: 'Escribe el contenido del post',
+          hint: 'Escribe el contenido del proyecto',
         }
 
   - name: 'posts' # Usado en rutas, por ejemplo, /admin/collections/blog
@@ -143,12 +156,12 @@ collections:
     # - { label: "KA3", field: project, pattern: "KA3" }
     summary: "{{title}} - {{project}} - {{author}} - {{pubDate | date('DD-MM-YYYY')}}"
     fields: # Los campos para cada documento, generalmente en el frontmatter
-      - {
-          label: 'Layout',
-          name: 'layout',
-          widget: 'hidden',
-          default: '/src/layouts/MarkdownPostLayout.astro',
-        }
+      # - {
+      #     label: 'Layout',
+      #     name: 'layout',
+      #     widget: 'hidden',
+      #     default: '/src/layouts/MarkdownPostLayout.astro',
+      #   }
       - {
           label: 'Autor',
           name: 'author',
@@ -173,14 +186,14 @@ collections:
         }
       - {
           label: 'Imagen',
-          name: 'image_url',
+          name: 'images',
           widget: 'image',
           required: false,
           hint: 'Imagen destacada del post. Recomendable optimizarla antes de subirla.',
         }
       - {
           label: 'Video URL',
-          name: 'video_url',
+          name: 'videoUrl',
           widget: 'string',
           required: false,
           hint: 'URL de un video de YouTube o Google Drive',
@@ -191,6 +204,7 @@ collections:
           widget: 'markdown',
           hint: 'Escribe el contenido del post',
         }
+
   # - name: "authors" # Usado en rutas, por ejemplo, /admin/collections/blog
   #   slug: "{{name}}" # Archivos en la carpeta de documentos tendrán un nombre similar a autorName_authorLastName.md
   #   label: "Autores" # Usado en la interfaz de usuario de /admin
