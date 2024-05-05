@@ -4,7 +4,7 @@ import { fade } from 'astro:transitions';
 import { mapPosts } from '@/lib/utils.js';
 
 import Layout from '@/layouts/Layout.astro';
-import PostsGrid from '@/components/PostsGrid.astro';
+import CardGrid from '@/components/CardGrid.astro';
 
 interface Props {
   frontmatter: {
@@ -50,7 +50,7 @@ const pageDescription = `Proyectos y posts etiquetados con la categoría ${categ
   <section class="">
     {filteredProjects.map(project => <div>{project.frontmatter.title}</div>)}
     <!-- {filteredPosts.map((post) => <div>{post.frontmatter.title}</div>)} -->
-    <PostsGrid posts={mappedFilteredPosts} tiny={false} />
+    <CardGrid posts={mappedFilteredPosts} isTiny={false} />
   </section>
 </Layout>
 <style>

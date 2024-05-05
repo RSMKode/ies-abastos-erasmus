@@ -9,6 +9,7 @@ const categoriesCollection = defineCollection({
     type: z.enum(['project', 'tag']),
   }),
 });
+
 const projectsCollection = defineCollection({
   type: 'content',
   schema: z.object({
@@ -20,6 +21,20 @@ const projectsCollection = defineCollection({
     videoUrl: z.string().optional(),
     type: reference('categories'),
     tag: reference('categories'),
+    inProgress: z.boolean(),
+  }),
+});
+
+const postsCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    author: z.string(),
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.date(),
+    images: z.string().optional(),
+    videoUrl: z.string().optional(),
+    project: reference('projects'),
   }),
 });
 
@@ -27,4 +42,5 @@ const projectsCollection = defineCollection({
 export const collections = {
   categories: categoriesCollection,
   projects: projectsCollection,
+  posts: postsCollection,
 };

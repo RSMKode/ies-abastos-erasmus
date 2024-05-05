@@ -7,17 +7,19 @@
   /*hsl(350, 10%, 10%)*/
   --color-content: 0, 0%, 100%;
   /*hsl(0, 0%, 100%)*/
-  --bkg-gradient: radial-gradient(
-    ellipse 80% 80% at 50% -20%,
-    hsla(352, 33%, 51%, 0.3),
-    hsla(341, 94%, 6%, 0.049)
-  );
+  --bkg-gradient: linear-gradient(45deg, hsl(211, 35%, 15%) 20%, #180e27 100%);
 }
-/* :root[class="dark"] {
-  l: "rgb(209 250 229 / <alpha-value>)",
-          // l: "rgb(var(--color-primary) / <alpha-value>)",
-          d: "rgb(136 19 55 / <alpha-value>)",
-} */
+:root[class='dark'] {
+  color-scheme: dark;
+  --color-primary: 203 139 198;
+  /* --color-accent: 250 204 21; */
+  --color-accent: rgb(250 204 21);
+  --color-bkg: 350, 10%, 10%;
+  /*hsl(350, 10%, 10%)*/
+  --color-content: 0, 0%, 100%;
+  /*hsl(0, 0%, 100%)*/
+  --bkg-gradient: linear-gradient(45deg, hsl(211, 35%, 15%) 20%, #180e27 100%);
+}
 
 *,
 *::after,
@@ -31,7 +33,7 @@ html {
   font-family: 'Onest Variable', system-ui, sans-serif;
   /* background-image: var(--bkg-gradient); */
   background-color: #192634;
-  background-image: linear-gradient(45deg, #192634 20%, #180e27 100%);
+  background-image: var(--bkg-gradient);
   color: #fff;
 }
 body {

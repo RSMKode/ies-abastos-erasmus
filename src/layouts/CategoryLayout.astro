@@ -4,40 +4,31 @@ import { fade } from 'astro:transitions';
 import { mapPosts } from '@/lib/utils.js';
 
 import Layout from '@/layouts/Layout.astro';
-import PostsGrid from '@/components/PostsGrid.astro';
+import CardGrid from '@/components/CardGrid.astro';
+import { getCollection } from 'astro:content';
+import CustomSeparator from '@/components/CustomSeparator.astro';
 
 interface Props {
+  categorySlug: string;
   frontmatter: {
     name: string;
     type: 'project' | 'tag';
   };
 }
-
-const { frontmatter } = Astro.props;
+const { frontmatter, categorySlug } = Astro.props;
 const { name: categoryName, type: categoryType } = frontmatter;
 
-// const allProjects = await Astro.glob('/src/pages/projects/**/*.md');
-// const allPosts = await Astro.glob('/src/pages/posts/**/*.md');
-// const allCategories = await Astro.glob('/src/pages/categories/**/*.md');
-
-// const filteredProjects = allProjects.filter(project => {
-//   const { tag, type } = project.frontmatter;
-//   if (categoryType === 'project') return type.includes(categoryName);
-//   if (categoryType === 'tag') return tag.includes(categoryName);
-// });
-
-// const filteredPosts = allPosts.filter(post => {
-//   const { project: projectName } = post.frontmatter;
-//   return filteredProjects.some(
-//     project => project.frontmatter.title === projectName
-//   );
-// });
-
-// const mappedFilteredPosts = mapPosts({
-//   posts: filteredPosts,
-//   projects: filteredProjects,
-//   categories: allCategories,
-// });
+const filteredProjects = await getCollection('projects', project => {
+  if (
+    categorySlug === project.data.type.slug ||
+    categorySlug === project.data.tag.slug
+  ) {
+    return project;
+  }
+});
+filteredProjects?.sort((a, b) =>
+  new Date(a.data.date) > new Date(b.data.date) ? -1 : 1
+);
 
 const pageTitle =
   categoryType === 'tag'
@@ -47,10 +38,19 @@ const pageDescription = `Proyectos y posts etiquetados con la categoría ${categ
 ---
 
 <Layout {pageTitle} {pageDescription}>
-  <section class="">
-    <!-- {filteredProjects.map(project => <div>{project.frontmatter.title}</div>)} -->
-    <!-- {filteredPosts.map((post) => <div>{post.frontmatter.title}</div>)} -->
-    <!-- <PostsGrid posts={mappedFilteredPosts} tiny={false} /> -->
+  <section class="flex flex-col gap-4">
+    <h2 class="text-2xl font-bold">Proyectos relacionados</h2>
+    {
+      filteredProjects.length > 0 ? (
+        <CardGrid projects={filteredProjects} isTiny />
+      ) : (
+        <p>No hay proyectos relacionados</p>
+      )
+    }
+  </section>
+  <!-- <CustomSeparator class="text-accent my-4" /> -->
+  <section class="flex flex-col gap-4">
+    <h2 class="text-2xl font-bold">Posts relacionados</h2>
   </section>
 </Layout>
 <style>

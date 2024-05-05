@@ -4,8 +4,8 @@ author: Roger Sancho
 title: Mi cuarta entrada en el blog
 description: 'Esta entrada aparecerá sola!'
 pubDate: 2022-08-08
-imageUrl: 'https://docs.astro.build/default-og-image.png'
-image_alt: "La palabra 'astro' contra una ilustración de planetas y estrellas."
+image: 'https://docs.astro.build/default-og-image.png'
+imageAlt: "La palabra 'astro' contra una ilustración de planetas y estrellas."
 project: Proyecto 1
 ---
 

@@ -14,13 +14,13 @@ const { tags, class: className } = Astro.props;
     tags.map((tag, index) => {
       let animationDelay = index * 100;
       const { slug, data } = tag;
-      const { name, type, imageUrl } = data;
+      const { name, type, image } = data;
 
       return (
         <TagCard
           name={name}
           linkUrl={`/categories/${slug}`}
-          imageUrl={imageUrl}
+          image={image}
           class={`animate-fade-in-up`}
           style={`animation-delay: ${animationDelay}ms`}
         />

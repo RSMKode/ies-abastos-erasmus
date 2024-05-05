@@ -1,7 +1,7 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import PostLink from "@/components/PostCard.astro";
-import PostsGrid from "@/components/PostsGrid.astro";
+import Layout from '@/layouts/Layout.astro';
+import PostLink from '@/components/PostCard.astro';
+import CardGrid from '@/components/CardGrid.astro';
 
 // export async function getStaticPaths() {
 //   const allPosts = await Astro.glob("/src/pages/posts/**/*.md");
@@ -24,8 +24,8 @@ import PostsGrid from "@/components/PostsGrid.astro";
 const { project } = Astro.params;
 // const { posts } = Astro.props;
 
-const allPosts = await Astro.glob("/src/pages/posts/**/*.md");
-const filteredPosts = allPosts.filter((post) =>
+const allPosts = await Astro.glob('/src/pages/posts/**/*.md');
+const filteredPosts = allPosts.filter(post =>
   post.frontmatter.project?.includes(project)
 );
 const pageTitle = `Proyecto: ${project}`;
@@ -33,5 +33,5 @@ const pageTitle = `Proyecto: ${project}`;
 
 <Layout pageTitle={pageTitle} pageDescription={pageTitle}>
   <p>Entradas etiquetadas con {project}</p>
-  <PostsGrid posts={filteredPosts} />
+  <CardGrid posts={filteredPosts} />
 </Layout>

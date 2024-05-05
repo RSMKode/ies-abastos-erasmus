@@ -2,13 +2,13 @@
 import '@/styles/global.css';
 import Layout from '@/layouts/Layout.astro';
 import { fade } from 'astro:transitions';
-import PostsGrid from '@/components/PostsGrid.astro';
+import CardGrid from '@/components/CardGrid.astro';
 import TagIndex from '@/components/TagIndex.astro';
 import CustomSeparator from '@/components/CustomSeparator.astro';
 import { getEntry } from 'astro:content';
 
 const { frontmatter } = Astro.props;
-const { title, date, description, author, imageUrl, videoUrl, type, tag } =
+const { title, date, description, author, image, videoUrl, type, tag } =
   frontmatter;
 
 const pageTitle = `Proyecto: ${title}`;
@@ -31,7 +31,7 @@ console.log(typeA);
   </section>
   <CustomSeparator class="text-accent" />
 </Layout>
-<!-- <PostsGrid posts={mappedFilteredPosts} tiny={true} /> -->
+<!-- <CardGrid posts={mappedFilteredPosts} isTiny={true} /> -->
 <!-- <TagIndex tags={filteredCategories} class="w-1/2" /> -->
 <!-- {
   filteredCategories.map(category => {

@@ -10,8 +10,8 @@ import { Image } from 'astro:assets';
 //     pubDate: string;
 //     description: string;
 //     author: string;
-//     imageUrl?: string;
-//     image_alt?: string;
+//     image?: string;
+//     imageAlt?: string;
 //     videoUrl?: string;
 //     project: string[];
 //     tags: string[];
@@ -24,8 +24,8 @@ const {
   pubDate,
   description,
   author,
-  imageUrl,
-  image_alt,
+  image,
+  imageAlt,
   videoUrl,
   project,
   tags,
@@ -65,10 +65,10 @@ if (videoUrl) {
       )
     }
     {
-      imageUrl && (
+      image && (
         <img
-          src={imageUrl}
-          alt={image_alt ?? `Imagen de portada de ${title}`}
+          src={image}
+          alt={imageAlt ?? `Imagen de portada de ${title}`}
         />
       )
     }

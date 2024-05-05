@@ -7,9 +7,9 @@ import Badge from './Badge.astro';
 
 // interface Props {
 //   url: string;
-//   postData: {
+//   projectData: {
 //     title: string;
-//     pubDate: string;
+//     date: string;
 //     description: string;
 //     author: string;
 //     images?: string;
@@ -20,29 +20,26 @@ import Badge from './Badge.astro';
 //   };
 // }
 
-const { linkUrl, postData, isTiny } = Astro.props;
+const { linkUrl, projectData, isTiny } = Astro.props;
 
-const { author, title, description, pubDate, images, videoUrl, project } =
-  postData;
+const { author, title, description, date, images, videoUrl, type, tag } =
+  projectData;
 
-const postProject = await getEntry(project);
-console.log('postProject', postProject);
-
-const projectType = await getEntry(postProject?.data.type);
+const projectType = await getEntry(type);
 console.log('projectType', projectType);
 
-const projectTag = await getEntry(postProject?.data.tag);
+const projectTag = await getEntry(tag);
 console.log('projectTag', projectTag);
 
-const postCategories =
+const projectCategories =
   projectType && projectTag ? [projectType, projectTag] : [];
 
-const date = new Date(pubDate);
-const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+const d = new Date(date);
+const formattedDate = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
 ---
 
 <article
-  class={'flex bg-blue-800 rounded-lg h-full border-2 border-transparent hover:border-accent hover:scale-[1.01] transition duration-300 group shadow-accent hover:shadow-[0_0_8px_var(--tw-shadow-color)] overflow-hidden relative ' +
+  class={'flex bg-blue-800 rounded-lg h-full border-2 border-transparent hover:border-accent hover:scale-[1.01] transition duration-300 group drop-shadow-xl hover:shadow-accent hover:shadow-[0_0_8px_var(--tw-shadow-color)] overflow-hidden relative ' +
     (isTiny ? 'flex-row ' : 'flex-col ') +
     Astro.props.class}
   style={Astro.props.style}>
@@ -77,21 +74,11 @@ const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYe
       <div
         class="flex flex-wrap gap-2 [text-shadow:none] text-blue-800 font-bold">
         {
-          postProject && (
-            <a
-              class="z-20 group hover:scale-110 hover:brightness-125 transition duration-200"
-              href={`/projects/${postProject.slug}`}>
-              <Badge class="bg-accent">{postProject.data.title}</Badge>
-            </a>
-          )
-        }
-        {
-          postCategories.length > 0 &&
-            postCategories.map(category => (
+          projectCategories.length > 0 &&
+            projectCategories.map(category => (
               <a
                 class="z-20 hover:scale-110 hover:brightness-125 transition duration-200"
                 href={`/categories/${category?.slug}`}>
-                {' '}
                 <Badge class="bg-accent ">{category?.data.name}</Badge>
               </a>
             ))

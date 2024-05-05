@@ -4,7 +4,7 @@ author: Roger Sancho
 title: '¡Mi experiencia Erasmus+ KA1: Un viaje de aprendizaje y crecimiento!'
 description: Descripcion del post
 pubDate: 2024-04-14T18:22:00.000Z
-imageUrl: /assets/images/uploads/wallpaper-musica.jpg
+image: /assets/images/uploads/wallpaper-musica.jpg
 project: Proyecto 1
 ---
 

@@ -1,0 +1,40 @@
+---
+import PostCard from '@/components/PostCard.astro';
+import ProjectCard from './ProjectCard.astro';
+
+const { posts, projects, isTiny } = Astro.props;
+const animationDelayNum = 150;
+---
+
+<section class="grid gap-4 grid-cols-auto-fill">
+  {
+    posts &&
+      posts.map((post, index) => {
+        let animationDelay = index * animationDelayNum;
+        return (
+          <PostCard
+            {isTiny}
+            linkUrl={`/posts/${post.slug}`}
+            postData={post.data}
+            class={`animate-fade-in-up`}
+            style={`animation-delay: ${animationDelay}ms`}
+          />
+        );
+      })
+  }
+  {
+    projects &&
+      projects.map((project, index) => {
+        let animationDelay = index * animationDelayNum;
+        return (
+          <ProjectCard
+            {isTiny}
+            linkUrl={`/projects/${project.slug}`}
+            projectData={project.data}
+            class={`animate-fade-in-up`}
+            style={`animation-delay: ${animationDelay}ms`}
+          />
+        );
+      })
+  }
+</section>

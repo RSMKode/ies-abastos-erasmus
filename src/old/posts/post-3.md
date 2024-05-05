@@ -4,8 +4,8 @@ author: Roger Sancho
 title: Mi tercera publicación en el blog
 description: 'Tuve algunos problemas, pero preguntar en la comunidad me ayudó mucho.'
 pubDate: 2022-07-15
-imageUrl: 'https://docs.astro.build/assets/rays.webp'
-image_alt: 'Miniatura de los rayos de Astro.'
+image: 'https://docs.astro.build/assets/rays.webp'
+imageAlt: 'Miniatura de los rayos de Astro.'
 videoUrl: https://youtube.com/shorts/aXyKVecwunc?si=bBn90wbk0bDY6AfE
 project: Proyecto 3
 ---

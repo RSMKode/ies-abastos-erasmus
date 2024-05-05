@@ -14,6 +14,6 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<CategoryLayout frontmatter={entry.data}>
+<CategoryLayout frontmatter={entry.data} categorySlug={entry.slug}>
   <Content />
 </CategoryLayout>

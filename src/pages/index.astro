@@ -3,17 +3,25 @@ import '@/styles/global.css';
 import Layout from '@/layouts/Layout.astro';
 import Greeting from '@/components/Greeting.jsx';
 import TagIndex from '@/components/TagIndex.astro';
-import PostsGrid from '@/components/PostsGrid.astro';
+import CardGrid from '@/components/CardGrid.astro';
+import { getCollection } from 'astro:content';
 
-// const allPosts = await Astro.glob("/src/pages/posts/**/*.md");
+const allPosts = await getCollection('posts');
+// console.log(allPosts);
 
 const pageTitle = 'IES Abastos | Erasmus+';
 const pageDescription = 'Proyectos Erasmus+ de IES Abastos';
 ---
 
 <Layout {pageTitle} {pageDescription}>
-  <!-- <TagIndex /> -->
-  <h2 class="text-xl font-bold">Conjunto de entradas del blog:</h2>
-  <!-- <PostsGrid posts={allPosts} /> -->
-  <!-- <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} /> -->
+  <section class="flex flex-col gap-4">
+    <h2 class="text-2xl font-bold">Conjunto de entradas del blog</h2>
+    {
+      allPosts.length > 0 ? (
+        <CardGrid posts={allPosts} />
+      ) : (
+        <p>Todavía no hay posts</p>
+      )
+    }
+  </section>
 </Layout>

@@ -7,20 +7,19 @@
 //   tagImage: string;
 // }
 
-const { linkUrl, name, imageUrl } = Astro.props;
+const { linkUrl, name, image } = Astro.props;
 ---
 
 <article
-  class={"flex flex-col bg-blue-950 rounded-lg h-full border-2 border-transparent hover:text-accent hover:border-accent hover:shadow-lg hover:scale-[1.01] transition duration-300 group shadow-accent hover:[box-shadow:_0_0_8px_var(--tw-shadow-color)] overflow-hidden relative " +
+  class={'flex flex-col bg-blue-800 rounded-lg h-full border-2 border-transparent hover:text-accent hover:border-accent hover:scale-[1.01] transition duration-300 group shadow-accent drop-shadow-lg hover:shadow-[0_0_8px_var(--tw-shadow-color)] overflow-hidden relative ' +
     Astro.props.class}
-  style={Astro.props.style}
->
+  style={Astro.props.style}>
   {linkUrl && <a href={linkUrl} class="absolute inset-0 z-10" />}
   {
-    imageUrl && (
+    image && (
       <header class="">
         <img
-          src={imageUrl}
+          src={image}
           alt={`Imagen de portada de ${name}`}
           class="object-cover"
         />
@@ -28,12 +27,11 @@ const { linkUrl, name, imageUrl } = Astro.props;
     )
   }
   <section
-    class="relative flex flex-col gap-2 p-4 shadow-black [text-shadow:_2px_2px_5px_var(--tw-shadow-color)]"
-  >
+    class="relative flex flex-col gap-2 p-4 shadow-black [text-shadow:_2px_2px_5px_var(--tw-shadow-color)]">
     {
-      imageUrl && (
+      image && (
         <img
-          src={imageUrl}
+          src={image}
           alt={`Imagen de portada de ${name}`}
           class="mirror absolute inset-0 w-full h-min duration-500 opacity-0  blur group-hover:opacity-50  -z-10 -scale-y-100"
         />
