@@ -3,10 +3,10 @@
   --color-primary: 203 139 198;
   /* --color-accent: 250 204 21; */
   --color-accent: rgb(250 204 21);
-  --color-bkg: 350, 10%, 10%;
-  /*hsl(350, 10%, 10%)*/
-  --color-content: 0, 0%, 100%;
-  /*hsl(0, 0%, 100%)*/
+  --color-bkg: 350 10% 10%;
+  /*hsl(350 10% 10%)*/
+  --color-content: 0 0% 100%;
+  /*hsl(0 0% 100%)*/
   --bkg-gradient: linear-gradient(45deg, hsl(211, 35%, 15%) 20%, #180e27 100%);
 }
 :root[class='dark'] {
@@ -14,10 +14,10 @@
   --color-primary: 203 139 198;
   /* --color-accent: 250 204 21; */
   --color-accent: rgb(250 204 21);
-  --color-bkg: 350, 10%, 10%;
-  /*hsl(350, 10%, 10%)*/
+  --color-bkg: 222 47% 11%;
+  /*hsl(222 47% 11%)*/
   --color-content: 0, 0%, 100%;
-  /*hsl(0, 0%, 100%)*/
+  /*hsl(0 0% 100%)*/
   --bkg-gradient: linear-gradient(45deg, hsl(211, 35%, 15%) 20%, #180e27 100%);
 }
 

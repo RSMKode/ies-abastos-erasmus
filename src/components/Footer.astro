@@ -7,10 +7,10 @@ import FooterLink from './FooterLink.astro';
 import NavLink from './NavLink.astro';
 ---
 
-<footer class="w-full max-w-7xl flex flex-col gap-4 p-6">
-  <CustomSeparator class="text-accent max-w-7xl" />
+<CustomSeparator class="text-accent max-w-7xl" />
+<footer class="w-full max-w-7xl flex flex-col gap-4 px-6 py-4">
   <section class="flex flex-col sm:flex-row justify-between">
-    <div class="flex flex-col gap-2 justify-center opacity-50">
+    <div class="flex flex-col gap-2 opacity-50">
       <p>© 2024 {datos.pageTitle}.</p>
       <p class="gap-x-1 flex sm:items-center">
         <span>Powered by</span>
@@ -37,10 +37,8 @@ import NavLink from './NavLink.astro';
         <span>{datos.links.repo.title}</span>
         <Icon name={datos.links.repo.icon} class="size-6" />
       </a>
-      
-  <FooterLink title="Admin" link="/admin" icon="tabler:user" />
-  <NavLink title="Admin" link="/admin" icon="tabler:user" />
 
+      <FooterLink title="Admin" link="/admin" icon="tabler:user" />
     </div>
   </section>
 </footer>
