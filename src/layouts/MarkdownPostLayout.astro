@@ -3,6 +3,8 @@ import '@/styles/global.css';
 import Layout from '@/layouts/Layout.astro';
 import { fade } from 'astro:transitions';
 import { Image } from 'astro:assets';
+import { getEntry } from 'astro:content';
+import { fixVideoURL, formatDate } from '@/lib/utils';
 
 // interface Props {
 //   frontmatter: {
@@ -31,17 +33,10 @@ const {
   tags,
 } = frontmatter;
 
-console.log(project.frontmatter);
+const postProject = await getEntry(project);
 
-function fixVideoURL(videoUrl: string) {
-  if (videoUrl.includes('drive.google.com')) {
-    return videoUrl.replace('view?usp=sharing', 'preview');
-  } else if (videoUrl.includes('youtube.com')) {
-    return videoUrl.replace('watch?v=', 'embed/');
-  } else {
-    return videoUrl;
-  }
-}
+const formattedDate = formatDate(pubDate);
+
 let fixedVideoURL;
 if (videoUrl) {
   fixedVideoURL = fixVideoURL(videoUrl);
@@ -50,8 +45,13 @@ if (videoUrl) {
 
 <Layout pageTitle={title} pageDescription={description}>
   <header class="">
-    <p>Proyecto: <a href="">{project}</a></p>
-    <p>Publicado el: {pubDate}</p>
+    <p>
+      Proyecto: <a
+        class="text-accent font-bold"
+        href=`/projects/${postProject?.slug}`>{postProject?.data.title}</a
+      >
+    </p>
+    <p>Publicado el: <strong>{formattedDate}</strong></p>
     <p transition:animate={fade({ duration: '2s' })}>
       <em>{description}</em>
     </p>
@@ -66,11 +66,17 @@ if (videoUrl) {
     }
     {
       images && (
-        <img src={images} alt={imageAlt ?? `Imagen de portada de ${title}`} />
+        <div class="w-4/5">
+          <img
+            class="w-fit"
+            src={images}
+            alt={imageAlt ?? `Imagen de portada de ${title}`}
+          />
+        </div>
       )
     }
   </header>
-  <section class="content">
+  <section class="content max-w-4xl self-center">
     <slot />
   </section>
   <style>
