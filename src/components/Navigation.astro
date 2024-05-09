@@ -5,17 +5,17 @@ import NavLink from '@/components/NavLink.astro';
 
 <a href="/"><h1 class="text-2xl lg:text-4xl font-bold"></h1></a>
 <!-- transition:animate="slide" -->
-<nav class="flex justify-end items-center xl:gap-1 max-w-5xl xl:max-w-7xl">
-  <NavLink nombre="Inicio" link="/" icono="tabler:home" />
+<nav
+  class="flex flex-wrap justify-end items-center xl:gap-1 max-w-5xl xl:max-w-7xl">
+  <NavLink title="Inicio" link="/" icon="tabler:home" />
   <!--data-astro-reload si queremos recargar lapágina entera -->
-  <!-- <NavLink nombre="About" link="/about" icono="mdi:company" /> -->
-  <NavLink nombre="About" link="/about" icono="mdi:blog" />
+  <!-- <NavLink title="About" link="/about" icon="mdi:company" /> -->
+  <NavLink title="About" link="/about" icon="mdi:blog" />
   <NavLink
-    nombre="Proyectos"
+    title="Proyectos"
     link="/projects"
-    icono="mdi:text-box-multiple-outline"
+    icon="mdi:text-box-multiple-outline"
   />
-  <NavLink nombre="Categorías" link="/categories" icono="tabler:tag" />
-  <NavLink nombre="Admin" link="/admin" icono="tabler:user" />
+  <NavLink title="Categorías" link="/categories" icon="tabler:tag" />
   <ThemeSwitch />
 </nav>

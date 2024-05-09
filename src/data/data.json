@@ -1,11 +1,72 @@
 {
     "pageTitle": "IES Abastos | Erasmus+",
     "pageDescription": "Proyectos Erasmus+ en IES Abastos",
-    "updated": "07/04/2024",
+    "lastUpdated": "07/04/2024",
     "links": {
+        "official": {
+            "title": "IES Abastos | Web oficial",
+            "url": "https://portal.edu.gva.es/iesabastos/",
+            "icon": "mdi:web"
+        },
         "repo": {
             "title": "Repositorio de este proyecto",
-            "url": "https://github.com/RSMKode/ies-abastos-erasmus"
+            "url": "https://github.com/RSMKode/ies-abastos-erasmus",
+            "icon": "mdi:github"
+        },
+        "youtube": {
+            "title": "Canal de YouTube",
+            "url": "https://www.youtube.com/@iesabastos6784",
+            "icon": "mdi:youtube"
+        },
+        "twitter": {
+            "title": "Twitter",
+            "url": "twitter.com/InstitutAbastos",
+            "icon": "mdi:twitter"
+        },
+        "instagram": {
+            "title": "Instagram",
+            "url": "https://www.instagram.com/ies_abastos",
+            "icon": "mdi:instagram"
+        },
+        "facebook": {
+            "title": "Facebook",
+            "url": "facebook.com/IESAbastos",
+            "icon": "mdi:facebook"
+        }
+    },
+    "technologies": {
+        "astro": {
+            "title": "Astro",
+            "url": "https://astro.build/",
+            "icon": "mdi:rocket"
+        },
+        "astro-icon": {
+            "title": "Astro Icon",
+            "url": "https://www.astroicon.dev/",
+            "icon": "mdi:rocket"
+        },
+        "tailwindcss": {
+            "title": "Tailwind CSS",
+            "url": "https://tailwindcss.com/",
+            "icon": "mdi:language-css3"
+        },
+        "decapcms": {
+            "title": "DecapCMS",
+            "url": "https://decapcms.com/",
+            "icon": "mdi:database"
+        },
+        "swiperjs": {
+            "title": "Swiper JS",
+            "url": "https://swiperjs.com/",
+            "icon": "mdi:card-text-outline"
+        }
+    },
+    "textContent": {
+        "header": {
+            "title": "Erasmus+"
+        },
+        "footer": {
+            "main": "© 2024 IES Abastos | Erasmus+"
         }
     }
 }

@@ -9,20 +9,24 @@ import '@/styles/global.css';
 
 interface Props {
   pageTitle: string;
-  showTitle?: boolean;
   pageDescription?: string;
+  showTitle?: boolean;
+  isContentPage?: boolean;
 }
 
-const { pageTitle, pageDescription } = Astro.props;
+const { pageTitle, pageDescription, isContentPage } = Astro.props;
 const showTitle = Astro.props.showTitle ?? true;
 
-// console.log(Astro.request);
+const mainClass = isContentPage
+  ? 'flex flex-col gap-6 w-full max-w-4xl p-6'
+  : 'flex flex-col gap-6 w-full max-w-7xl p-6';
 ---
 
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
@@ -41,13 +45,13 @@ const showTitle = Astro.props.showTitle ?? true;
           }
         });
       }
-      console.log(localStorage);
+      // console.log(localStorage);
     </script>
   </head>
 
   <body>
     <Header />
-    <main class="flex flex-col gap-6 w-full max-w-7xl p-6">
+    <main class={mainClass}>
       {
         showTitle && (
           <h1 class="text-3xl text-accent font-bold" transition:animate="slide">

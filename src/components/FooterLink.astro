@@ -1,0 +1,26 @@
+---
+import { Icon } from 'astro-icon/components';
+import CustomSeparator from './CustomSeparator.astro';
+
+interface Props {
+  title: string;
+  link: string;
+  icon: string;
+}
+
+const { title, link, icon } = Astro.props;
+
+const isActive = Astro.url.pathname === link;
+---
+
+<div class="inline-flex flex-col items-center">
+  <a
+    class={'flex items-start justify-center border border-transparent hover:text-accent hover:underline font-medium px-2 rounded-lg gap-1 hover:scale-[1.05] active:scale-[1] transition duration-300 hover:shadow-current ' +
+      (isActive ? 'text-accent' : '')}
+    href={link}
+    title={title}>
+    <Icon name={icon} size={20} class="" />
+    <span class="hidden sm:flex">{title}</span>
+  </a>
+  <CustomSeparator class="text-accent h-[0.1rem] hidden hover:block" />
+</div>
