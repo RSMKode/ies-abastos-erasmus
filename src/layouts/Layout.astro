@@ -16,10 +16,6 @@ interface Props {
 
 const { pageTitle, pageDescription, isContentPage } = Astro.props;
 const showTitle = Astro.props.showTitle ?? true;
-
-const mainClass = isContentPage
-  ? 'flex flex-col gap-6 w-full max-w-4xl p-6'
-  : 'flex flex-col gap-6 w-full max-w-7xl p-6';
 ---
 
 <html lang="es">
@@ -49,9 +45,12 @@ const mainClass = isContentPage
     </script>
   </head>
 
-  <body>
+  <body class="[text-shadow:_2px_2px_3px_var(--tw-shadow-color)] shadow-black">
     <Header />
-    <main class={mainClass}>
+    <main
+      class={`flex flex-col gap-6 w-full p-6 ${
+        isContentPage ? ' max-w-4xl' : ' max-w-7xl'
+      }`}>
       {
         showTitle && (
           <h1 class="text-3xl text-accent font-bold" transition:animate="slide">

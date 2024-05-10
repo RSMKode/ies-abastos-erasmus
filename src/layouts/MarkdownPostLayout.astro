@@ -43,7 +43,7 @@ if (videoUrl) {
 }
 ---
 
-<Layout pageTitle={title} pageDescription={description}>
+<Layout pageTitle={title} pageDescription={description} isContentPage>
   <header class="">
     <p>
       Proyecto: <a
@@ -76,7 +76,7 @@ if (videoUrl) {
       )
     }
   </header>
-  <section class="content max-w-4xl self-center">
+  <section class="content max-w-5xl self-center">
     <slot />
   </section>
   <style>
@@ -88,7 +88,7 @@ if (videoUrl) {
         margin: 0 2rem;
       }
       strong {
-        color: var(--color-accent);
+        color: hsl(var(--color-accent));
       }
     }
   </style>

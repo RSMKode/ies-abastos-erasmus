@@ -42,7 +42,7 @@ const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYe
 ---
 
 <article
-  class={'flex bg-blue-800 rounded-lg h-full border-2 border-transparent hover:border-accent hover:scale-[1.01] transition duration-300 group shadow-accent hover:shadow-[0_0_8px_var(--tw-shadow-color)] overflow-hidden relative ' +
+  class={'text-white flex bg-primary rounded-lg h-full border-2 border-transparent hover:border-accent hover:scale-[1.01] transition duration-300 group hover:shadow-accent hover:shadow-[0_0_8px_var(--tw-shadow-color)] overflow-hidden relative ' +
     (isTiny ? 'flex-row ' : 'flex-col ') +
     Astro.props.class}
   style={Astro.props.style}>
@@ -75,11 +75,11 @@ const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYe
 
     <section class="flex flex-col gap-2 w-full">
       <div
-        class="flex flex-wrap gap-2 [text-shadow:none] text-blue-800 font-bold">
+        class="flex flex-wrap gap-2 text-blue-950 font-bold [text-shadow:none]">
         {
           postProject && (
             <a
-              class="z-20 group hover:scale-110 hover:brightness-125 transition duration-200"
+              class="z-20 group hover:-translate-y-[0.2rem] hover:brightness-125 transition duration-200"
               href={`/projects/${postProject.slug}`}>
               <Badge class="bg-accent">{postProject.data.title}</Badge>
             </a>
@@ -89,7 +89,7 @@ const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYe
           postCategories.length > 0 &&
             postCategories.map(category => (
               <a
-                class="z-20 hover:scale-110 hover:brightness-125 transition duration-200"
+                class="z-20 hover:-translate-y-[0.2rem] hover:brightness-125 transition duration-200"
                 href={`/categories/${category?.slug}`}>
                 {' '}
                 <Badge class="bg-accent ">{category?.data.name}</Badge>
@@ -109,5 +109,12 @@ const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYe
   .mirror {
     mask-images: linear-gradient(to top, black 60%, transparent 90%);
     /* filter: blur(8px); */
+  }
+
+  article {
+    transition: all 0.3s ease;
+    &:is(:hover, :focus) {
+      translate: 0 -0.5rem;
+    }
   }
 </style>

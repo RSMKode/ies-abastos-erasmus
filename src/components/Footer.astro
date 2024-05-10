@@ -7,39 +7,46 @@ import FooterLink from './FooterLink.astro';
 import NavLink from './NavLink.astro';
 ---
 
+<!-- <CustomSeparator class="text-accent max-w-7xl invisible dark:visible" /> -->
 <CustomSeparator class="text-accent max-w-7xl" />
-<footer class="w-full max-w-7xl flex flex-col gap-4 px-6 py-4">
+<footer
+  class="w-full max-w-7xl flex flex-col gap-4 px-6 py-4 text-content/50 bg dark:bg-transparent rounded">
   <section class="flex flex-col sm:flex-row justify-between">
-    <div class="flex flex-col gap-2 opacity-50">
-      <p>© 2024 {datos.pageTitle}.</p>
-      <p class="gap-x-1 flex sm:items-center">
-        <span>Powered by</span>
-        <span class="flex gap-1 items-center">
-          Astro
-          <Icon name="tabler:rocket" />
-        </span>
-        <!-- <span class="flex gap-1 items-center">
-          React
-          <Icon name="tabler:brand-react" />
-        </span> -->
-      </p>
-    </div>
-    <div class="flex flex-col gap-2 justify-center sm:items-center">
-      <p class="opacity-50">
-        {datos.lastUpdated}
-      </p>
-      <a
-        class="size-fit flex gap-1 items-center px-2 py-1 border-2 border-white opacity-50 rounded-full cursor-pointer hover:text-accent hover:border-current hover:opacity-100 hover:scale-105 active:scale-100 transition duration-200"
-        href={datos.links.repo.url}
-        target="_blank"
-        rel="noreferrer"
-        title={datos.links.repo.title}>
-        <span>{datos.links.repo.title}</span>
-        <Icon name={datos.links.repo.icon} class="size-6" />
-      </a>
+    <div class="flex flex-col gap-2">
+      <p>{datos.textContent.footer.main}</p>
+      <div class="flex flex-col gap-2 justify-center items-start">
+        <p class="">
+          {datos.textContent.footer.lastUpdated}
+        </p>
+        <a
+          class="size-fit flex gap-1 items-center px-2 py-1 border-2 border-content/50 rounded-full cursor-pointer hover:text-accent hover:border-current hover:opacity-100 hover:scale-105 active:scale-100 transition duration-200"
+          href={datos.links.repo.url}
+          target="_blank"
+          rel="noreferrer"
+          title={datos.links.repo.title}>
+          <span>{datos.links.repo.title}</span>
+          <Icon name={datos.links.repo.icon} class="size-6" />
+        </a>
 
-      <FooterLink title="Admin" link="/admin" icon="tabler:user" />
+        <FooterLink title="Admin" link="/admin" icon="tabler:user" />
+      </div>
     </div>
+    <nav class="flex flex-col gap-2">
+      <h3></h3>
+      {
+        Object.entries(datos.links).map(([key, value]) => (
+          <FooterLink title={value.title} link={value.url} icon={value.icon} />
+        ))
+      }
+    </nav>
+    <nav class="flex flex-col gap-2 items-center">
+      <h3>Powered by</h3>
+      {
+        Object.entries(datos.technologies).map(([key, value]) => (
+          <FooterLink title={value.title} link={value.url} icon={value.icon} />
+        ))
+      }
+    </nav>
   </section>
 </footer>
 <style></style>

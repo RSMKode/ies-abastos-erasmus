@@ -11,7 +11,7 @@ const { linkUrl, name, image } = Astro.props;
 ---
 
 <article
-  class={'flex flex-col bg-blue-800 rounded-lg h-full border-2 border-transparent hover:text-accent hover:border-accent hover:scale-[1.01] transition duration-300 group shadow-accent drop-shadow-lg hover:shadow-[0_0_8px_var(--tw-shadow-color)] overflow-hidden relative ' +
+  class={'text-white flex flex-col bg-primary rounded-lg h-full border-2 border-transparent hover:text-accent hover:border-accent hover:scale-[1.01] transition duration-300 group hover:shadow-accent drop-shadow-md hover:shadow-[0_0_8px_var(--tw-shadow-color)] overflow-hidden relative ' +
     Astro.props.class}
   style={Astro.props.style}>
   {linkUrl && <a href={linkUrl} class="absolute inset-0 z-10" />}
@@ -44,5 +44,12 @@ const { linkUrl, name, image } = Astro.props;
   .mirror {
     mask-image: linear-gradient(to top, black 60%, transparent 90%);
     /* filter: blur(8px); */
+  }
+
+  article {
+    transition: all 0.3s ease;
+    &:is(:hover, :focus) {
+      translate: 0 -0.5rem;
+    }
   }
 </style>

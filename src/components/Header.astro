@@ -8,16 +8,16 @@ import datos from '@/data/data.json';
 ---
 
 <header
-  class="px-6 py-4 w-full flex flex-col gap-2 max-w-7xl bg-opacity-70 sticky top-0 left-0 z-10 backdrop-blur-lg">
+  class="px-6 py-4 w-full flex flex-col gap-2 max-w-7xl bg-opacity-70 sticky top-0 left-0 z-10 backdrop-blur-lg dark:bg-transparent rounded shadow-black [text-shadow:_1px_1px_4px_var(--tw-shadow-color)]">
   <div class="flex justify-between items-center">
-    <a href="/" class="inline-flex gap-2 text-3xl font-bold group items-center">
+    <a href="/" class="inline-flex gap-2 text-3xl font-bold group items-end">
       <Icon
         name="logo"
         size={40}
-        class="text-accent group-hover:scale-110 transition-all duration-300"
+        class="text-accent group-hover:scale-110 transition-all duration-300 drop-shadow-md"
       />
       <h1
-        class="hover:text-accent transition border-b-2 border-transparent duration-300 hover:border-accent">
+        class="hover:text-accent hover:shadow-accent transition border-b-2 border-transparent duration-300 hover:border-accent">
         <span class="hidden sm:inline">{datos.textContent.header.title}</span>
         <!-- ? Para que salga la E+
         E<span class="hidden sm:inline">rasmus</span>+ -->
@@ -27,3 +27,4 @@ import datos from '@/data/data.json';
   </div>
 </header>
 <CustomSeparator class="text-accent max-w-7xl" />
+<!-- <CustomSeparator class="text-accent max-w-7xl invisible dark:visible" /> -->

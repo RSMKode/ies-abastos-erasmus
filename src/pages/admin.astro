@@ -1,17 +1,17 @@
 ---
-import "@fontsource-variable/onest";
+import '@fontsource-variable/onest';
 
 // import "@/styles/global.css";
 
-import Header from "@/components/Header.astro";
-import Footer from "@/components/Footer.astro";
-import { ViewTransitions } from "astro:transitions";
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import { ViewTransitions } from 'astro:transitions';
 
-const allowedUsers = import.meta.env.PUBLIC_ALLOWED_USERS.split(", ");
+const allowedUsers = import.meta.env.PUBLIC_ALLOWED_USERS.split(', ');
 console.log(allowedUsers);
 
-const pageDescription = "Administrador de Contenidos";
-const pageTitle = "Decap CMS";
+const pageDescription = 'Administrador de Contenidos';
+const pageTitle = 'Decap CMS';
 ---
 
 <html lang="es">
@@ -54,18 +54,18 @@ const pageTitle = "Decap CMS";
 
     <!-- Customize the netlify identity widget to refresh on logout preventing users from using the cms when not logged in and then seeing an error -->
     <script is:inline>
-      netlifyIdentity.on("logout", () => location.reload());
+      netlifyIdentity.on('logout', () => location.reload());
     </script>
 
     <!-- Comprueba que el usuario tenga permiso -->
     <script>
       // Se importa la lista de usuarios permitidos desde el archivo .env
-      const allowedUsers = import.meta.env.PUBLIC_ALLOWED_USERS.split(", ");
+      const allowedUsers = import.meta.env.PUBLIC_ALLOWED_USERS.split(', ');
       // console.log("allowedUsers", allowedUsers);
 
       // Se comprueba si el usuario logueado está en la lista de usuarios permitidos
       // @ts-expect-error netlifyIdentity is defined globally
-      netlifyIdentity.on("login", (user) => {
+      netlifyIdentity.on('login', user => {
         // console.log(user);
         // console.log(localStorage);
         // if (user.email != "rogersanchom@gmail.com") {
@@ -73,17 +73,17 @@ const pageTitle = "Decap CMS";
           // Si no está en la lista de usuarios permitidos se cierra la sesión, se borra la cookie y se redirige a la página principal
           // @ts-expect-error netlifyIdentity is defined globally
           netlifyIdentity.logout();
-          localStorage.removeItem("gotrue.user");
-          window.location.href = "/";
-          alert("No tienes permisos para acceder a esta página");
+          localStorage.removeItem('gotrue.user');
+          window.location.href = '/';
+          alert('No tienes permisos para acceder a esta página');
         }
       });
     </script>
     <!-- CSS in preview panel -->
     <script>
       // @ts-expect-error CMS is defined globally
-      CMS.registerPreviewStyle("/admin/global.css");
-      console.log("miau");
+      CMS.registerPreviewStyle('/admin/global.css');
+      console.log('PRUEBA');
     </script>
     <!-- Only showing body in preview panel -->
     <script src="@/utils/preview.js"></script>

@@ -13,8 +13,8 @@ const isActive = Astro.url.pathname === link;
 ---
 
 <a
-  class={'flex items-start justify-center border border-transparent hover:text-accent hover:border-current font-medium px-2 py-1 rounded-lg gap-1 hover:scale-[1.05] active:scale-[1] transition duration-300 hover:shadow-current ' +
-    (isActive ? 'text-accent' : '')}
+  class={'flex items-start justify-center border-b-2 border-transparent hover:text-accent hover:border-current font-medium p-1 rounded gap-1 hover:scale-[1.05] active:scale-[1] transition duration-300 hover:shadow-current ' +
+    (isActive ? 'text-accent ' : '')}
   href={link}
   title={title}>
   <Icon name={icon} size={20} class="" />

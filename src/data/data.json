@@ -1,7 +1,6 @@
 {
     "pageTitle": "IES Abastos | Erasmus+",
     "pageDescription": "Proyectos Erasmus+ en IES Abastos",
-    "lastUpdated": "07/04/2024",
     "links": {
         "official": {
             "title": "IES Abastos | Web oficial",
@@ -38,12 +37,12 @@
         "astro": {
             "title": "Astro",
             "url": "https://astro.build/",
-            "icon": "mdi:rocket"
+            "icon": "tabler:brand-astro"
         },
         "astro-icon": {
             "title": "Astro Icon",
             "url": "https://www.astroicon.dev/",
-            "icon": "mdi:rocket"
+            "icon": "tabler:icons"
         },
         "tailwindcss": {
             "title": "Tailwind CSS",
@@ -66,7 +65,8 @@
             "title": "Erasmus+"
         },
         "footer": {
-            "main": "© 2024 IES Abastos | Erasmus+"
+            "main": "© 2024 IES Abastos | Erasmus+",
+            "lastUpdated": "07/04/2024"
         }
     }
 }

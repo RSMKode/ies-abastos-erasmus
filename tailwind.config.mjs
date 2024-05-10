@@ -12,18 +12,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        // primary: "rgb(var(--color-primary) / <alpha-value>)",
-        primary: "rgb(250 204 21 / <alpha-value>)",
+        bkg: "hsl(var(--color-bkg) / <alpha-value>)",
+        // primary: "hsl(var(--color-primary) / <alpha-value>)",
+        primary: "hsl(var(--color-primary) / <alpha-value>)",
         // secondary: "rgb(0 0 0 / <alpha-value>)",
-        secondary: colors.white,
         accent: {
-          // 1: "rgb(var(--color-accent-1) / <alpha-value>)",
-          // 1: "rgb(250 204 21 / <alpha-value>)",
-          DEFAULT: colors.yellow[300],
-          2: colors.rose[900],
+          // 1: "hsl(250 204 21 / <alpha-value>)",
+          DEFAULT: "hsl(var(--color-accent) / <alpha-value>)",
+          // DEFAULT: colors.yellow[300],
+          // 2: colors.rose[900],
         },
-        // bkg: "hsl(var(--color-bkg) / <alpha-value>)",
-        // content: "hsl(var(--color-content) / <alpha-value>)",
+        content: "hsl(var(--color-content) / <alpha-value>)",
+        contrast: "hsl(var(--color-contrast) / <alpha-value>)",
       },
       backgroundImage: "var(--bkg-gradient)",
       animation: {
