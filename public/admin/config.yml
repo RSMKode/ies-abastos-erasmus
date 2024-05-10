@@ -7,7 +7,19 @@ backend:
 media_folder: '/public/assets/images/'
 # El atributo src para los medios cargados
 public_folder: '/assets/images/'
-locale: es
+i18n:
+  # Required and can be one of multiple_folders, multiple_files or single_file
+  # multiple_folders - persists files in `<folder>/<locale>/<slug>.<extension>`
+  # multiple_files - persists files in `<folder>/<slug>.<locale>.<extension>`
+  # single_file - persists a single file in `<folder>/<slug>.<extension>`
+  structure: multiple_folders
+
+  # Required - a list of locales to show in the editor UI
+  locales: [es, en]
+
+  # Optional, defaults to the first item in locales.
+  # The locale to be used for fields validation and as a baseline for the entry.
+  default_locale: es
 collections:
   - name: 'categories' # Usado en rutas, por ejemplo, /admin/collections/blog
     slug: '{{type}}_{{slug}}' # Archivos en la carpeta de documentos tendrán un nombre similar a ka1_my-category.md
@@ -50,16 +62,28 @@ collections:
       - { label: 'Tipo de Proyecto', field: type }
       - { label: 'Etiqueta', field: tag }
     summary: "{{title}} - {{type}} - {{tag}} - {{author}} - {{date | date('DD-MM-YYYY')}}"
+    i18n: true
     fields: # Los campos para cada documento, generalmente en el frontmatter
       - {
           label: 'Autor',
           name: 'author',
           widget: 'string',
           default: 'IES Abastos Erasmus+',
+          i18n: duplicate,
         }
-      - { label: 'Titulo', name: 'title', widget: 'string' }
-      - { label: 'Descripción', name: 'description', widget: 'string' }
-      - { label: 'Fecha de Inicio', name: 'date', widget: 'datetime' }
+      - { label: 'Titulo', name: 'title', widget: 'string', i18n: translate }
+      - {
+          label: 'Descripción',
+          name: 'description',
+          widget: 'string',
+          i18n: true,
+        }
+      - {
+          label: 'Fecha de Inicio',
+          name: 'date',
+          widget: 'datetime',
+          i18n: duplicate,
+        }
       - {
           label: 'Imagen',
           name: 'images',
@@ -67,6 +91,7 @@ collections:
           allow_multiple: true,
           required: false,
           hint: 'Imagenes destacadas del proyecto. Recomendable optimizarlas antes de subirlas.',
+          i18n: duplicate,
         }
       - {
           label: 'Video URL',
@@ -74,6 +99,7 @@ collections:
           widget: 'string',
           required: false,
           hint: 'URL de un video subido previamente a Google Drive',
+          i18n: duplicate,
         }
       - {
           label: 'Tipo de Proyecto',
@@ -88,6 +114,7 @@ collections:
           # min: 1,
           # max: 2,
           hint: 'Selecciona un tipo de proyecto. Por ejemplo, KA1 o KA2',
+          i18n: duplicate,
         }
       - {
           label: 'Etiqueta del Proyecto',
@@ -102,6 +129,7 @@ collections:
           # min: 1,
           # max: 2,
           hint: 'Selecciona un etiqueta para el proyecto. Por ejemplo, FP o Escolar',
+          i18n: duplicate,
         }
       - {
           label: 'En curso',
@@ -109,12 +137,14 @@ collections:
           widget: 'boolean',
           default: 'true',
           hint: 'Indica si el proyecto está en curso o finalizado',
+          i18n: duplicate,
         }
       - {
           label: 'Cuerpo del Proyecto',
           name: 'body',
           widget: 'markdown',
           hint: 'Escribe el contenido del proyecto',
+          i18n: true,
         }
 
   - name: 'posts' # Usado en rutas, por ejemplo, /admin/collections/blog
