@@ -1,25 +1,4 @@
 :root {
-  color-scheme: light;
-
-  /* --color-bkg: hsl(214 90% 95%); */
-  --color-bkg: 214 90% 95%;
-
-  /* --color-gradient: hsl(214 80% 70%); */
-  --color-gradient: 214 80% 70%;
-
-  /* --color-content: hsl(214 86% 5%); */
-  --color-content: 0 0% 100%;
-
-  /* --color-contrast: hsl(0, 0%, 80%); */
-  --color-contrast: 0 10% 90%;
-
-  /* --color-primary: hsl(214 85% 50%); */
-  --color-primary: 214 85% 50%;
-
-  /* --color-accent: hsl(50 100% 55%); */
-  --color-accent: 50 100% 60%;
-}
-:root {
   color-scheme: dark;
 
   /*--color-bkg: hsl(211 35% 15%); */
@@ -36,27 +15,6 @@
 
   /* --color-primary: hsl(214 70% 35%); */
   --color-primary: 214 70% 40%;
-
-  /* --color-accent: hsl(48 96% 53%); */
-  --color-accent: 48 96% 53%;
-}
-:root[class='dark'] {
-  color-scheme: dark;
-
-  /*--color-bkg: hsl(211 35% 15%); */
-  --color-bkg: 211 35% 25%;
-
-  /* --color-gradient: hsl(250 45% 10%); */
-  --color-gradient: 230 45% 20%;
-
-  /* --color-content: hsl(0, 0%, 100%); */
-  --color-content: 0 0% 100%;
-
-  /* --color-contrast: hsl(214 86% 5%); */
-  --color-contrast: 214 86% 5%;
-
-  /* --color-primary: hsl(214 80% 35%); */
-  --color-primary: 214 85% 35%;
 
   /* --color-accent: hsl(48 96% 53%); */
   --color-accent: 48 96% 53%;

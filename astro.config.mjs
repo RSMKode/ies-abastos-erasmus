@@ -11,4 +11,8 @@ export default defineConfig({
   integrations: [preact(), icon(), tailwind()],
   output: "hybrid",
   adapter: netlify(),
+  i18n: {
+    defaultLocale: "es",
+    locales: ["es", "en"],
+  },
 });

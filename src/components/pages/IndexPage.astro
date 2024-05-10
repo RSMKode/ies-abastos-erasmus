@@ -1,0 +1,26 @@
+---
+import '@/styles/global.css';
+import Layout from '@/layouts/Layout.astro';
+import TagIndex from '@/components/TagIndex.astro';
+import CardGrid from '@/components/CardGrid.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('posts');
+allPosts.sort((a, b) => (a.data.pubDate > b.data.pubDate ? -1 : 1));
+
+const pageTitle = 'IES Abastos | Erasmus+';
+const pageDescription = 'Proyectos Erasmus+ de IES Abastos';
+---
+
+<Layout {pageTitle} {pageDescription}>
+  <section class="flex flex-col gap-4">
+    <h2 class="text-2xl font-bold">Conjunto de entradas del blog</h2>
+    {
+      allPosts.length > 0 ? (
+        <CardGrid posts={allPosts} />
+      ) : (
+        <p>Todavía no hay posts</p>
+      )
+    }
+  </section>
+</Layout>

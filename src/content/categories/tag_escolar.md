@@ -1,4 +1,4 @@
 ---
-name: Escolar
+title: Escolar
 type: tag
 ---

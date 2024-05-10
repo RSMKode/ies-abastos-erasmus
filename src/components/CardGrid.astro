@@ -11,10 +11,14 @@ const animationDelayNum = 150;
     posts &&
       posts.map((post, index) => {
         let animationDelay = index * animationDelayNum;
+        const [lang, ...slug] = post.slug.split('/');
+        console.log(post);
+
+        const url = `/${Astro.currentLocale}/posts/${slug.join('/')}`;
         return (
           <PostCard
             {isTiny}
-            linkUrl={`/posts/${post.slug}`}
+            linkUrl={url}
             postData={post.data}
             class={`animate-fade-in-up`}
             style={`animation-delay: ${animationDelay}ms`}
@@ -26,10 +30,13 @@ const animationDelayNum = 150;
     projects &&
       projects.map((project, index) => {
         let animationDelay = index * animationDelayNum;
+        const [lang, ...slug] = project.slug.split('/');
+        const url = `/${Astro.currentLocale}/projects/${slug.join('/')}`;
+
         return (
           <ProjectCard
             {isTiny}
-            linkUrl={`/projects/${project.slug}`}
+            linkUrl={url}
             projectData={project.data}
             class={`animate-fade-in-up`}
             style={`animation-delay: ${animationDelay}ms`}

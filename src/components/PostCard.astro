@@ -26,13 +26,13 @@ const { author, title, description, pubDate, images, videoUrl, project } =
   postData;
 
 const postProject = await getEntry(project);
-console.log('postProject', postProject);
+// console.log('postProject', postProject);
 
 const projectType = await getEntry(postProject?.data.type);
-console.log('projectType', projectType);
+// console.log('projectType', projectType);
 
 const projectTag = await getEntry(postProject?.data.tag);
-console.log('projectTag', projectTag);
+// console.log('projectTag', projectTag);
 
 const postCategories =
   projectType && projectTag ? [projectType, projectTag] : [];
@@ -92,7 +92,7 @@ const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYe
                 class="z-20 hover:-translate-y-[0.2rem] hover:brightness-125 transition duration-200"
                 href={`/categories/${category?.slug}`}>
                 {' '}
-                <Badge class="bg-accent ">{category?.data.name}</Badge>
+                <Badge class="bg-accent ">{category?.data.title}</Badge>
               </a>
             ))
         }

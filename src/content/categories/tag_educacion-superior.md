@@ -1,4 +1,4 @@
 ---
-name: Educación Superior
+title: Educación Superior
 type: tag
 ---

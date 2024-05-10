@@ -1,0 +1,72 @@
+{
+    "pageTitle": "IES Abastos | Erasmus+",
+    "pageDescription": "Erasmus+ Projects in IES Abastos",
+    "links": {
+        "official": {
+            "title": "IES Abastos | Official Website",
+            "url": "https://portal.edu.gva.es/iesabastos/",
+            "icon": "mdi:web"
+        },
+        "repo": {
+            "title": "GitHub Repository",
+            "url": "https://github.com/RSMKode/ies-abastos-erasmus",
+            "icon": "mdi:github"
+        },
+        "youtube": {
+            "title": "Youtube Channel",
+            "url": "https://www.youtube.com/@iesabastos6784",
+            "icon": "mdi:youtube"
+        },
+        "twitter": {
+            "title": "Twitter",
+            "url": "twitter.com/InstitutAbastos",
+            "icon": "mdi:twitter"
+        },
+        "instagram": {
+            "title": "Instagram",
+            "url": "https://www.instagram.com/ies_abastos",
+            "icon": "mdi:instagram"
+        },
+        "facebook": {
+            "title": "Facebook",
+            "url": "facebook.com/IESAbastos",
+            "icon": "mdi:facebook"
+        }
+    },
+    "technologies": {
+        "astro": {
+            "title": "Astro",
+            "url": "https://astro.build/",
+            "icon": "tabler:brand-astro"
+        },
+        "astro-icon": {
+            "title": "Astro Icon",
+            "url": "https://www.astroicon.dev/",
+            "icon": "tabler:icons"
+        },
+        "tailwindcss": {
+            "title": "Tailwind CSS",
+            "url": "https://tailwindcss.com/",
+            "icon": "mdi:language-css3"
+        },
+        "decapcms": {
+            "title": "DecapCMS",
+            "url": "https://decapcms.com/",
+            "icon": "mdi:database"
+        },
+        "swiperjs": {
+            "title": "Swiper JS",
+            "url": "https://swiperjs.com/",
+            "icon": "mdi:card-text-outline"
+        }
+    },
+    "textContent": {
+        "header": {
+            "title": "Erasmus+"
+        },
+        "footer": {
+            "main": "© 2024 IES Abastos | Erasmus+",
+            "lastUpdated": "Last update: 10/05/2024"
+        }
+    }
+}

@@ -5,7 +5,7 @@ import { z, defineCollection, reference } from 'astro:content';
 const categoriesCollection = defineCollection({
   type: 'content',
   schema: z.object({
-    name: z.string(),
+    title: z.string(),
     type: z.enum(['project', 'tag']),
   }),
 });
@@ -14,9 +14,10 @@ const projectsCollection = defineCollection({
   type: 'content',
   schema: z.object({
     author: z.string(),
-    title: z.string(),
-    description: z.string(),
+    title: z.string().optional(),
+    description: z.string().optional(),
     date: z.date(),
+    web: z.string().optional(),
     images: z.string().optional(),
     videoUrl: z.string().optional(),
     type: reference('categories'),
@@ -29,12 +30,12 @@ const postsCollection = defineCollection({
   type: 'content',
   schema: z.object({
     author: z.string(),
-    title: z.string(),
-    description: z.string(),
+    title: z.string().optional(),
+    description: z.string().optional(),
     pubDate: z.date(),
     images: z.string().optional(),
     videoUrl: z.string().optional(),
-    project: reference('projects'),
+    project: reference('projects').optional(),
   }),
 });
 

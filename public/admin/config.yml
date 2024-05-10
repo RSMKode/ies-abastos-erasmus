@@ -26,13 +26,13 @@ collections:
     label: 'Categorías' # Usado en la interfaz de usuario de /admin
     label_singular: 'Categoría' # Usado en la interfaz de usuario de /admin
     folder: '/src/content/categories' # La ruta a la carpeta donde se almacenan los documentos
-    identifier_field: name
+    # identifier_field: title
     create: true # Permitir a los usuarios crear nuevos documentos en esta colección
     view_groups: # Agrupar documentos por proyecto
       - { label: 'Tipo', field: type }
-    summary: '{{type | label}}: {{name}}'
+    summary: '{{type | label}}: {{title}}'
     fields: # Los campos para cada documento, generalmente en el frontmatter
-      - { label: 'Nombre', name: 'name', widget: 'string' }
+      - { label: 'Nombre', name: 'title', widget: 'string' }
       - {
           label: 'Tipo de Categoría',
           name: 'type',
@@ -52,7 +52,7 @@ collections:
         }
 
   - name: 'projects' # Usado en rutas, por ejemplo, /admin/collections/blog
-    # slug: '{{slug}}_{{type}}_{{tag}}' # Archivos en la carpeta de documentos tendrán un nombre similar a 'proyecto_tipo_tag'
+    slug: '{{slug}}' # Archivos en la carpeta de documentos tendrán un nombre similar a 'proyecto_tipo_tag'
     label: 'Proyectos' # Usado en la interfaz de usuario de /admin
     label_singular: 'Proyecto' # Usado en la interfaz de usuario de /admin
     folder: '/src/content/projects' # La ruta a la carpeta donde se almacenan los documentos
@@ -68,7 +68,7 @@ collections:
           label: 'Autor',
           name: 'author',
           widget: 'string',
-          default: 'IES Abastos Erasmus+',
+          default: 'IES Abastos',
           i18n: duplicate,
         }
       - { label: 'Titulo', name: 'title', widget: 'string', i18n: translate }
@@ -76,12 +76,20 @@ collections:
           label: 'Descripción',
           name: 'description',
           widget: 'string',
-          i18n: true,
+          i18n: translate,
         }
       - {
           label: 'Fecha de Inicio',
           name: 'date',
           widget: 'datetime',
+          i18n: duplicate,
+        }
+      - {
+          label: 'Web del Proyecto',
+          name: 'web',
+          widget: 'string',
+          required: false,
+          hint: 'URL de la web oficial del proyecto',
           i18n: duplicate,
         }
       - {
@@ -110,14 +118,11 @@ collections:
           search_fields: ['name'],
           display_fields: ['name'],
           filters: [{ field: 'type', values: ['project'] }],
-          # multiple: true,
-          # min: 1,
-          # max: 2,
           hint: 'Selecciona un tipo de proyecto. Por ejemplo, KA1 o KA2',
           i18n: duplicate,
         }
       - {
-          label: 'Etiqueta del Proyecto',
+          label: 'Sector del Proyecto',
           name: 'tag',
           widget: 'relation',
           collection: 'categories',
@@ -125,10 +130,7 @@ collections:
           search_fields: ['name'],
           display_fields: ['name'],
           filters: [{ field: 'type', values: ['tag'] }],
-          # multiple: true,
-          # min: 1,
-          # max: 2,
-          hint: 'Selecciona un etiqueta para el proyecto. Por ejemplo, FP o Escolar',
+          hint: 'Selecciona un sector para el proyecto. Por ejemplo, FP o Escolar',
           i18n: duplicate,
         }
       - {
@@ -156,16 +158,28 @@ collections:
     view_groups: # Agrupar documentos por proyecto
       - { label: 'Project', field: project }
     summary: "{{title}} - {{project}} - {{author}} - {{pubDate | date('DD-MM-YYYY')}}"
+    i18n: true
     fields: # Los campos para cada documento, generalmente en el frontmatter
       - {
           label: 'Autor',
           name: 'author',
           widget: 'string',
-          default: 'IES Abastos Erasmus+',
+          default: 'IES Abastos',
+          i18n: duplicate,
         }
-      - { label: 'Titulo', name: 'title', widget: 'string' }
-      - { label: 'Descripción', name: 'description', widget: 'string' }
-      - { label: 'Fecha de Publicación', name: 'pubDate', widget: 'datetime' }
+      - { label: 'Titulo', name: 'title', widget: 'string', i18n: translate }
+      - {
+          label: 'Descripción',
+          name: 'description',
+          widget: 'string',
+          i18n: translate,
+        }
+      - {
+          label: 'Fecha de Publicación',
+          name: 'pubDate',
+          widget: 'datetime',
+          i18n: duplicate,
+        }
       - {
           label: 'Proyecto Relacionado',
           name: 'project',
@@ -175,6 +189,7 @@ collections:
           search_fields: ['title', 'author', 'type', 'tag'],
           display_fields: ['title', 'author', 'type', 'tag'],
           hint: 'Puedes buscar por título, autor, tipo o etiqueta del proyecto relacionado.',
+          i18n: false,
         }
       - {
           label: 'Imagen',
@@ -182,6 +197,7 @@ collections:
           widget: 'image',
           required: false,
           hint: 'Imagen destacada del post. Recomendable optimizarla antes de subirla.',
+          i18n: duplicate,
         }
       - {
           label: 'Video URL',
@@ -189,6 +205,7 @@ collections:
           widget: 'string',
           required: false,
           hint: 'URL de un video de YouTube o Google Drive',
+          i18n: duplicate,
         }
       - {
           label: 'Cuerpo del Post',

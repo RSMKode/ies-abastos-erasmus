@@ -10,12 +10,12 @@ import CustomSeparator from '@/components/general/CustomSeparator.astro';
 interface Props {
   categorySlug: string;
   frontmatter: {
-    name: string;
+    title: string;
     type: 'project' | 'tag';
   };
 }
 const { frontmatter, categorySlug } = Astro.props;
-const { name: categoryName, type: categoryType } = frontmatter;
+const { title: categoryName, type: categoryType } = frontmatter;
 
 const filteredProjects = await getCollection('projects', project => {
   if (
@@ -29,7 +29,7 @@ filteredProjects?.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 
 const filteredPosts = await getCollection('posts', post => {
   return filteredProjects.some(
-    project => project.slug === post.data.project.slug
+    project => project.slug === post.data.project?.slug
   );
 });
 

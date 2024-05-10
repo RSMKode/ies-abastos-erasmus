@@ -19,7 +19,7 @@ const typeA = await getEntry(frontmatter.type);
 console.log(typeA);
 
 const filteredPosts = await getCollection('posts', post => {
-  return post.data.project.slug === projectSlug;
+  return post.data.project?.slug === projectSlug;
 });
 
 const formattedDate = formatDate(date);

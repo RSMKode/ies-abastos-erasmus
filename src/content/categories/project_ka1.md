@@ -1,4 +1,4 @@
 ---
-name: KA1
+title: KA1
 type: project
 ---

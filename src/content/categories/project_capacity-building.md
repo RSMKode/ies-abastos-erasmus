@@ -1,4 +1,4 @@
 ---
-name: Capacity Building
+title: Capacity Building
 type: project
 ---

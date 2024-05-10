@@ -1,3 +1,0 @@
----
-name: Autor de Prueba
----

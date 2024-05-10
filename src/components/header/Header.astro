@@ -4,7 +4,7 @@ import ThemeSwitch from '@/components/header/ThemeSwitch.astro';
 import Navigation from '../header/Navigation.astro';
 import CustomSeparator from '../general/CustomSeparator.astro';
 import { Icon } from 'astro-icon/components';
-import datos from '@/data/data.json';
+import datos from '@/i18n/data/es.json';
 ---
 
 <header
@@ -12,7 +12,7 @@ import datos from '@/data/data.json';
   <div class="flex justify-between items-center">
     <a href="/" class="inline-flex gap-2 text-3xl font-bold group items-center">
       <Icon
-        name="logo"
+        name="abastos-logo"
         size={45}
         class="text-accent group-hover:scale-110 transition-all duration-300 drop-shadow-md"
       />

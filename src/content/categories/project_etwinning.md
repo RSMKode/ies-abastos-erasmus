@@ -1,4 +1,4 @@
 ---
-name: eTwinning
+title: eTwinning
 type: project
 ---
