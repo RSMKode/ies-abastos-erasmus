@@ -1,13 +1,13 @@
 ---
-import ThemeSwitch from '@/components/ThemeSwitch.astro';
-import NavLink from '@/components/NavLink.astro';
+import ThemeSwitch from '@/components/header/ThemeSwitch.astro';
+import NavLink from '@/components/header/NavLink.astro';
 ---
 
 <a href="/"><h1 class="text-2xl lg:text-4xl font-bold"></h1></a>
 <!-- transition:animate="slide" -->
 <nav
   class="flex flex-wrap justify-end items-center gap-2 max-w-5xl xl:max-w-7xl">
-  <NavLink title="Inicio" link="/" icon="tabler:home" />
+  <!-- <NavLink title="Inicio" link="/" icon="tabler:home" /> -->
   <!--data-astro-reload si queremos recargar lapágina entera -->
   <!-- <NavLink title="About" link="/about" icon="mdi:company" /> -->
   <NavLink title="About" link="/about" icon="mdi:blog" />

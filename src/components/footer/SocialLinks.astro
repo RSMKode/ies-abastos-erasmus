@@ -1,0 +1,13 @@
+---
+import FooterLink from './FooterLink.astro';
+import { links } from '@/data/data.json';
+---
+
+<nav class="flex flex-col gap-2 items-start">
+  <h3></h3>
+  {
+    Object.entries(links).map(([key, value]) => (
+      <FooterLink title={value.title} link={value.url} icon={value.icon} />
+    ))
+  }
+</nav>
