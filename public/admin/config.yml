@@ -4,9 +4,9 @@ backend:
   name: git-gateway
   branch: main # Branch to update (optional; defaults to master)
 # Ubicación donde se almacenarán los archivos en el repositorio
-media_folder: '/public/assets/images/'
+media_folder: '/public/assets/images/uploads'
 # El atributo src para los medios cargados
-public_folder: '/assets/images/'
+public_folder: '/assets/images/uploads'
 i18n:
   # Required and can be one of multiple_folders, multiple_files or single_file
   # multiple_folders - persists files in `<folder>/<locale>/<slug>.<extension>`
@@ -48,6 +48,7 @@ collections:
           label: 'Cuerpo de la categoría',
           name: 'body',
           widget: 'markdown',
+          required: false,
           hint: 'Escribe el contenido de la categoría',
         }
 
@@ -62,7 +63,9 @@ collections:
       - { label: 'Tipo de Proyecto', field: type }
       - { label: 'Etiqueta', field: tag }
     summary: "{{title}} - {{type}} - {{tag}} - {{author}} - {{date | date('DD-MM-YYYY')}}"
-    i18n: true
+    locales: [es, en]
+    default_locale: es
+    i18n: false
     fields: # Los campos para cada documento, generalmente en el frontmatter
       - {
           label: 'Autor',
@@ -71,12 +74,12 @@ collections:
           default: 'IES Abastos',
           i18n: duplicate,
         }
-      - { label: 'Titulo', name: 'title', widget: 'string', i18n: translate }
+      - { label: 'Titulo', name: 'title', widget: 'string', i18n: false }
       - {
           label: 'Descripción',
           name: 'description',
           widget: 'string',
-          i18n: translate,
+          i18n: false,
         }
       - {
           label: 'Fecha de Inicio',
@@ -115,8 +118,8 @@ collections:
           widget: 'relation',
           collection: 'categories',
           value_field: '{{slug}}',
-          search_fields: ['name'],
-          display_fields: ['name'],
+          search_fields: ['title'],
+          display_fields: ['title'],
           filters: [{ field: 'type', values: ['project'] }],
           hint: 'Selecciona un tipo de proyecto. Por ejemplo, KA1 o KA2',
           i18n: duplicate,
@@ -127,8 +130,8 @@ collections:
           widget: 'relation',
           collection: 'categories',
           value_field: '{{slug}}',
-          search_fields: ['name'],
-          display_fields: ['name'],
+          search_fields: ['title'],
+          display_fields: ['title'],
           filters: [{ field: 'type', values: ['tag'] }],
           hint: 'Selecciona un sector para el proyecto. Por ejemplo, FP o Escolar',
           i18n: duplicate,
@@ -137,7 +140,7 @@ collections:
           label: 'En curso',
           name: 'inProgress',
           widget: 'boolean',
-          default: 'true',
+          default: true,
           hint: 'Indica si el proyecto está en curso o finalizado',
           i18n: duplicate,
         }
@@ -146,7 +149,6 @@ collections:
           name: 'body',
           widget: 'markdown',
           hint: 'Escribe el contenido del proyecto',
-          i18n: true,
         }
 
   - name: 'posts' # Usado en rutas, por ejemplo, /admin/collections/blog
@@ -167,13 +169,8 @@ collections:
           default: 'IES Abastos',
           i18n: duplicate,
         }
-      - { label: 'Titulo', name: 'title', widget: 'string', i18n: translate }
-      - {
-          label: 'Descripción',
-          name: 'description',
-          widget: 'string',
-          i18n: translate,
-        }
+      - { label: 'Titulo', name: 'title', widget: 'string' }
+      - { label: 'Descripción', name: 'description', widget: 'string' }
       - {
           label: 'Fecha de Publicación',
           name: 'pubDate',
@@ -189,7 +186,7 @@ collections:
           search_fields: ['title', 'author', 'type', 'tag'],
           display_fields: ['title', 'author', 'type', 'tag'],
           hint: 'Puedes buscar por título, autor, tipo o etiqueta del proyecto relacionado.',
-          i18n: false,
+          i18n: true,
         }
       - {
           label: 'Imagen',
