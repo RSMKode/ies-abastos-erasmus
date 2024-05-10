@@ -57,7 +57,7 @@ collections:
     label: 'Proyectos' # Usado en la interfaz de usuario de /admin
     label_singular: 'Proyecto' # Usado en la interfaz de usuario de /admin
     folder: '/src/content/projects' # La ruta a la carpeta donde se almacenan los documentos
-    identifier_field: title
+    # identifier_field: title
     create: true # Permitir a los usuarios crear nuevos documentos en esta colección
     view_groups: # Agrupar documentos por tipo de proyecto y etiqueta
       - { label: 'Tipo de Proyecto', field: type }
@@ -65,7 +65,7 @@ collections:
     summary: "{{title}} - {{type}} - {{tag}} - {{author}} - {{date | date('DD-MM-YYYY')}}"
     locales: [es, en]
     default_locale: es
-    i18n: false
+    i18n: true
     fields: # Los campos para cada documento, generalmente en el frontmatter
       - {
           label: 'Autor',
@@ -74,12 +74,12 @@ collections:
           default: 'IES Abastos',
           i18n: duplicate,
         }
-      - { label: 'Titulo', name: 'title', widget: 'string', i18n: false }
+      - { label: 'Titulo', name: 'title', widget: 'string', i18n: true }
       - {
           label: 'Descripción',
           name: 'description',
           widget: 'string',
-          i18n: false,
+          i18n: true,
         }
       - {
           label: 'Fecha de Inicio',
@@ -91,7 +91,7 @@ collections:
           label: 'Web del Proyecto',
           name: 'web',
           widget: 'string',
-          required: false,
+          required: true,
           hint: 'URL de la web oficial del proyecto',
           i18n: duplicate,
         }
@@ -100,7 +100,7 @@ collections:
           name: 'images',
           widget: 'image',
           allow_multiple: true,
-          required: false,
+          required: true,
           hint: 'Imagenes destacadas del proyecto. Recomendable optimizarlas antes de subirlas.',
           i18n: duplicate,
         }
@@ -108,7 +108,7 @@ collections:
           label: 'Video URL',
           name: 'videoUrl',
           widget: 'string',
-          required: false,
+          required: true,
           hint: 'URL de un video subido previamente a Google Drive',
           i18n: duplicate,
         }
