@@ -1,6 +1,8 @@
 ---
 import { getEntry } from 'astro:content';
 import Badge from './general/Badge.astro';
+import { formatDate } from '@/lib/utils';
+
 // interface Props {
 //   url: string;
 //   projectData: {
@@ -26,11 +28,11 @@ const projectType = await getEntry(type);
 const projectSector = await getEntry(sector);
 // console.log('projectSector', projectSector);
 
-const projectCategories =
+const projectCategories: any[] =
   projectType && projectSector ? [projectType, projectSector] : [];
 
-const d = new Date(date);
-const formattedDate = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
+const locale = Astro.currentLocale ?? 'es';
+const formattedDate = formatDate(date, locale);
 ---
 
 <article
@@ -70,13 +72,20 @@ const formattedDate = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
         class="flex flex-wrap gap-2 text-blue-900 font-bold [text-shadow:none]">
         {
           projectCategories.length > 0 &&
-            projectCategories.map(category => (
-              <a
-                class="z-20 hover:-translate-y-[0.2rem]  hover:brightness-125 transition duration-200"
-                href={`/categories/${category?.slug}`}>
-                <Badge class="bg-accent ">{category?.data.title}</Badge>
-              </a>
-            ))
+            projectCategories.map(category => {
+              const categoryName =
+                category.data.englishTitle && locale != 'es'
+                  ? category.data.englishTitle
+                  : category.data.title;
+              return (
+                <a
+                  class="z-20 hover:-translate-y-[0.2rem] hover:brightness-125 transition duration-200"
+                  href={`/${locale}/categories/${category?.slug}`}>
+                  {' '}
+                  <Badge class="bg-accent">{categoryName}</Badge>
+                </a>
+              );
+            })
         }
       </div>
       <p class="text-ellipsis">{description}</p>

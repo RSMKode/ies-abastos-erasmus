@@ -1,0 +1,68 @@
+---
+// export interface Props {
+//   images: string[];
+//   slidesPerView: number;
+// }
+
+const { images, slidesPerView = 1 } = Astro.props;
+---
+
+<div class="h-[25rem] max-w-full animate-blurred-fade-in flex-1">
+  {
+    Array.isArray(images) && images.length > 0 ? (
+      <swiper-container
+        slides-per-view={slidesPerView}
+        space-between="30"
+        pagination="true"
+        pagination-clickable="true"
+        navigation="true">
+        {images.map(image => (
+          <swiper-slide>
+            <img src={image} alt="" class="rounded-lg" />
+          </swiper-slide>
+        ))}
+      </swiper-container>
+    ) : (
+      <img src={images} alt="" class="rounded-lg" />
+    )
+  }
+</div>
+
+<script
+  is:inline
+  src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"
+></script>
+<style>
+  img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  swiper-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    /* background: hsl(var(--color-gradient)); */
+    display: grid;
+    place-content: center;
+  }
+
+  swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  swiper-container::part(bullet-active) {
+    background-color: hsl(var(--color-accent));
+  }
+  swiper-container::part(button-prev),
+  swiper-container::part(button-next) {
+    color: hsl(var(--color-accent));
+  }
+</style>

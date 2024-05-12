@@ -61,6 +61,7 @@
         }
     },
     "textContent": {
+        "noPageTranslation": "Esta página no ha sido completamente traducida a tu idioma todavía. Puedes ver el contenido en Inglés haciendo clic en el botón en la esquina superior derecha de la página.",
         "header": {
             "title": {
                 "main": "Erasmus+",
@@ -92,20 +93,36 @@
             "p3": "El edificio data de los años 40 y fue proyectado por el arquitecto Javier Goerlich Lleó, autor entre otros del edificio Banco de Valencia, el Teatro Talia, el colegio Mayor Luis Vives, la Puerta del Mar o la restauración de la Iglesia de San Agustín. Tiene un estilo arquitectónico entre funcionalista y neocasticista.",
             "p4": "En los años 80 se hizo una restauración completa, destinando el ala norte al instituto. Cuando el instituto fue inaugurado, en 1991, lo hizo como dos centros formativos diferenciados, el Instituto de Bachillerato Cavanilles y el Instituto de Formación Profesional Manuel Sánchez Ayuso, ocupando cada uno de ellos un ala del nuevo edificio. En el año 2002 estos dos centros fueron fusionados pasando a funcionar como uno sólo, dando lugar al actual IES Abastos."
         },
+        "categories": {
+            "title": "Categorías",
+            "description": "Conoce los proyectos Erasmus+ en los que participa el IES Abastos",
+            "projectTypes": "Tipos de Proyecto",
+            "sectors": "Sectores",
+            "noCategories": "No hay categorias",
+            "categoryLayout": {
+                "projectType": "Tipo de Proyecto",
+                "sector": "Sector",
+                "projects": "Proyectos relacionados",
+                "noProjects": "No hay proyectos relacionados con esta categoria",
+                "posts": "Publicaciones relacionadas",
+                "noPosts": "No hay publicaciones relacionadas con esta categoria"
+            }
+        },
         "projects": {
             "title": "Proyectos",
             "description": "Conoce los proyectos Erasmus+ en los que participa el IES Abastos",
             "main": "Proyectos Erasmus+",
             "inProgress": "En curso",
             "finished": "Finalizados",
-            "noProjects": "No hay proyectos"
-        },
-        "categories": {
-            "title": "Categorías",
-            "description": "Conoce los proyectos Erasmus+ en los que participa el IES Abastos",
-            "projectTypes": "Tipos de Proyecto",
-            "sectors": "Sectores",
-            "noCategories": "No hay categorias"
+            "noProjects": "No hay proyectos",
+            "projectLayout": {
+                "projectType": "Tipo de Proyecto",
+                "sector": "Sector",
+                "projects": "Proyectos relacionados",
+                "noProjects": "No hay proyectos relacionados con esta categoria",
+                "posts": "Publicaciones relacionadas",
+                "noPosts": "No hay publicaciones relacionadas con esta categoria"
+            }
         }
     }
 }

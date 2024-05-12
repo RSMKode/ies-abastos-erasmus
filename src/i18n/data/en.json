@@ -61,6 +61,7 @@
         }
     },
     "textContent": {
+        "noPageTranslation": "This page has not been fully translated into your language yet. You can view the original content in Spanish by clicking on the button in the top right corner of the page.",
         "header": {
             "title": {
                 "main": "Erasmus+",
@@ -92,6 +93,21 @@
             "p3": "The building dates back to the 1940s and was designed by the architect Javier Goerlich Lleó, who is also the author of the Banco de Valencia building, the Talia Theater, the Luis Vives College, the Puerta del Mar, and the restoration of the San Agustín Church, among others. It has an architectural style that is a mix of functionalism and neocasticism.",
             "p4": "In the 1980s, a complete restoration was carried out, with the north wing being allocated to the institute. When the institute was inaugurated in 1991, it operated as two separate training centers, the Cavanilles High School and the Manuel Sánchez Ayuso Vocational Training Institute, each occupying one wing of the new building. In 2002, these two centers were merged and began operating as a single entity, giving rise to the current IES Abastos."
         },
+        "categories": {
+            "title": "Categories",
+            "description": "Discover the Erasmus+ projects in which IES Abastos participates",
+            "projectTypes": "Project Types",
+            "sectors": "Sectors",
+            "noCategories": "No categories available",
+            "categoryLayout": {
+                "projectType": "Project Type",
+                "sector": "Sector",
+                "projects": "Related Projects",
+                "noProjects": "No projects related to this category",
+                "posts": "Related Posts",
+                "noPosts": "No posts related to this category"
+            }
+        },
         "projects": {
             "title": "Projects",
             "description": "Discover the Erasmus+ projects in which IES Abastos participates",
@@ -99,13 +115,6 @@
             "inProgress": "In Progress",
             "finished": "Finished",
             "noProjects": "No projects available"
-        },
-        "categories": {
-            "title": "Categories",
-            "description": "Discover the Erasmus+ projects in which IES Abastos participates",
-            "projectTypes": "Project Types",
-            "sectors": "Sectors",
-            "noCategories": "No categories available"
         }
     }
 }

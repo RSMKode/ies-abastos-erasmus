@@ -6,6 +6,7 @@ import CardGrid from '@/components/CardGrid.astro';
 import { getCollection } from 'astro:content';
 import CustomSeparator from '@/components/general/CustomSeparator.astro';
 import { getLocaleTranslation } from '@/i18n/ui';
+import ImageGalery from '@/components/ImageGalery.astro';
 
 const locale = Astro.currentLocale ?? 'es';
 const ui = getLocaleTranslation(locale);
@@ -14,17 +15,25 @@ interface Props {
   categorySlug: string;
   frontmatter: {
     title: string;
+    englishTitle?: string;
     type: 'project' | 'sector';
   };
 }
 const { frontmatter, categorySlug } = Astro.props;
-const { title: categoryName, type: categoryType } = frontmatter;
+const {
+  title: categoryTitle,
+  englishTitle: categoryEnglishTitle,
+  type: categoryType,
+} = frontmatter;
+const categoryName =
+  locale != 'es' && categoryEnglishTitle ? categoryEnglishTitle : categoryTitle;
 
 const filteredProjects = await getCollection('projects', project => {
+  console.log('project slug', project.slug);
   if (
-    (project.slug.startsWith(locale) &&
-      categorySlug === project.data.type.slug) ||
-    categorySlug === project.data.sector.slug
+    project.slug.startsWith(locale) &&
+    (categorySlug === project.data.type.slug ||
+      categorySlug === project.data.sector.slug)
   ) {
     return project;
   }
@@ -33,37 +42,47 @@ filteredProjects?.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 
 const filteredPosts = await getCollection('posts', post => {
   return filteredProjects.some(
-    project => `${locale}/${project.slug}` === post.data.project
+    project =>
+      post.slug.startsWith(locale) &&
+      post.data.project === project.slug.split('/')[1]
   );
 });
-
-const title =
+const subtitle =
   categoryType === 'sector'
-    ? 'Sector: ' + categoryName
-    : 'Tipo de Proyecto: ' + categoryName;
-const pageTitle = `${title} - ${ui.webTitle}`;
+    ? `${ui.textContent.categories.categoryLayout.sector}:`
+    : `${ui.textContent.categories.categoryLayout.projectType}:`;
+const title = categoryName;
+const pageTitle = `${subtitle} ${title} - ${ui.webTitle}`;
 const pageDescription = `Proyectos y posts etiquetados con la categoría ${categoryName}`;
 ---
 
 <Layout {pageTitle} {pageDescription}>
-  <section class="flex flex-col gap-4">
-    <h2 class="text-2xl font-bold">Proyectos relacionados</h2>
+  <header class="flex flex-col gap-4">
+    <h1 class="font-bold text-accent flex flex-col">
+      <span class="text-xl text-content/80">{subtitle}</span>
+      <span class="text-4xl">{title}</span>
+    </h1>
+    <h2 class="text-2xl font-bold">
+      {ui.textContent.categories.categoryLayout.projects}
+    </h2>
     {
       filteredProjects.length > 0 ? (
         <CardGrid projects={filteredProjects} isTiny />
       ) : (
-        <p>No hay proyectos relacionados</p>
+        <p>{ui.textContent.categories.categoryLayout.noProjects}</p>
       )
     }
-  </section>
+  </header>
   <!-- <CustomSeparator class="text-accent my-4" /> -->
   <section class="flex flex-col gap-4">
-    <h2 class="text-2xl font-bold">Posts relacionados</h2>
+    <h2 class="text-2xl font-bold">
+      {ui.textContent.categories.categoryLayout.posts}
+    </h2>
     {
       filteredPosts.length > 0 ? (
         <CardGrid posts={filteredPosts} isTiny />
       ) : (
-        <p>No hay posts relacionados</p>
+        <p>{ui.textContent.categories.categoryLayout.noPosts}</p>
       )
     }
   </section>

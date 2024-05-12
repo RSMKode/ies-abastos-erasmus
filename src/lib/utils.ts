@@ -13,9 +13,30 @@ export const formatDate = (dateString: string, locale) => {
   return new Date(dateString).toLocaleDateString(locale, options);
 };
 
-export const getSlugWithouLang = slugWithLang => {
+/**
+ *
+ * @param {string} slugWithLang - El slug que contiene el idioma.
+ * @returns {string} El slug sin el idioma.
+ */
+export const getSlugWithoutLang = slugWithLang => {
   const [lang, ...slugArray] = slugWithLang.split('/');
   return slugArray.join('/');
+};
+
+/**
+ * Obtiene un array de imágenes a partir de una cadena de URLs de imágenes.
+ *
+ * @param {string} imageUrls - La cadena de URLs de imágenes.
+ * @returns {string[]} Un array de URLs de imágenes.
+ */
+export const getImageUrls = (imageUrls: string) => {
+  const images = imageUrls.split(',');
+  return images.length > 0 ? images : [];
+};
+
+export const fixWebUrl = (webUrl: string) => {
+  if (webUrl.includes('http')) return webUrl;
+  return `http://${webUrl}`;
 };
 
 /**

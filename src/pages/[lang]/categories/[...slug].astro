@@ -2,15 +2,27 @@
 import { getCollection, getEntry } from 'astro:content';
 import CategoryLayout from '@/layouts/CategoryLayout.astro';
 
-export async function getStaticPaths() {
-  const categoryEntries = await getCollection('categories');
-  return categoryEntries.map(entry => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }));
+// export async function getStaticPaths() {
+//   const categoryEntries = await getCollection('categories');
+//   return categoryEntries.map(entry => ({
+//     params: { slug: entry.slug },
+//     props: { entry },
+//   }));
+// }
+
+// 1. Get the slug from the incoming server request
+const { lang, slug } = Astro.params;
+if (slug === undefined) {
+  throw new Error('Slug is required');
+}
+// 2. Query for the entry directly using the request slug
+const entry = await getEntry('categories', slug);
+// 3. Redirect if the entry does not exist
+if (entry === undefined) {
+  return Astro.redirect('/404');
 }
 
-const { entry } = Astro.props;
+console.log(entry);
 const { Content } = await entry.render();
 ---
 

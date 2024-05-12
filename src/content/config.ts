@@ -34,9 +34,10 @@ const postsCollection = defineCollection({
     title: z.string().optional(),
     description: z.string().optional(),
     date: z.date(),
-    images: z.string().optional(),
+    images: z.array(z.string()).optional(),
+    imageUrls: z.string().optional(),
     videoUrl: z.string().optional(),
-    project: z.string().optional(),
+    project: z.string(),
   }),
 });
 
