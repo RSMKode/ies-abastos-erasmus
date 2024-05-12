@@ -104,16 +104,15 @@ collections:
           label: 'Imagen',
           name: 'images',
           widget: 'image',
-          allow_multiple: true,
-          required: true,
-          hint: 'Imagenes destacadas del proyecto. Recomendable optimizarlas antes de subirlas.',
+          required: false,
+          hint: 'Imagenes destacadas del proyecto. Recomendable optimizarlas antes de subirlas si no es por URL.',
           i18n: duplicate,
         }
       - {
           label: 'Video URL',
           name: 'videoUrl',
           widget: 'string',
-          required: true,
+          required: false,
           hint: 'URL de un video subido previamente a Google Drive',
           i18n: duplicate,
         }
@@ -194,9 +193,9 @@ collections:
           widget: 'relation',
           collection: 'projects',
           value_field: '{{slug}}',
-          search_fields: ['title', 'author', 'type', 'sector'],
-          display_fields: ['title', 'author', 'type', 'sector'],
-          hint: 'Puedes buscar por título, autor, tipo o etiqueta del proyecto relacionado.',
+          search_fields: ['title', 'type', 'sector', 'author'],
+          display_fields: ['title', 'type', 'sector', 'author'],
+          hint: 'Puedes buscar por título, autor, tipo o sector del proyecto relacionado.',
           i18n: true,
         }
       - {
@@ -204,11 +203,21 @@ collections:
           name: 'images',
           widget: 'image',
           required: false,
-          hint: 'Imagen destacada del post. Recomendable optimizarla antes de subirla.',
+          choose_url: false,
+          media_library: { config: { multiple: true } },
+          hint: 'Imagenes destacadas de la publicación. Recomendable optimizarlas antes de subirlas.',
           i18n: duplicate,
         }
       - {
-          label: 'Video URL',
+          label: 'Imagenes URL (Links)',
+          name: 'imageUrls',
+          widget: 'string',
+          required: false,
+          hint: 'Imagenes que vienen de links de Internet. Se pueden escribir varias URL separadas por comas sin espacios adyacentes. Ejemplo: https://example.com/image1.jpg,https://example.com/image2.jpg',
+          i18n: duplicate,
+        }
+      - {
+          label: 'Video URL (Link)',
           name: 'videoUrl',
           widget: 'string',
           required: false,
