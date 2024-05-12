@@ -1,0 +1,42 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import ProjectLayout from '/src/layouts/ProjectLayout.astro';
+
+export const prerender = false;
+
+// export async function getStaticPaths() {
+//   const entries = await getCollection('projects');
+
+//   const paths = entries.map(page => {
+//     const [lang, ...slugArray] = page.slug.split('/');
+//     console.log({
+//       lang,
+//       slugArray,
+//     });
+
+//     const slug = slugArray.join('/');
+//     return { params: { lang, slug: slug }, props: page };
+//   });
+
+//   return paths;
+// }
+// const { lang, slug } = Astro.params;
+// const page = Astro.props;
+// const { Content } = await page.render();
+
+const locale = Astro.currentLocale ?? 'es';
+
+const { lang, slug } = Astro.params;
+const page = await getEntry('projects', `${lang}/${slug}`);
+
+if (!page) {
+  return Astro.redirect('/404');
+}
+
+console.log('Params', Astro.params);
+console.log(page);
+---
+
+<ProjectLayout frontmatter={page.data} projectSlug={page.slug}>
+  <!-- <Content /> -->
+</ProjectLayout>

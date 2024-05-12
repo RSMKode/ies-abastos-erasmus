@@ -1,10 +1,6 @@
 ---
 import { getEntry } from 'astro:content';
 import Badge from './general/Badge.astro';
-// import { normalizeProjectTag } from "@/lib/utils";
-
-// import Badge from "./Badge.astro";
-
 // interface Props {
 //   url: string;
 //   projectData: {
@@ -15,24 +11,23 @@ import Badge from './general/Badge.astro';
 //     images?: string;
 //     imagesAlt?: string;
 //     videoUrl?: string;
-//     project: string[];
-//     tags: string[];
+//     project: string;
 //   };
 // }
 
 const { linkUrl, projectData, isTiny } = Astro.props;
 
-const { author, title, description, date, images, videoUrl, type, tag } =
+const { author, title, description, date, images, videoUrl, type, sector } =
   projectData;
 
 const projectType = await getEntry(type);
 // console.log('projectType', projectType);
 
-const projectTag = await getEntry(tag);
-// console.log('projectTag', projectTag);
+const projectSector = await getEntry(sector);
+// console.log('projectSector', projectSector);
 
 const projectCategories =
-  projectType && projectTag ? [projectType, projectTag] : [];
+  projectType && projectSector ? [projectType, projectSector] : [];
 
 const d = new Date(date);
 const formattedDate = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;

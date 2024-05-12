@@ -1,0 +1,24 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import MarkdownPostLayout from '@/layouts/MarkdownPostLayout.astro';
+
+// 1. Get the slug from the incoming server request
+const { lang, slug } = Astro.params;
+if (slug === undefined) {
+  throw new Error('Slug is required');
+}
+// 2. Query for the entry directly using the request slug
+const entry = await getEntry('posts', `${lang}/${slug}`);
+// 3. Redirect if the entry does not exist
+if (entry === undefined) {
+  return Astro.redirect('/404');
+}
+
+console.log(entry);
+
+const { Content } = await entry.render();
+---
+
+<MarkdownPostLayout frontmatter={entry.data}>
+  <Content />
+</MarkdownPostLayout>

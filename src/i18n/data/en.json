@@ -1,6 +1,6 @@
 {
-    "pageTitle": "IES Abastos | Erasmus+",
-    "pageDescription": "Erasmus+ Projects in IES Abastos",
+    "webTitle": "IES Abastos | Erasmus+",
+    "webDescription": "IES Abastos is a public high school located in Valencia, Spain. We are committed to providing quality education to our students and promoting internationalization through the Erasmus+ program. On this page you will find information about the Erasmus+ projects in which IES Abastos participates.",
     "links": {
         "official": {
             "title": "IES Abastos | Official Website",
@@ -62,11 +62,50 @@
     },
     "textContent": {
         "header": {
-            "title": "Erasmus+"
+            "title": {
+                "main": "Erasmus+",
+                "sub": "Enriching lives, opening minds"
+            },
+            "navigation": {
+                "home": "Inicio",
+                "about": "About",
+                "blog": "Blog",
+                "projects": "Projects",
+                "categories": "Categories"
+            }
         },
         "footer": {
             "main": "© 2024 IES Abastos | Erasmus+",
-            "lastUpdated": "Last update: 10/05/2024"
+            "lastUpdated": "Last update: 10/05/2024",
+            "disclaimer": "This portal is co-funded by the European Union. The opinions and views expressed in it only commit the authors of IES Abastos and do not necessarily reflect those of the European Union or the Spanish Service for the Internationalization of Education (SEPIE). Neither the European Union nor the SEPIE National Agency can be held responsible for them."
+        },
+        "home": {
+            "main": "Blog posts",
+            "noPosts": "No posts available"
+        },
+        "about": {
+            "title": "About",
+            "main": "History and surroundings of IES Abastos",
+            "schoolName": "IES Abastos",
+            "p1": "is a secondary school, high school, and vocational training center located at 18 Alberique Street in Valencia, in the former facilities of the Abastos Market. These facilities also house a cultural-sports complex, various municipal offices, a headquarters of the Popular University, and a Police Station. We are located in a privileged urban enclave that has excellent connections with public urban transport: bus, metro, Valenbisi, etc., which facilitates the arrival of students living in other areas of Valencia or its metropolitan area.",
+            "p2": "We have a student body from a middle social background, with the number of students from non-EU countries having increased considerably in recent years, currently accounting for around 18% of the total number of enrolled students, reflecting our current social reality.",
+            "p3": "The building dates back to the 1940s and was designed by the architect Javier Goerlich Lleó, who is also the author of the Banco de Valencia building, the Talia Theater, the Luis Vives College, the Puerta del Mar, and the restoration of the San Agustín Church, among others. It has an architectural style that is a mix of functionalism and neocasticism.",
+            "p4": "In the 1980s, a complete restoration was carried out, with the north wing being allocated to the institute. When the institute was inaugurated in 1991, it operated as two separate training centers, the Cavanilles High School and the Manuel Sánchez Ayuso Vocational Training Institute, each occupying one wing of the new building. In 2002, these two centers were merged and began operating as a single entity, giving rise to the current IES Abastos."
+        },
+        "projects": {
+            "title": "Projects",
+            "description": "Discover the Erasmus+ projects in which IES Abastos participates",
+            "main": "Erasmus+ Projects",
+            "inProgress": "In Progress",
+            "finished": "Finished",
+            "noProjects": "No projects available"
+        },
+        "categories": {
+            "title": "Categories",
+            "description": "Discover the Erasmus+ projects in which IES Abastos participates",
+            "projectTypes": "Project Types",
+            "sectors": "Sectors",
+            "noCategories": "No categories available"
         }
     }
 }

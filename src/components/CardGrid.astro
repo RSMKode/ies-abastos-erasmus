@@ -1,9 +1,12 @@
 ---
 import PostCard from '@/components/PostCard.astro';
 import ProjectCard from './ProjectCard.astro';
+import { getSlugWithouLang } from '@/lib/utils';
 
 const { posts, projects, isTiny } = Astro.props;
 const animationDelayNum = 150;
+
+const locale = Astro.currentLocale ?? 'es';
 ---
 
 <section class="grid gap-4 grid-cols-auto-fill">
@@ -11,10 +14,9 @@ const animationDelayNum = 150;
     posts &&
       posts.map((post, index) => {
         let animationDelay = index * animationDelayNum;
-        const [lang, ...slug] = post.slug.split('/');
-        console.log(post);
+        const slug = getSlugWithouLang(post.slug);
+        const url = `/${locale}/posts/${slug}`;
 
-        const url = `/${Astro.currentLocale}/posts/${slug.join('/')}`;
         return (
           <PostCard
             {isTiny}
@@ -30,8 +32,8 @@ const animationDelayNum = 150;
     projects &&
       projects.map((project, index) => {
         let animationDelay = index * animationDelayNum;
-        const [lang, ...slug] = project.slug.split('/');
-        const url = `/${Astro.currentLocale}/projects/${slug.join('/')}`;
+        const slug = getSlugWithouLang(project.slug);
+        const url = `/${locale}/projects/${slug}`;
 
         return (
           <ProjectCard

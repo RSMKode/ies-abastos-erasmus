@@ -1,44 +1,43 @@
 ---
 import { getEntry } from 'astro:content';
 import Badge from './general/Badge.astro';
-// import { normalizeProjectTag } from "@/lib/utils";
-
-// import Badge from "./Badge.astro";
+import { formatDate } from '@/lib/utils';
 
 // interface Props {
 //   url: string;
 //   postData: {
 //     title: string;
-//     pubDate: string;
+//     date: string;
 //     description: string;
 //     author: string;
 //     images?: string;
 //     imagesAlt?: string;
 //     videoUrl?: string;
-//     project: string[];
-//     tags: string[];
+//     project: string;
 //   };
 // }
 
 const { linkUrl, postData, isTiny } = Astro.props;
 
-const { author, title, description, pubDate, images, videoUrl, project } =
+const { author, title, description, date, images, videoUrl, project } =
   postData;
 
-const postProject = await getEntry(project);
+const locale = Astro.currentLocale ?? 'es';
+const postProject = await getEntry('projects', `${locale}/${project}`);
 // console.log('postProject', postProject);
 
-const projectType = await getEntry(postProject?.data.type);
+const projectType = postProject ? await getEntry(postProject.data.type) : '';
 // console.log('projectType', projectType);
 
-const projectTag = await getEntry(postProject?.data.tag);
-// console.log('projectTag', projectTag);
+const projectSector = postProject
+  ? await getEntry(postProject.data.sector)
+  : '';
+// console.log('projectSector', projectSector);
 
 const postCategories =
-  projectType && projectTag ? [projectType, projectTag] : [];
+  projectType && projectSector ? [projectType, projectSector] : [];
 
-const date = new Date(pubDate);
-const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+const formattedDate = formatDate(date, locale);
 ---
 
 <article

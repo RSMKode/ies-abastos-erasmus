@@ -2,8 +2,10 @@
 import ThemeSwitch from '@/components/header/ThemeSwitch.astro';
 import NavLink from '@/components/header/NavLink.astro';
 import LanguageSwitch from './LanguageSwitch.astro';
+import { getLocaleTranslation } from '@/i18n/ui';
 
-const locale = Astro.currentLocale;
+const locale = Astro.currentLocale ?? 'es';
+const ui = getLocaleTranslation(locale);
 ---
 
 <a href="/"><h1 class="text-2xl lg:text-4xl font-bold"></h1></a>
@@ -11,13 +13,21 @@ const locale = Astro.currentLocale;
 <nav
   class="flex flex-wrap justify-end items-center gap-2 max-w-5xl xl:max-w-7xl">
   <!-- <NavLink title="Inicio" link=/${locale}` icon="tabler:home" /> -->
-  <NavLink title="About" link=`/${locale}/about` icon="mdi:blog" />
   <NavLink
-    title="Proyectos"
+    title={ui.textContent.header.navigation.about}
+    link=`/${locale}/about`
+    icon="mdi:blog"
+  />
+  <NavLink
+    title={ui.textContent.header.navigation.projects}
     link=`/${locale}/projects`
     icon="mdi:text-box-multiple-outline"
   />
-  <NavLink title="Categorías" link=`/${locale}/categories` icon="tabler:tag" />
+  <NavLink
+    title={ui.textContent.header.navigation.categories}
+    link=`/${locale}/categories`
+    icon="tabler:tag"
+  />
   <LanguageSwitch />
   <!-- <ThemeSwitch /> -->
 </nav>

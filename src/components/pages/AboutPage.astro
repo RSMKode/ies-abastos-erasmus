@@ -1,0 +1,42 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { getLocaleTranslation } from '@/i18n/ui';
+
+const locale = Astro.currentLocale ?? 'es';
+const ui = getLocaleTranslation(locale);
+
+const pageTitle = ` ${ui.textContent.about.title} - ${ui.webTitle}`;
+const pageDescription = `${ui.webDescription}`;
+---
+
+<Layout pageTitle={pageTitle} pageDescription={pageDescription} isContentPage>
+  <h1 class="text-3xl text-accent font-bold" transition:animate="slide">
+    {ui.textContent.about.title}
+  </h1>
+  <section class="flex flex-col gap-4 text-lg">
+    <h2 class="text-xl font-bold">{ui.textContent.about.main}</h2>
+    <img
+      src="https://portal.edu.gva.es/iesabastos/wp-content/uploads/sites/617/2020/12/Abastos_0_Dark_Contrast-768x394.jpg"
+      alt="Foto de IES Abastos"
+      class="rounded-lg"
+    />
+    <p>
+      <strong class="text-accent">
+        {ui.textContent.about.schoolName}
+      </strong>
+      {ui.textContent.about.p1}
+    </p>
+
+    <p>
+      {ui.textContent.about.p2}
+    </p>
+
+    <p>
+      {ui.textContent.about.p3}
+    </p>
+
+    <p>
+      {ui.textContent.about.p4}
+    </p>
+  </section>
+</Layout>

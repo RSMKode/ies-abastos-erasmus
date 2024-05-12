@@ -1,0 +1,28 @@
+---
+import CategoryCard from './CategoryCard.astro';
+import type { CollectionEntry } from 'astro:content';
+
+const { categories, class: className } = Astro.props;
+
+const locale = Astro.currentLocale ?? 'es';
+---
+
+<section class={'grid gap-4 grid-cols-auto-fit-sm ' + className}>
+  {
+    categories.map((category, index) => {
+      let animationDelay = index * 100;
+      const { slug, data } = category;
+      const { title, englishTitle, type, image } = data;
+
+      return (
+        <CategoryCard
+          name={englishTitle && locale === 'en' ? englishTitle : title}
+          linkUrl={`/${locale}/categories/${slug}`}
+          image={image}
+          class={`animate-fade-in-up`}
+          style={`animation-delay: ${animationDelay}ms`}
+        />
+      );
+    })
+  }
+</section>

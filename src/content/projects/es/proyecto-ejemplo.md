@@ -1,11 +1,12 @@
 ---
 author: IES Abastos
-title: Proyecto Ejemplo
-description: Esto es un proyecto de ejemplo
+title: Proyecto Ejemplo en Español
+description: Esto es un proyecto de ejemplo en español
 date: 2024-05-10T15:57:00.000Z
 web: www.ejemplo.com
 type: project_ka1
-tag: tag_escolar
+sector: sector_escolar
 inProgress: true
 ---
-Proyecto 1
+
+## Proyecto Ejemplo en Español

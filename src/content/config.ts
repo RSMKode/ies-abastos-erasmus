@@ -6,7 +6,8 @@ const categoriesCollection = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    type: z.enum(['project', 'tag']),
+    englishTitle: z.string().optional(),
+    type: z.enum(['project', 'sector']),
   }),
 });
 
@@ -21,7 +22,7 @@ const projectsCollection = defineCollection({
     images: z.string().optional(),
     videoUrl: z.string().optional(),
     type: reference('categories'),
-    tag: reference('categories'),
+    sector: reference('categories'),
     inProgress: z.boolean(),
   }),
 });
@@ -32,10 +33,10 @@ const postsCollection = defineCollection({
     author: z.string(),
     title: z.string().optional(),
     description: z.string().optional(),
-    pubDate: z.date(),
+    date: z.date(),
     images: z.string().optional(),
     videoUrl: z.string().optional(),
-    project: reference('projects').optional(),
+    project: z.string().optional(),
   }),
 });
 

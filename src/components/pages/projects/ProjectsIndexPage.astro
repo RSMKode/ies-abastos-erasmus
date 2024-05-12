@@ -1,0 +1,64 @@
+---
+import '@/styles/global.css';
+import Layout from '@/layouts/Layout.astro';
+import CardGrid from '@/components/CardGrid.astro';
+import { getCollection } from 'astro:content';
+import CustomSeparator from '@/components/general/CustomSeparator.astro';
+import { getLocaleTranslation } from '@/i18n/ui';
+
+const locale = Astro.currentLocale ?? 'es';
+const ui = getLocaleTranslation(locale);
+
+const currentProjects = await getCollection(
+  'projects',
+  project => project.slug.startsWith(locale) && project.data.inProgress === true
+);
+
+currentProjects.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
+
+const pastProjects = await getCollection(
+  'projects',
+  project =>
+    project.slug.startsWith(locale) && project.data.inProgress === false
+);
+pastProjects.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
+
+const pageTitle = ` ${ui.textContent.projects.title} - ${ui.webTitle}`;
+const pageDescription = `${ui.textContent.projects.description}`;
+---
+
+<Layout {pageTitle} {pageDescription}>
+  <h1 class="text-3xl text-accent font-bold">
+    {ui.textContent.projects.title}
+  </h1>
+  <section class="flex flex-col gap-4">
+    <h2 class="text-2xl font-bold">
+      {ui.textContent.projects.main}
+      <span class="text-accent capitalize"
+        >{ui.textContent.projects.inProgress}</span
+      >
+    </h2>
+    {
+      currentProjects.length > 0 ? (
+        <CardGrid projects={currentProjects} />
+      ) : (
+        <p>{ui.textContent.projects.noProjects}</p>
+      )
+    }
+  </section>
+  <section class="flex flex-col gap-4">
+    <h2 class="text-2xl font-bold">
+      {ui.textContent.projects.main}
+      <span class="text-accent capitalize"
+        >{ui.textContent.projects.finished}</span
+      >
+    </h2>
+    {
+      pastProjects.length > 0 ? (
+        <CardGrid projects={pastProjects} isTiny />
+      ) : (
+        <p>{ui.textContent.projects.noProjects}</p>
+      )
+    }
+  </section>
+</Layout>

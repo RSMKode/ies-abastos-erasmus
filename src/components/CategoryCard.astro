@@ -3,15 +3,15 @@
 
 // interface Props extends AstroProps {
 //   linkUrl: string;
-//   tagName: string;
-//   tagImage: string;
+//   name: string;
+//   image: string;
 // }
 
 const { linkUrl, name, image } = Astro.props;
 ---
 
 <article
-  class={'text-white flex flex-col bg-primary rounded-lg h-full border-2 border-transparent hover:text-accent hover:border-accent hover:scale-[1.01] transition duration-300 group hover:shadow-accent drop-shadow-md hover:shadow-[0_0_8px_var(--tw-shadow-color)] overflow-hidden relative ' +
+  class={'text-white flex flex-col justify-center bg-primary rounded-lg h-full border-2 border-transparent hover:text-accent hover:border-accent hover:scale-[1.01] transition duration-300 group hover:shadow-accent drop-shadow-md hover:shadow-[0_0_8px_var(--tw-shadow-color)] overflow-hidden relative ' +
     Astro.props.class}
   style={Astro.props.style}>
   {linkUrl && <a href={linkUrl} class="absolute inset-0 z-10" />}

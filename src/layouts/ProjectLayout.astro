@@ -3,32 +3,39 @@ import '@/styles/global.css';
 import Layout from '@/layouts/Layout.astro';
 import { fade } from 'astro:transitions';
 import CardGrid from '@/components/CardGrid.astro';
-import TagIndex from '@/components/TagIndex.astro';
+import CategoryIndex from '@/components/CategoryIndex.astro';
 import CustomSeparator from '@/components/general/CustomSeparator.astro';
 import { getEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 import { formatDate } from '@/lib/utils';
 
+const locale = Astro.params.lang || 'es';
+console.log({ locale });
+
 const { frontmatter, projectSlug } = Astro.props;
-console.log(projectSlug);
-const { title, date, description, author, image, videoUrl, type, tag } =
+const { title, date, description, author, image, videoUrl, type, sector } =
   frontmatter;
 
-console.log(frontmatter);
-const typeA = await getEntry(frontmatter.type);
-console.log(typeA);
+console.log({ projectSlug });
+
+const projectType = await getEntry(frontmatter.type);
+const projectSector = await getEntry(frontmatter.sector);
 
 const filteredPosts = await getCollection('posts', post => {
-  return post.data.project?.slug === projectSlug;
+  const postSlug = post.slug;
+  return (
+    postSlug.startsWith(locale) &&
+    projectSlug === locale + '/' + post.data.project
+  );
 });
 
-const formattedDate = formatDate(date);
+const formattedDate = formatDate(date, locale);
 
 const pageTitle = `Proyecto: ${title}`;
-const pageDescription = `Página del proyecto ${title} de ${type} y ${tag} creado por ${author} el ${date}.`;
+const pageDescription = `Página del proyecto ${title} de ${type} y ${sector} creado por ${author} el ${date}.`;
 ---
 
-<Layout {pageTitle} {pageDescription} showTitle={!false}>
+<Layout {pageTitle} {pageDescription}>
   <header class="flex flex-col gap-2">
     <p>Autor: <strong class="text-accent">{author}</strong></p>
     <p>Fecha: <strong class="">{formattedDate}</strong></p>
@@ -50,7 +57,7 @@ const pageDescription = `Página del proyecto ${title} de ${type} y ${tag} cread
     }
   </section>
 </Layout>
-<!-- <TagIndex tags={filteredCategories} class="w-1/2" /> -->
+<!-- <CategoryIndex categories={filteredCategories} class="w-1/2" /> -->
 <!-- {
   filteredCategories.map(category => {
     const { frontmatter, url } = category;

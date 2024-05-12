@@ -1,30 +1,24 @@
 ---
-import { getLocaleTraduction } from '@/i18n/ui';
-
 import { Icon } from 'astro-icon/components';
 import CustomSeparator from '../general/CustomSeparator.astro';
 import FooterLink from './FooterLink.astro';
 import NavLink from '../header/NavLink.astro';
 import Disclaimer from './Disclaimer.astro';
 import Tecnologies from './Tecnologies.astro';
-import SocialLink from '../unused/SocialLink.astro';
+import SocialLink from '../_unused/SocialLink.astro';
 import SocialLinks from './Links.astro';
+import { getLocaleTranslation } from '@/i18n/ui';
 
-const ui = getLocaleTraduction(Astro.currentLocale);
+const locale = Astro.currentLocale ?? 'es';
+const ui = getLocaleTranslation(locale);
 ---
 
 <!-- <CustomSeparator class="text-accent max-w-7xl invisible dark:visible" /> -->
 <CustomSeparator class="text-accent max-w-7xl" />
 <footer
   class="w-full max-w-7xl flex flex-col gap-4 px-6 py-4 text-content/80 bg dark:bg-transparent rounded">
-  <section class="flex flex-col sm:flex-row justify-between">
+  <section class="flex flex-col sm:flex-row justify-between gap-4">
     <div class="flex flex-col gap-2 items-start">
-      <p>{ui.textContent.footer.main}</p>
-      <p class="">
-        {ui.textContent.footer.lastUpdated}
-      </p>
-
-      <FooterLink title="Admin" link="/admin" icon="tabler:user" />
       <a
         class="size-fit flex gap-1 items-center px-2 py-1 border-2 border-content/80 rounded-full cursor-pointer hover:text-accent hover:border-current hover:opacity-100 hover:scale-105 active:scale-100 transition duration-200"
         href={ui.links.repo.url}
@@ -34,6 +28,12 @@ const ui = getLocaleTraduction(Astro.currentLocale);
         <span>{ui.links.repo.title}</span>
         <Icon name={ui.links.repo.icon} class="size-6" />
       </a>
+      <p>{ui.textContent.footer.main}</p>
+      <p class="">
+        {ui.textContent.footer.lastUpdated}
+      </p>
+
+      <FooterLink title="Admin" link="/admin" icon="tabler:user" />
     </div>
     <SocialLinks />
     <Tecnologies />

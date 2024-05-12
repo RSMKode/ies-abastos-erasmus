@@ -1,15 +1,17 @@
+---
+import { getLocaleTranslation } from '@/i18n/ui';
+
+const locale = Astro.currentLocale ?? 'es';
+const ui = getLocaleTranslation(locale);
+---
+
 <section class="flex flex-col sm:flex-row gap-2 justify-between items-center">
   <img
     src="/assets/logos/es_v_cofinanciado_por_la_union_europea_neg.png"
     alt=""
-    class="opacity-80 w-80"
+    class="opacity-80 w-40 flex-shrink-0 self-start"
   />
   <p class="">
-    Este portal está cofinanciado por la Unión Europea. Las opiniones y puntos
-    de vista expresados en el mismo sólo comprometen a los autores del IES
-    Abastos y no reflejan necesariamente los de la Unión Europea ni los del
-    Servicio Español para la Internacionalización de la Educación (SEPIE). Ni la
-    Unión Europea ni la Agencia Nacional SEPIE pueden ser considerados
-    responsables de ellos.
+    {ui.textContent.footer.disclaimer}
   </p>
 </section>

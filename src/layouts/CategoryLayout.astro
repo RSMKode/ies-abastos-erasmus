@@ -1,17 +1,20 @@
 ---
 import '@/styles/global.css';
 import { fade } from 'astro:transitions';
-
 import Layout from '@/layouts/Layout.astro';
 import CardGrid from '@/components/CardGrid.astro';
 import { getCollection } from 'astro:content';
 import CustomSeparator from '@/components/general/CustomSeparator.astro';
+import { getLocaleTranslation } from '@/i18n/ui';
+
+const locale = Astro.currentLocale ?? 'es';
+const ui = getLocaleTranslation(locale);
 
 interface Props {
   categorySlug: string;
   frontmatter: {
     title: string;
-    type: 'project' | 'tag';
+    type: 'project' | 'sector';
   };
 }
 const { frontmatter, categorySlug } = Astro.props;
@@ -19,8 +22,9 @@ const { title: categoryName, type: categoryType } = frontmatter;
 
 const filteredProjects = await getCollection('projects', project => {
   if (
-    categorySlug === project.data.type.slug ||
-    categorySlug === project.data.tag.slug
+    (project.slug.startsWith(locale) &&
+      categorySlug === project.data.type.slug) ||
+    categorySlug === project.data.sector.slug
   ) {
     return project;
   }
@@ -29,14 +33,15 @@ filteredProjects?.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 
 const filteredPosts = await getCollection('posts', post => {
   return filteredProjects.some(
-    project => project.slug === post.data.project?.slug
+    project => `${locale}/${project.slug}` === post.data.project
   );
 });
 
-const pageTitle =
-  categoryType === 'tag'
-    ? 'Categoría: ' + categoryName
+const title =
+  categoryType === 'sector'
+    ? 'Sector: ' + categoryName
     : 'Tipo de Proyecto: ' + categoryName;
+const pageTitle = `${title} - ${ui.webTitle}`;
 const pageDescription = `Proyectos y posts etiquetados con la categoría ${categoryName}`;
 ---
 

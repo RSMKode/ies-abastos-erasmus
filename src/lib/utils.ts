@@ -4,13 +4,18 @@
  * @param {string} dateString - La cadena de fecha a formatear.
  * @returns {string} La fecha formateada en el formato 'día (en letras) mes (en letras) año (en números)'.
  */
-export const formatDate = (dateString: string) => {
+export const formatDate = (dateString: string, locale) => {
   const options: Intl.DateTimeFormatOptions = {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
   };
-  return new Date(dateString).toLocaleDateString('es-ES', options);
+  return new Date(dateString).toLocaleDateString(locale, options);
+};
+
+export const getSlugWithouLang = slugWithLang => {
+  const [lang, ...slugArray] = slugWithLang.split('/');
+  return slugArray.join('/');
 };
 
 /**
@@ -22,14 +27,17 @@ export const formatDate = (dateString: string) => {
  * Si la URL es de YouTube, reemplaza 'watch?v=' por 'embed/'.
  * Si la URL no es ni de Google Drive ni de YouTube, la devuelve sin cambios.
  */
-export const fixVideoURL = (videoUrl: string) => {
-  if (videoUrl.includes('drive.google.com')) {
-    return videoUrl.replace('view?usp=sharing', 'preview');
-  } else if (videoUrl.includes('youtube.com')) {
-    return videoUrl.replace('watch?v=', 'embed/');
-  } else {
-    return videoUrl;
+export const fixVideoURL = (videoUrl?: string) => {
+  let urlType = '';
+  let fixedVideoUrl = '';
+  if (videoUrl?.includes('drive.google.com')) {
+    urlType = 'googleDrive';
+    fixedVideoUrl = videoUrl.replace('view?usp=sharing', 'preview');
+  } else if (videoUrl?.includes('youtube.com')) {
+    urlType = 'youtube';
+    fixedVideoUrl = videoUrl.replace('watch?v=', 'embed/');
   }
+  return { urlType, fixedVideoUrl };
 };
 
 //? ANTIGUAS --------------------------------------------

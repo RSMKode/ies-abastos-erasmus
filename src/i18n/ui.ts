@@ -16,7 +16,7 @@ export const languages = {
 
 export const defaultLang = 'es';
 
-export const getLocaleTraduction = (currentLocale: string | undefined) => {
+export const getLocaleTranslation = (currentLocale: string | undefined) => {
   return currentLocale && currentLocale === 'es' ? es : en;
 };
 

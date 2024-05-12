@@ -1,6 +1,6 @@
 {
-    "pageTitle": "IES Abastos | Erasmus+",
-    "pageDescription": "Proyectos Erasmus+ en IES Abastos",
+    "webTitle": "IES Abastos | Erasmus+",
+    "webDescription": "IES Abastos es un instituto público ubicado en Valencia, España. Estamos comprometidos en brindar educación de calidad a nuestros estudiantes y promover la internacionalización a través del programa Erasmus+. En esta página encontrarás información sobre los proyectos Erasmus+ en los que participa el IES Abastos.",
     "links": {
         "official": {
             "title": "IES Abastos | Web oficial",
@@ -62,11 +62,50 @@
     },
     "textContent": {
         "header": {
-            "title": "Erasmus+"
+            "title": {
+                "main": "Erasmus+",
+                "sub": "Enriqueciendo vidas, abriendo mentes"
+            },
+            "navigation": {
+                "home": "Inicio",
+                "about": "Conocenos",
+                "blog": "Blog",
+                "projects": "Proyectos",
+                "categories": "Categorias"
+            }
         },
         "footer": {
             "main": "© 2024 IES Abastos | Erasmus+",
-            "lastUpdated": "Ultima actualización: 10/05/2024"
+            "lastUpdated": "Ultima actualización: 10/05/2024",
+            "disclaimer": "Este portal está cofinanciado por la Unión Europea. Las opiniones y puntos de vista expresados en el mismo sólo comprometen a los autores del IES Abastos y no reflejan necesariamente los de la Unión Europea ni los del Servicio Español para la Internacionalización de la Educación (SEPIE). Ni la Unión Europea ni la Agencia Nacional SEPIE pueden ser considerados responsables de ellos."
+        },
+        "home": {
+            "main": "Conjunto de entradas del blog",
+            "noPosts": "No hay entradas disponibles"
+        },
+        "about": {
+            "title": "Sobre nosotros",
+            "main": "Historia y entorno del IES Abastos",
+            "schoolName": "I.E.S. Abastos",
+            "p1": "es un centro de educación secundaria, bachillerato y ciclos formativos de grado medio y superior situado en la calle Alberique nº 18 de Valencia, en las antiguas instalaciones del Mercado de Abastos de la ciudad. Dichas instalaciones albergan además un complejo cultural-deportivo, diversas oficinas municipales, una sede de la Universidad Popular y una Comisaría de Policía. Estamos situados en un enclave urbano privilegiado que cuenta con estupendas conexiones con el transporte público urbano: bus, metro, Valenbisi, etc. que facilita la llegada de los alumnos que vivan en otras zonas de Valencia o en su área metropolitana.",
+            "p2": "Contamos con un alumnado de una extracción social media, habiendo aumentado considerablemente el número de alumnos de procedencia extracomunitaria en los últimos años hasta situarse en torno al 18% del total de alumnos matriculados en la actualidad, fenómeno éste que no hace sino reflejar nuestra realidad social actual.",
+            "p3": "El edificio data de los años 40 y fue proyectado por el arquitecto Javier Goerlich Lleó, autor entre otros del edificio Banco de Valencia, el Teatro Talia, el colegio Mayor Luis Vives, la Puerta del Mar o la restauración de la Iglesia de San Agustín. Tiene un estilo arquitectónico entre funcionalista y neocasticista.",
+            "p4": "En los años 80 se hizo una restauración completa, destinando el ala norte al instituto. Cuando el instituto fue inaugurado, en 1991, lo hizo como dos centros formativos diferenciados, el Instituto de Bachillerato Cavanilles y el Instituto de Formación Profesional Manuel Sánchez Ayuso, ocupando cada uno de ellos un ala del nuevo edificio. En el año 2002 estos dos centros fueron fusionados pasando a funcionar como uno sólo, dando lugar al actual IES Abastos."
+        },
+        "projects": {
+            "title": "Proyectos",
+            "description": "Conoce los proyectos Erasmus+ en los que participa el IES Abastos",
+            "main": "Proyectos Erasmus+",
+            "inProgress": "En curso",
+            "finished": "Finalizados",
+            "noProjects": "No hay proyectos"
+        },
+        "categories": {
+            "title": "Categorías",
+            "description": "Conoce los proyectos Erasmus+ en los que participa el IES Abastos",
+            "projectTypes": "Tipos de Proyecto",
+            "sectors": "Sectores",
+            "noCategories": "No hay categorias"
         }
     }
 }

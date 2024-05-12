@@ -1,0 +1,45 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import ProjectLayout from '@/layouts/ProjectLayout.astro';
+
+// Para obtener los paths de las páginas estáticas
+// export async function getStaticPaths() {
+//   const locale = Astro.currentLocale;
+//   const entries = await getCollection('projects');
+
+//   const paths = entries.map(page => {
+//     const [lang, ...slugArray] = page.slug.split('/');
+//     console.log({
+//       lang,
+//       slugArray,
+//     });
+
+//     const slug = slugArray.join('/');
+//     return { params: { lang, slug: slug }, props: page };
+//   });
+
+//   return paths;
+// }
+
+// const { lang, slug } = Astro.params;
+// const page = Astro.props;
+// const { Content } = await page.render();
+
+// 1. Get the slug from the incoming server request
+const { lang, slug } = Astro.params;
+if (slug === undefined) {
+  throw new Error('Slug is required');
+}
+// 2. Query for the entry directly using the request slug
+const entry = await getEntry('projects', `${lang}/${slug}`);
+// 3. Redirect if the entry does not exist
+if (entry === undefined) {
+  return Astro.redirect('/404');
+}
+
+const { Content } = await entry.render();
+---
+
+<ProjectLayout frontmatter={entry?.data} projectSlug={entry?.slug}>
+  <Content />
+</ProjectLayout>

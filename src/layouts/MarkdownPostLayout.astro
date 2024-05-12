@@ -9,38 +9,35 @@ import { fixVideoURL, formatDate } from '@/lib/utils';
 // interface Props {
 //   frontmatter: {
 //     title: string;
-//     pubDate: string;
+//     date: string;
 //     description: string;
 //     author: string;
 //     image?: string;
 //     imageAlt?: string;
 //     videoUrl?: string;
 //     project: string[];
-//     tags: string[];
 //   };
 // }
 
 const { frontmatter } = Astro.props;
 const {
   title,
-  pubDate,
+  date,
   description,
   author,
   images,
   imageAlt,
   videoUrl,
   project,
-  tags,
 } = frontmatter;
 
-const postProject = await getEntry(project);
+const locale = Astro.currentLocale ?? 'es';
+const formattedDate = formatDate(date, locale);
 
-const formattedDate = formatDate(pubDate);
+const postProject = await getEntry('projects', `${locale}/${project}`);
 
-let fixedVideoURL;
-if (videoUrl) {
-  fixedVideoURL = fixVideoURL(videoUrl);
-}
+const { urlType, fixedVideoUrl } = fixVideoURL(videoUrl);
+console.log({ fixedVideoUrl });
 ---
 
 <Layout pageTitle={title} pageDescription={description} isContentPage>
@@ -57,13 +54,14 @@ if (videoUrl) {
     </p>
     <p>Escrito por: <a href="/about/">{author}</a></p>
     {
-      fixedVideoURL && (
+      fixedVideoUrl && urlType === 'googleDrive' && (
         <iframe
-          src={fixedVideoURL}
+          src={fixedVideoUrl}
           class="w-full aspect-video bg-gray-800 rounded border"
         />
       )
     }
+
     {
       images && (
         <div class="w-4/5">

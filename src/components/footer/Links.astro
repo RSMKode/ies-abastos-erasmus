@@ -1,11 +1,12 @@
 ---
 import FooterLink from './FooterLink.astro';
-import { getLocaleTraduction } from '@/i18n/ui';
-const { links } = getLocaleTraduction(Astro.currentLocale);
+import { getLocaleTranslation } from '@/i18n/ui';
+
+const locale = Astro.currentLocale ?? 'es';
+const { links } = getLocaleTranslation(locale);
 ---
 
 <nav class="flex flex-col gap-2 items-start">
-  <h3></h3>
   {
     Object.entries(links).map(([key, value]) => (
       <FooterLink title={value.title} link={value.url} icon={value.icon} />

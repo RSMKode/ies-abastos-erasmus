@@ -1,25 +1,31 @@
 ---
 import '@/styles/global.css';
-import Layout from '@/layouts/Layout.astro';
-import TagIndex from '@/components/TagIndex.astro';
-import CardGrid from '@/components/CardGrid.astro';
 import { getCollection } from 'astro:content';
+import Layout from '@/layouts/Layout.astro';
+import CardGrid from '@/components/CardGrid.astro';
+import { getLocaleTranslation } from '@/i18n/ui';
+
+const locale = Astro.currentLocale ?? 'es';
+const ui = getLocaleTranslation(locale);
 
 const allPosts = await getCollection('posts');
-allPosts.sort((a, b) => (a.data.pubDate > b.data.pubDate ? -1 : 1));
+allPosts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 
-const pageTitle = 'IES Abastos | Erasmus+';
-const pageDescription = 'Proyectos Erasmus+ de IES Abastos';
+const pageTitle = ui.webTitle;
+const pageDescription = ui.webDescription;
 ---
 
 <Layout {pageTitle} {pageDescription}>
+  <h1 class="text-3xl text-accent font-bold" transition:animate="slide">
+    {pageTitle}
+  </h1>
   <section class="flex flex-col gap-4">
-    <h2 class="text-2xl font-bold">Conjunto de entradas del blog</h2>
+    <h2 class="text-2xl font-bold">{ui.textContent.home.main}</h2>
     {
       allPosts.length > 0 ? (
         <CardGrid posts={allPosts} />
       ) : (
-        <p>Todavía no hay posts</p>
+        <p>{ui.textContent.home.noPosts}</p>
       )
     }
   </section>

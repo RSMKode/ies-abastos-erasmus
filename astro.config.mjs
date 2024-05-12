@@ -9,10 +9,13 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   site: "https://ies-erasmus.netlify.app",
   integrations: [preact(), icon(), tailwind()],
-  output: "hybrid",
+  output: "server",
   adapter: netlify(),
   i18n: {
     defaultLocale: "es",
     locales: ["es", "en"],
+    fallback: {
+      en: "es"
+    }
   },
 });

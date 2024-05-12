@@ -2,7 +2,7 @@
 author: Roger Sancho
 title: Mi cuarta entrada en el blog
 description: 'Esta entrada aparecerá sola!'
-pubDate: 2022-08-08T22:34:00.000Z
+date: 2022-08-08T22:34:00.000Z
 images: 'https://docs.astro.build/default-og-image.png'
 project: es/prueba-proyecto
 ---

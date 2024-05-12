@@ -2,13 +2,13 @@
 import { Icon } from 'astro-icon/components';
 import { languages } from '@/i18n/ui';
 
-const currentLocale = Astro.currentLocale;
+const locale = Astro.currentLocale ?? 'es';
 
 const [slash, lang, ...currentUrl] = Astro.url.pathname.split('/');
-console.log(currentUrl);
+const targetLanguage = locale === 'es' ? 'en' : 'es';
 
-const targetLanguage = currentLocale === 'es' ? 'en' : 'es';
-console.log(targetLanguage);
+// console.log(currentUrl);
+// console.log(targetLanguage);
 
 const targetUrl = `/${targetLanguage}/${currentUrl.join('/')}`;
 ---
@@ -17,5 +17,5 @@ const targetUrl = `/${targetLanguage}/${currentUrl.join('/')}`;
   href={targetUrl}
   class="flex gap-1 hover:scale-110 transition duration-300 p-1 cursor-pointer items-start rounded border-2 border-transparent hover:border-accent">
   <Icon name="tabler:language" size={20} class="" />
-  <Icon name={languages[targetLanguage].flag} size={20} class="" />
+  {locale && <Icon name={languages[locale].flag} size={20} class="" />}
 </a>

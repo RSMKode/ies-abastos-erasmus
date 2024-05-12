@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+
+import CategoryIndex from '@/components/CategoryIndex.astro';
+import Layout from '@/layouts/Layout.astro';
+import { getLocaleTranslation } from '@/i18n/ui';
+
+const locale = Astro.currentLocale ?? 'es';
+const ui = getLocaleTranslation(locale);
+
+const projectSector = await getCollection(
+  'categories',
+  category => category.data.type === 'sector'
+);
+const projectType = await getCollection(
+  'categories',
+  category => category.data.type === 'project'
+);
+
+const pageTitle = ` ${ui.textContent.categories.title} - ${ui.webTitle}`;
+const pageDescription = `${ui.textContent.categories.description}`;
+---
+
+<Layout {pageTitle} {pageDescription}>
+  <h1 class="text-3xl text-accent font-bold" transition:animate="slide">
+    {ui.textContent.categories.title}
+  </h1>
+  <h2 class="text-2xl font-bold">
+    {ui.textContent.categories.projectTypes}
+  </h2>
+  {
+    projectType.length > 0 ? (
+      <CategoryIndex categories={projectType} />
+    ) : (
+      <p>{ui.textContent.categories.noCategories}</p>
+    )
+  }
+  <h2 class="text-2xl font-bold">{ui.textContent.categories.sectors}</h2>
+  {
+    projectSector.length > 0 ? (
+      <CategoryIndex categories={projectSector} />
+    ) : (
+      <p>{ui.textContent.categories.noCategories}</p>
+    )
+  }
+</Layout>

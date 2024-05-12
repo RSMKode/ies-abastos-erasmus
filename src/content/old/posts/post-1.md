@@ -2,7 +2,7 @@
 author: Roger Sancho
 title: Mi primera publicación en el blog
 description: Esta es la primera publicación de mi nuevo blog Astro.
-pubDate: 2022-07-01T22:34:00.000Z
+date: 2022-07-01T22:34:00.000Z
 images: 'https://docs.astro.build/assets/rays.webp'
 videoUrl: 'https://drive.google.com/file/d/1nzcqcYYVt4ld5OTIV-NSBOwVn4yR0jPO/view?usp=sharing'
 project: es/proyecto-1

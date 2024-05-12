@@ -1,7 +1,9 @@
 ---
 import FooterLink from './FooterLink.astro';
-import { getLocaleTraduction } from '@/i18n/ui';
-const { technologies } = getLocaleTraduction(Astro.currentLocale);
+import { getLocaleTranslation } from '@/i18n/ui';
+
+const locale = Astro.currentLocale ?? 'es';
+const { technologies } = getLocaleTranslation(locale);
 ---
 
 <nav class="flex flex-col gap-2 items-start">

@@ -2,7 +2,7 @@
 author: IES Abastos Erasmus+
 title: Hola
 description: Que tal
-pubDate: 2024-04-21T22:34:00.000Z
+date: 2024-04-21T22:34:00.000Z
 project: es/prueba-proyecto-2
 ---
 

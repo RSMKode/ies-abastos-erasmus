@@ -13,10 +13,8 @@ i18n:
   # multiple_files - persists files in `<folder>/<slug>.<locale>.<extension>`
   # single_file - persists a single file in `<folder>/<slug>.<extension>`
   structure: multiple_folders
-
   # Required - a list of locales to show in the editor UI
   locales: [es, en]
-
   # Optional, defaults to the first item in locales.
   # The locale to be used for fields validation and as a baseline for the entry.
   default_locale: es
@@ -34,26 +32,33 @@ collections:
     fields: # Los campos para cada documento, generalmente en el frontmatter
       - { label: 'Nombre', name: 'title', widget: 'string' }
       - {
+          label: 'Nombre en ingles',
+          name: 'englishTitle',
+          widget: 'string',
+          required: false,
+          hint: 'Nombre de la categoría en inglés, si es necesario',
+        }
+      - {
           label: 'Tipo de Categoría',
           name: 'type',
           widget: 'select',
           options:
             [
               { label: 'Proyecto', value: 'project' },
-              { label: 'Etiqueta', value: 'tag' },
+              { label: 'Sector', value: 'sector' },
             ],
-          hint: 'Tipo de proyecto como KA1 o KA2 y etiqueta como FP o Escolar',
+          hint: 'Tipo de proyecto como KA1 o KA2 y sector como FP o Escolar',
         }
-      - {
-          label: 'Cuerpo de la categoría',
-          name: 'body',
-          widget: 'markdown',
-          required: false,
-          hint: 'Escribe el contenido de la categoría',
-        }
+      # - {
+      #     label: 'Cuerpo de la categoría',
+      #     name: 'body',
+      #     widget: 'markdown',
+      #     required: false,
+      #     hint: 'Escribe el contenido de la categoría',
+      #   }
 
   - name: 'projects' # Usado en rutas, por ejemplo, /admin/collections/blog
-    slug: '{{slug}}' # Archivos en la carpeta de documentos tendrán un nombre similar a 'proyecto_tipo_tag'
+    slug: '{{slug}}' # Archivos en la carpeta de documentos tendrán un nombre similar a 'proyecto_tipo_sector'
     label: 'Proyectos' # Usado en la interfaz de usuario de /admin
     label_singular: 'Proyecto' # Usado en la interfaz de usuario de /admin
     folder: '/src/content/projects' # La ruta a la carpeta donde se almacenan los documentos
@@ -61,10 +66,10 @@ collections:
     create: true # Permitir a los usuarios crear nuevos documentos en esta colección
     view_groups: # Agrupar documentos por tipo de proyecto y etiqueta
       - { label: 'Tipo de Proyecto', field: type }
-      - { label: 'Etiqueta', field: tag }
-    summary: "{{title}} - {{type}} - {{tag}} - {{author}} - {{date | date('DD-MM-YYYY')}}"
-    locales: [es, en]
-    default_locale: es
+      - { label: 'Etiqueta', field: sector }
+    summary: "{{title}} - {{type}} - {{sector}} - {{author}} - {{date | date('DD-MM-YYYY')}}"
+    # locales: [es, en]
+    # default_locale: es
     i18n: true
     fields: # Los campos para cada documento, generalmente en el frontmatter
       - {
@@ -126,13 +131,13 @@ collections:
         }
       - {
           label: 'Sector del Proyecto',
-          name: 'tag',
+          name: 'sector',
           widget: 'relation',
           collection: 'categories',
           value_field: '{{slug}}',
           search_fields: ['title'],
           display_fields: ['title'],
-          filters: [{ field: 'type', values: ['tag'] }],
+          filters: [{ field: 'type', values: ['sector'] }],
           hint: 'Selecciona un sector para el proyecto. Por ejemplo, FP o Escolar',
           i18n: duplicate,
         }
@@ -149,6 +154,7 @@ collections:
           name: 'body',
           widget: 'markdown',
           hint: 'Escribe el contenido del proyecto',
+          i18n: true,
         }
 
   - name: 'posts' # Usado en rutas, por ejemplo, /admin/collections/blog
@@ -159,7 +165,7 @@ collections:
     create: true # Permitir a los usuarios crear nuevos documentos en esta colección
     view_groups: # Agrupar documentos por proyecto
       - { label: 'Project', field: project }
-    summary: "{{title}} - {{project}} - {{author}} - {{pubDate | date('DD-MM-YYYY')}}"
+    summary: "{{title}} - {{project}} - {{author}} - {{date | date('DD-MM-YYYY')}}"
     i18n: true
     fields: # Los campos para cada documento, generalmente en el frontmatter
       - {
@@ -169,11 +175,16 @@ collections:
           default: 'IES Abastos',
           i18n: duplicate,
         }
-      - { label: 'Titulo', name: 'title', widget: 'string' }
-      - { label: 'Descripción', name: 'description', widget: 'string' }
+      - { label: 'Titulo', name: 'title', widget: 'string', i18n: true }
+      - {
+          label: 'Descripción',
+          name: 'description',
+          widget: 'string',
+          i18n: true,
+        }
       - {
           label: 'Fecha de Publicación',
-          name: 'pubDate',
+          name: 'date',
           widget: 'datetime',
           i18n: duplicate,
         }
@@ -182,9 +193,9 @@ collections:
           name: 'project',
           widget: 'relation',
           collection: 'projects',
-          value_field: '{{ slug }}',
-          search_fields: ['title', 'author', 'type', 'tag'],
-          display_fields: ['title', 'author', 'type', 'tag'],
+          value_field: '{{slug}}',
+          search_fields: ['title', 'author', 'type', 'sector'],
+          display_fields: ['title', 'author', 'type', 'sector'],
           hint: 'Puedes buscar por título, autor, tipo o etiqueta del proyecto relacionado.',
           i18n: true,
         }
@@ -209,6 +220,7 @@ collections:
           name: 'body',
           widget: 'markdown',
           hint: 'Escribe el contenido del post',
+          i18n: true,
         }
 
   # - name: "authors" # Usado en rutas, por ejemplo, /admin/collections/blog

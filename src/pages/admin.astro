@@ -8,7 +8,6 @@ import Footer from '@/components/footer/Footer.astro';
 import { ViewTransitions } from 'astro:transitions';
 
 const allowedUsers = import.meta.env.PUBLIC_ALLOWED_USERS.split(', ');
-console.log(allowedUsers);
 
 const pageDescription = 'Administrador de Contenidos';
 const pageTitle = 'Decap CMS';
@@ -61,12 +60,12 @@ const pageTitle = 'Decap CMS';
     <script>
       // Se importa la lista de usuarios permitidos desde el archivo .env
       const allowedUsers = import.meta.env.PUBLIC_ALLOWED_USERS.split(', ');
-      // console.log("allowedUsers", allowedUsers);
+      console.log('allowedUsers', allowedUsers);
 
       // Se comprueba si el usuario logueado está en la lista de usuarios permitidos
       // @ts-expect-error netlifyIdentity is defined globally
       netlifyIdentity.on('login', user => {
-        // console.log(user);
+        console.log(user);
         // console.log(localStorage);
         // if (user.email != "rogersanchom@gmail.com") {
         if (!allowedUsers.includes(user.email)) {
@@ -83,7 +82,6 @@ const pageTitle = 'Decap CMS';
     <script>
       // @ts-expect-error CMS is defined globally
       CMS.registerPreviewStyle('/admin/global.css');
-      console.log('PRUEBA');
     </script>
     <!-- Only showing body in preview panel -->
     <script src="@/utils/preview.js"></script>
