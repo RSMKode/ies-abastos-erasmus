@@ -34,9 +34,8 @@ const filteredProjects = await getCollection('projects', project => {
     project.slug.startsWith(locale) &&
     (categorySlug === project.data.type.slug ||
       categorySlug === project.data.sector.slug)
-  ) {
+  )
     return project;
-  }
 });
 filteredProjects?.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 
