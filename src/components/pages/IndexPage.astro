@@ -1,5 +1,4 @@
 ---
-import '@/styles/global.css';
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
 import CardGrid from '@/components/CardGrid.astro';
@@ -8,7 +7,9 @@ import { getLocaleTranslation } from '@/i18n/ui';
 const locale = Astro.currentLocale ?? 'es';
 const ui = getLocaleTranslation(locale);
 
-const allPosts = await getCollection('posts');
+const allPosts = await getCollection('posts', post =>
+  post.slug.startsWith(locale)
+);
 allPosts.sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
 
 const pageTitle = ui.webTitle;
