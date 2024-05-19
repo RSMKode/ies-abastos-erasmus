@@ -52,7 +52,7 @@ const subtitle =
     : `${ui.textContent.categories.categoryLayout.projectType}:`;
 const title = categoryName;
 const pageTitle = `${subtitle} ${title} - ${ui.webTitle}`;
-const pageDescription = `Proyectos y posts etiquetados con la categoría ${categoryName}`;
+const pageDescription = `${ui.textContent.categories.categoryLayout.description}: ${categoryName}`;
 ---
 
 <Layout {pageTitle} {pageDescription}>

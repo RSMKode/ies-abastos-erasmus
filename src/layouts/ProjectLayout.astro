@@ -7,7 +7,7 @@ import CategoryIndex from '@/components/CategoryIndex.astro';
 import CustomSeparator from '@/components/general/CustomSeparator.astro';
 import { getEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
-import { fixWebUrl, formatDate, getImageUrls } from '@/lib/utils';
+import { fixWebUrl, formatDate, getImageUrls } from '@/utils/utils';
 import { getLocaleTranslation } from '@/i18n/ui';
 import Link from '@/components/general/Link.astro';
 import ImageGalery from '@/components/ImageGalery.astro';
@@ -49,45 +49,55 @@ const filteredPosts = await getCollection('posts', post => {
 
 const formattedDate = formatDate(date, locale);
 
-const pageTitle = `Proyecto: ${title}`;
-const pageDescription = `Página del proyecto ${title} de ${type} y ${sector} creado por ${author} el ${date}.`;
+const pageTitle = title.includes('proyecto')
+  ? `${ui.textContent.projects.projectLayout.title}: ${title}`
+  : title;
+const pageDescription = `${ui.textContent.general.project}: ${title} | ${ui.textContent.general.projectType}: ${type} | ${ui.textContent.general.sector}: ${sector} | ${ui.textContent.general.author}: ${author} | ${ui.textContent.general.date}: ${formattedDate}.`;
 ---
 
 <Layout {pageTitle} {pageDescription} isContentPage>
   {
     title && description ? (
       <>
-        <header class="flex flex-col gap-2">
-          {web && (
-            <Link
-              title={web}
-              link={fixWebUrl(web)}
-              icon="mdi:web"
-              class="text-lg items-center"
-            />
+        <header class="flex flex-col sm:flex-row gap-6">
+          {images && (
+            <div class="w-3/5">
+              <ImageGalery images={images} />
+            </div>
           )}
-          <p>
-            Autor: <strong class="text-accent">{author}</strong>
-          </p>
-          <p>
-            Fecha: <strong class="">{formattedDate}</strong>
-          </p>
-          <p>{description}</p>
+          <section class="flex flex-col gap-2">
+            <h1 class="text-2xl text-accent font-bold">{title}</h1>
+            {web && (
+              <Link
+                title={web}
+                link={fixWebUrl(web)}
+                icon="mdi:web"
+                class="text-lg items-center"
+              />
+            )}
+            <p>
+              {ui.textContent.general.author}:{' '}
+              <strong class="text-accent">{author}</strong>
+            </p>
+            <p>
+              {ui.textContent.general.date}:{' '}
+              <strong class="">{formattedDate}</strong>
+            </p>
+            <p>{description}</p>
+          </section>
         </header>
-        <section class="flex flex-col sm:flex-row gap-2">
-          {images && <ImageGalery images={images} />}
-        </section>
-        <section class="content flex flex-col gap-2">
-          <h1 class="text-2xl text-accent font-bold">{title}</h1>
+        <section class="content flex flex-col gap-2 p-2 text-lg">
           <slot />
         </section>
         <CustomSeparator class="text-accent" />
         <section class="flex flex-col gap-4">
-          <h2 class="text-2xl font-bold">Posts relacionados</h2>
+          <h2 class="text-2xl font-bold">
+            {ui.textContent.general.relatedPosts}
+          </h2>
           {filteredPosts.length > 0 ? (
             <CardGrid posts={filteredPosts} isTiny />
           ) : (
-            <p>No hay posts relacionados</p>
+            <p>{ui.textContent.general.noPostsRelated}</p>
           )}
         </section>
       </>
