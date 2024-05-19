@@ -1,6 +1,6 @@
 # IES Abastos | Erasmus+
 
-Blog siguiendo el tutorial de Astro docs.
+Página Web del IES Abastos para proyectos Erasmus+.
 
 ## 🚀 Inicio rápido
 
@@ -42,17 +42,30 @@ Un vistazo rápido a los archivos y directorios importantes que encontrarás en 
 │   ├── assets/
 │   └── admin/
 ├── src/
-│   ├──  data/
-│   ├──  components/
+│   ├── components/
 │   ├── content/
-│   │   ├──  categories/
+│   │   ├── categories/
 │   │   ├── projects/
 │   │   └── posts/
+│   ├── i18n/
+│   ├── icons/
 │   ├── layouts/
-│   ├──  lib/
 │   ├── pages/
+│   │   └── [lang]/
+│   │   │   ├── categories/
+│   │   │   │   ├── index.astro
+│   │   │   │   └── [...slug].astro
+│   │   │   ├── posts/
+│   │   │   │   └── [...slug].astro
+│   │   │   ├── projects/
+│   │   │   │   ├── index.astro
+│   │   │   │   └── [slug].astro
+│   │   │   ├── index.astro
+│   │   │   └── about.astro
+│   │   ├── admin.astro
 │   │   └── index.astro
-│   └── styles/
+│   ├── styles/
+│   └──  utils/
 └── package.json
 ```
 
