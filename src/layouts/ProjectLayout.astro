@@ -59,34 +59,34 @@ const pageDescription = `${ui.textContent.general.project}: ${title} | ${ui.text
   {
     title && description ? (
       <>
-        <header class="flex flex-col sm:flex-row gap-6">
-          {images && (
-            <div class="w-3/5">
-              <ImageGalery images={images} />
+        <header class="flex flex-col gap-4">
+          <section class="flex justify-between gap-2">
+            <div class="flex flex-col gap-2">
+              <h1 class="text-2xl text-accent font-bold">{title}</h1>
+              {web && (
+                <Link
+                  title={web}
+                  link={fixWebUrl(web)}
+                  icon="mdi:web"
+                  class="text-lg items-center"
+                />
+              )}
             </div>
-          )}
-          <section class="flex flex-col gap-2">
-            <h1 class="text-2xl text-accent font-bold">{title}</h1>
-            {web && (
-              <Link
-                title={web}
-                link={fixWebUrl(web)}
-                icon="mdi:web"
-                class="text-lg items-center"
-              />
-            )}
-            <p>
-              {ui.textContent.general.author}:{' '}
-              <strong class="text-accent">{author}</strong>
-            </p>
-            <p>
-              {ui.textContent.general.date}:{' '}
-              <strong class="">{formattedDate}</strong>
-            </p>
-            <p>{description}</p>
+            <div class="flex flex-col gap-2">
+              <p>
+                {ui.textContent.general.author}:{' '}
+                <strong class="text-accent">{author}</strong>
+              </p>
+              <p>
+                {ui.textContent.general.date}:{' '}
+                <strong class="">{formattedDate}</strong>
+              </p>
+            </div>
           </section>
+          <p>{description}</p>
+          {images && <ImageGalery images={images} />}
         </header>
-        <section class="content flex flex-col gap-2 p-2 text-lg">
+        <section class="content flex flex-col gap-2 text-lg">
           <slot />
         </section>
         <CustomSeparator class="text-accent" />

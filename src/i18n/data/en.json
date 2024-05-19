@@ -62,6 +62,30 @@
     },
     "textContent": {
         "noPageTranslation": "This page has not been fully translated into your language yet. You can view the original content in Spanish by clicking on the button in the top right corner of the page.",
+        "general": {
+            "categories": "Categories",
+            "category": "Category",
+            "noCategories": "No categories",
+            "projects": "Projects",
+            "project": "Project",
+            "noProjects": "No projects available",
+            "relatedProjects": "Related Projects",
+            "noProjectsRelated": "No projects related",
+            "projectTypes": "Project Types",
+            "projectType": "Project Type",
+            "sectors": "Sectors",
+            "sector": "Sector",
+            "inProgress": "In Progress",
+            "finished": "Finished",
+            "posts": "Posts",
+            "post": "Post",
+            "noPosts": "No posts available",
+            "relatedPosts": "Related Posts",
+            "noPostsRelated": "No posts related",
+            "author": "Author",
+            "description": "Description",
+            "date": "Date"
+        },
         "header": {
             "title": {
                 "main": "Erasmus+",
@@ -100,6 +124,7 @@
             "sectors": "Sectors",
             "noCategories": "No categories available",
             "categoryLayout": {
+                "description": "Projects and posts tagged with the category",
                 "projectType": "Project Type",
                 "sector": "Sector",
                 "projects": "Related Projects",
@@ -114,7 +139,18 @@
             "main": "Erasmus+ Projects",
             "inProgress": "In Progress",
             "finished": "Finished",
-            "noProjects": "No projects available"
+            "noProjects": "No projects available",
+            "projectLayout": {
+                "title": "Project",
+                "author": "Author",
+                "date": "Date",
+                "projectType": "Project Type",
+                "sector": "Sector",
+                "projects": "Related Projects",
+                "noProjects": "No projects related to this category",
+                "posts": "Related Posts",
+                "noPosts": "No posts related to this category"
+            }
         }
     }
 }

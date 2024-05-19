@@ -62,6 +62,30 @@
     },
     "textContent": {
         "noPageTranslation": "Esta página no ha sido completamente traducida a tu idioma todavía. Puedes ver el contenido en Inglés haciendo clic en el botón en la esquina superior derecha de la página.",
+        "general": {
+            "categories": "Categorias",
+            "category": "Categoria",
+            "noCategories": "No hay categorias",
+            "projects": "Proyectos",
+            "project": "Proyecto",
+            "noProjects": "No hay proyectos",
+            "relatedProjects": "Proyectos relacionados",
+            "noProjectsRelated": "No hay proyectos relacionados",
+            "projectTypes": "Tipos de Proyecto",
+            "projectType": "Tipo de Proyecto",
+            "sectors": "Sectores",
+            "sector": "Sector",
+            "inProgress": "En curso",
+            "finished": "Finalizados",
+            "posts": "Publicaciones",
+            "post": "Publicación",
+            "noPosts": "No hay publicaciones",
+            "relatedPosts": "Publicaciones relacionadas",
+            "noPostsRelated": "No hay publicaciones relacionadas",
+            "author": "Autor",
+            "description": "Descripción",
+            "date": "Fecha"
+        },
         "header": {
             "title": {
                 "main": "Erasmus+",
@@ -100,6 +124,7 @@
             "sectors": "Sectores",
             "noCategories": "No hay categorias",
             "categoryLayout": {
+                "description": "Proyectos y posts etiquetados con la categoría",
                 "projectType": "Tipo de Proyecto",
                 "sector": "Sector",
                 "projects": "Proyectos relacionados",
@@ -116,6 +141,9 @@
             "finished": "Finalizados",
             "noProjects": "No hay proyectos",
             "projectLayout": {
+                "title": "Proyecto",
+                "author": "Autor",
+                "date": "Fecha",
                 "projectType": "Tipo de Proyecto",
                 "sector": "Sector",
                 "projects": "Proyectos relacionados",

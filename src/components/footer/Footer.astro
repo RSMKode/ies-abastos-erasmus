@@ -16,7 +16,7 @@ const ui = getLocaleTranslation(locale);
 <!-- <CustomSeparator class="text-accent max-w-7xl invisible dark:visible" /> -->
 <CustomSeparator class="text-accent max-w-7xl" />
 <footer
-  class="w-full max-w-7xl flex flex-col gap-4 px-6 py-4 text-content/80 bg dark:bg-transparent rounded">
+  class="w-full max-w-7xl flex flex-col gap-4 p-6 text-content/80 bg dark:bg-transparent rounded">
   <section class="flex flex-col sm:flex-row justify-between gap-4">
     <div class="flex flex-col gap-2 items-start">
       <a
@@ -35,9 +35,12 @@ const ui = getLocaleTranslation(locale);
 
       <FooterLink title="Admin" link="/admin" icon="tabler:user" />
     </div>
+    <CustomSeparator class="sm:hidden w-full text-content/30" />
     <SocialLinks />
+    <CustomSeparator class="sm:hidden w-full text-content/30" />
     <Tecnologies />
   </section>
+  <CustomSeparator class="sm:hidden w-full text-content/30" />
   <Disclaimer />
 </footer>
 <style></style>
