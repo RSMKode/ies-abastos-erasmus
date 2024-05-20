@@ -2,24 +2,24 @@
 site_url: 'https://ies-abastos-erasmus.netlify.app/'
 backend:
   name: git-gateway
-  branch: main # Branch to update (optional; defaults to master)
+  branch: main # Rama a actualizar (opcional; por defecto es master)
 # Ubicación donde se almacenarán los archivos en el repositorio
 media_folder: '/public/assets/images/uploads'
 # El atributo src para los medios cargados
 public_folder: '/assets/images/uploads'
 i18n:
-  # Required and can be one of multiple_folders, multiple_files or single_file
-  # multiple_folders - persists files in `<folder>/<locale>/<slug>.<extension>`
-  # multiple_files - persists files in `<folder>/<slug>.<locale>.<extension>`
-  # single_file - persists a single file in `<folder>/<slug>.<extension>`
+  # Requerido y puede ser uno de multiple_folders, multiple_files o single_file
+  # multiple_folders - guarda los archivos en `<folder>/<locale>/<slug>.<extension>`
+  # multiple_files - guarda los archivos en `<folder>/<slug>.<locale>.<extension>`
+  # single_file - guarda un solo archivo en `<folder>/<slug>.<extension>`
   structure: multiple_folders
-  # Required - a list of locales to show in the editor UI
+  # Requerido - una lista de locales para mostrar en la interfaz de edición
   locales: [es, en]
-  # Optional, defaults to the first item in locales.
-  # The locale to be used for fields validation and as a baseline for the entry.
+  # Opcional, por defecto es el primer elemento en locales.
+  # El locale que se utilizará para la validación de campos y como referencia para la entrada.
   default_locale: es
 collections:
-  - name: 'categories' # Usado en rutas, por ejemplo, /admin/collections/blog
+  - name: 'categories' # Usado en rutas, por ejemplo, /admin/collections/categories
     slug: '{{type}}_{{slug}}' # Archivos en la carpeta de documentos tendrán un nombre similar a ka1_my-category.md
     label: 'Categorías' # Usado en la interfaz de usuario de /admin
     label_singular: 'Categoría' # Usado en la interfaz de usuario de /admin
@@ -57,7 +57,7 @@ collections:
       #     hint: 'Escribe el contenido de la categoría',
       #   }
 
-  - name: 'projects' # Usado en rutas, por ejemplo, /admin/collections/blog
+  - name: 'projects' # Usado en rutas, por ejemplo, /admin/collections/projects
     slug: '{{slug}}' # Archivos en la carpeta de documentos tendrán un nombre similar a 'proyecto_tipo_sector'
     label: 'Proyectos' # Usado en la interfaz de usuario de /admin
     label_singular: 'Proyecto' # Usado en la interfaz de usuario de /admin
@@ -196,7 +196,7 @@ collections:
           search_fields: ['title', 'type', 'sector', 'author'],
           display_fields: ['title', 'type', 'sector', 'author'],
           hint: 'Puedes buscar por título, autor, tipo o sector del proyecto relacionado.',
-          i18n: true,
+          i18n: duplicate,
         }
       - {
           label: 'Imagen',
@@ -205,11 +205,11 @@ collections:
           required: false,
           choose_url: false,
           media_library: { config: { multiple: true } },
-          hint: 'Imagenes destacadas de la publicación. Recomendable optimizarlas antes de subirlas.',
+          hint: 'Imágenes destacadas de la publicación. Recomendable optimizarlas antes de subirlas.',
           i18n: duplicate,
         }
       - {
-          label: 'Imagenes URL (Links)',
+          label: 'Imágenes URL (Links)',
           name: 'imageUrls',
           widget: 'string',
           required: false,
