@@ -3,23 +3,23 @@
     "webDescription": "IES Abastos is a public high school located in Valencia, Spain. We are committed to providing quality education to our students and promoting internationalization through the Erasmus+ program. On this page you will find information about the Erasmus+ projects in which IES Abastos participates.",
     "links": {
         "official": {
-            "title": "IES Abastos | Official Website",
+            "title": "IES Abastos | Web oficial",
             "url": "https://portal.edu.gva.es/iesabastos/",
             "icon": "mdi:web"
         },
         "repo": {
-            "title": "GitHub Repository",
+            "title": "Repositorio de GitHub",
             "url": "https://github.com/RSMKode/ies-abastos-erasmus",
             "icon": "mdi:github"
         },
         "youtube": {
-            "title": "Youtube Channel",
+            "title": "Canal de YouTube",
             "url": "https://www.youtube.com/@iesabastos6784",
             "icon": "mdi:youtube"
         },
         "twitter": {
             "title": "Twitter",
-            "url": "twitter.com/InstitutAbastos",
+            "url": "https://x.com/InstitutAbastos",
             "icon": "mdi:twitter"
         },
         "instagram": {
@@ -29,7 +29,7 @@
         },
         "facebook": {
             "title": "Facebook",
-            "url": "facebook.com/IESAbastos",
+            "url": "https://facebook.com/IESAbastos",
             "icon": "mdi:facebook"
         }
     },

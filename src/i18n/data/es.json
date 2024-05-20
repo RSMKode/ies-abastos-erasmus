@@ -19,7 +19,7 @@
         },
         "twitter": {
             "title": "Twitter",
-            "url": "twitter.com/InstitutAbastos",
+            "url": "https://x.com/InstitutAbastos",
             "icon": "mdi:twitter"
         },
         "instagram": {
@@ -29,7 +29,7 @@
         },
         "facebook": {
             "title": "Facebook",
-            "url": "facebook.com/IESAbastos",
+            "url": "https://facebook.com/IESAbastos",
             "icon": "mdi:facebook"
         }
     },
