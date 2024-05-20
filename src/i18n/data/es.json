@@ -93,10 +93,10 @@
             },
             "navigation": {
                 "home": "Inicio",
-                "about": "Conocenos",
+                "about": "Conócenos",
                 "blog": "Blog",
                 "projects": "Proyectos",
-                "categories": "Categorias"
+                "categories": "Categorías"
             }
         },
         "footer": {
