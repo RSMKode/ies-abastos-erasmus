@@ -33,7 +33,7 @@ const {
   description,
   author,
   images = [],
-  imageUrls = '',
+  imageUrls = null,
   videoUrl,
   project,
 } = frontmatter;
@@ -57,7 +57,7 @@ const animationDelay = 1000;
 <Layout pageTitle={title} pageDescription={description} isContentPage>
   <header
     class="flex flex-wrap justify-between animate-blurred-fade-in items-center gap-2">
-    <section class="flex flex-col gap-2 text-xl">
+    <section class="flex flex-col gap-2 text-xl max-w-[60%]">
       <h1 class="text-4xl font-bold text-accent">{title}</h1>
 
       <p>Publicado el: <strong class="text-accent">{formattedDate}</strong></p>

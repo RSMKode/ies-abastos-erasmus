@@ -11,7 +11,7 @@ const { images, slidesPerView = 1 } = Astro.props;
   class={'animate-blurred-fade-in bg-black/40 rounded-lg p-2 ' +
     Astro.props.class}>
   {
-    Array.isArray(images) && images.length > 0 ? (
+    Array.isArray(images) && images.length > 1 ? (
       <swiper-container
         space-between="10"
         pagination="true"
@@ -19,13 +19,13 @@ const { images, slidesPerView = 1 } = Astro.props;
         autoplay="true"
         loop="true"
         navigation="true"
-        slidesPerView="2">
+        slidesPerView="1">
         {images.map(image => (
           <swiper-slide>
             <img
               src={image}
               alt=""
-              class="h-[14rem] sm:h-[18rem] md:h-[20rem]  object-cover rounded-lg"
+              class="h-[16rem] sm:h-[20rem] md:h-[25rem]  object-cover rounded-lg"
             />
           </swiper-slide>
         ))}

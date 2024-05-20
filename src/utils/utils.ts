@@ -29,7 +29,8 @@ export const getSlugWithoutLang = slugWithLang => {
  * @param {string} imageUrls - La cadena de URLs de imágenes.
  * @returns {string[]} Un array de URLs de imágenes.
  */
-export const getImageUrls = (imageUrls: string) => {
+export const getImageUrls = (imageUrls?: string) => {
+  if (!imageUrls) return [];
   const images = imageUrls.split(',');
   return images.length > 0 ? images : [];
 };
