@@ -1,12 +1,13 @@
 ---
 author: Roger Sancho
-title: 'My Erasmus+ KA1 Experience: A Journey of Learning and Growth!'
+title: "My Erasmus+ KA1 Experience: A Journey of Learning and Growth!"
 description: Post description
 date: 2024-04-14T22:34:00.000Z
-images: 
-- /assets/images/uploads/wallpaper-musica.jpg
-imageUrls: https://redespanolafal.iemed.org/uploads/20180123/652._Erasmus_Plus.0.jpg
 project: proyecto-ejemplo
+images:
+  - /assets/images/uploads/erasmusdays_logo_2021_sin_fechas.jpg
+  - /assets/images/uploads/652._Erasmus_Plus.0.jpg
+imageUrls: https://redespanolafal.iemed.org/uploads/20180123/652._Erasmus_Plus.0.jpg
 ---
 
 **Hello everyone!**
