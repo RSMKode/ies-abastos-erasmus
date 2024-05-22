@@ -39,7 +39,7 @@ const {
 } = frontmatter;
 
 const fixedImages = getImageUrls(imageUrls);
-const allImages = [...images, ...fixedImages];
+const allImages = [...images, ...fixedImages].filter(Boolean);
 console.log('allImages', allImages);
 
 const locale = Astro.currentLocale ?? 'es';

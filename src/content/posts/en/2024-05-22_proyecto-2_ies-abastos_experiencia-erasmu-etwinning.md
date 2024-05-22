@@ -5,8 +5,8 @@ description: This is my eTwinning experience
 date: 2024-05-22T21:12:00.000Z
 project: proyecto-2
 images:
-  - /assets/images/uploads/izquierda_ES.png
   - /assets/images/uploads/erasmusdays_logo_2021_sin_fechas.jpg
+  - /assets/images/uploads/izquierda_ES.png
   - /assets/images/uploads/images.png
 ---
 **Hello everyone!**

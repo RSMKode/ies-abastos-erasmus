@@ -5,8 +5,8 @@ description: Descripcion del post
 date: 2024-04-14T22:34:00.000Z
 project: proyecto-ejemplo
 images:
-  - /assets/images/uploads/erasmusdays_logo_2021_sin_fechas.jpg
   - /assets/images/uploads/652._Erasmus_Plus.0.jpg
+  - /assets/images/uploads/erasmusdays_logo_2021_sin_fechas.jpg
 imageUrls: https://redespanolafal.iemed.org/uploads/20180123/652._Erasmus_Plus.0.jpg
 ---
 

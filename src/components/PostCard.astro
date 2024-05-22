@@ -1,7 +1,7 @@
 ---
 import { getEntry } from 'astro:content';
 import Badge from './general/Badge.astro';
-import { formatDate } from '@/utils/utils';
+import { formatDate, getImageUrls } from '@/utils/utils';
 // interface Props {
 //   url: string;
 //   postData: {
@@ -18,8 +18,21 @@ import { formatDate } from '@/utils/utils';
 
 const { linkUrl, postData, isTiny } = Astro.props;
 
-const { author, title, description, date, images, videoUrl, project } =
-  postData;
+const {
+  author,
+  title,
+  description,
+  date,
+  images,
+  imageUrls,
+  videoUrl,
+  project,
+} = postData;
+
+const fixedImages = getImageUrls(imageUrls);
+console.log({ images });
+
+const allImages = [...(images ?? []), ...fixedImages].filter(Boolean);
 
 const locale = Astro.currentLocale ?? 'es';
 const postProject = await getEntry('projects', `${locale}/${project}`);
@@ -46,18 +59,18 @@ const formattedDate = formatDate(date, locale);
   style={Astro.props.style}>
   {linkUrl && <a href={linkUrl} class="absolute inset-0 z-10" />}
   {
-    images && !isTiny && (
+    allImages && !isTiny && (
       <header class="overflow-hidden">
-        <img src={images} class="object-cover w-full" />
+        <img src={allImages[0]} class="object-cover w-full" />
       </header>
     )
   }
   <section
     class="relative flex flex-col gap-2 p-4 shadow-black [text-shadow:_2px_2px_5px_var(--tw-shadow-color)] w-full">
     {
-      images && (
+      allImages && (
         <img
-          src={images}
+          src={allImages[0]}
           class={
             'absolute inset-0 w-full h-min duration-500 opacity-0 blur group-hover:opacity-50 -z-10 ' +
             (!isTiny && '-scale-y-100 mirror')
@@ -94,7 +107,6 @@ const formattedDate = formatDate(date, locale);
                 <a
                   class="z-20 hover:-translate-y-[0.2rem] hover:brightness-125 transition duration-200"
                   href={`/${locale}/categories/${category?.slug}`}>
-                  {' '}
                   <Badge class="bg-accent">{categoryName}</Badge>
                 </a>
               );
