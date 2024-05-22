@@ -5,6 +5,7 @@ description: Post description
 date: 2024-04-14T22:34:00.000Z
 images: 
 - /assets/images/uploads/wallpaper-musica.jpg
+imageUrls: https://redespanolafal.iemed.org/uploads/20180123/652._Erasmus_Plus.0.jpg
 project: proyecto-ejemplo
 ---
 
