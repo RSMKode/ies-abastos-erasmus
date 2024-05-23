@@ -1,0 +1,18 @@
+---
+import { getLocaleTranslation } from '@/i18n/ui';
+import { Icon } from 'astro-icon/components';
+import Link from '../general/Link.astro';
+import SpecialLink from './SpecialLink.astro';
+import Links from './SocialLinks.astro';
+
+const locale = Astro.currentLocale ?? 'es';
+const ui = getLocaleTranslation(locale);
+---
+
+<div class="flex flex-col gap-2 items-start">
+  <p>{ui.textContent.footer.main}</p>
+  <p class="">
+    {ui.textContent.footer.lastUpdated}
+  </p>
+  <Link title="Admin" link="/admin" icon="tabler:user" />
+</div>

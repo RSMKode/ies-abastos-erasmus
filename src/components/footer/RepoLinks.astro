@@ -1,0 +1,18 @@
+---
+import { getLocaleTranslation } from '@/i18n/ui';
+import SpecialLink from './SpecialLink.astro';
+
+const locale = Astro.currentLocale ?? 'es';
+const { links } = getLocaleTranslation(locale);
+---
+
+<nav class="flex flex-col gap-2 items-start">
+  {
+    Object.entries(links).map(([key, value]) => {
+      if (key === 'repo' || key === 'portfolio')
+        return (
+          <SpecialLink title={value.title} link={value.url} icon={value.icon} />
+        );
+    })
+  }
+</nav>

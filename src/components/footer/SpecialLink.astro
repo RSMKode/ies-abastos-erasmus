@@ -1,0 +1,26 @@
+---
+import { Icon } from 'astro-icon/components';
+import CustomSeparator from '../general/CustomSeparator.astro';
+
+interface Props {
+  title: string;
+  link: string;
+  icon: string;
+  class?: string;
+}
+
+const { title, link, icon, class: className } = Astro.props;
+
+const isActive = Astro.url.pathname === link;
+---
+
+<a
+  class={'size-fit flex gap-1 items-center px-2 py-1 border-2 border-content/80 rounded-full cursor-pointer hover:text-accent hover:border-current hover:opacity-100 hover:scale-105 active:scale-100 transition duration-200 ' +
+    className}
+  href={link}
+  target="_blank"
+  rel="noreferrer"
+  title={title}>
+  <Icon name={icon} class="size-6" />
+  <span>{title}</span>
+</a>

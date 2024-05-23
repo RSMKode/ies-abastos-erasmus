@@ -12,6 +12,11 @@
             "url": "https://github.com/RSMKode/ies-abastos-erasmus",
             "icon": "mdi:github"
         },
+        "portfolio": {
+            "title": "Portfolio de Roger Sancho",
+            "url": "https://rsmkode.vercel.app/",
+            "icon": "mdi:web"
+        },
         "youtube": {
             "title": "Canal de YouTube",
             "url": "https://www.youtube.com/@iesabastos6784",

@@ -1,13 +1,12 @@
 ---
 import { Icon } from 'astro-icon/components';
 import CustomSeparator from '../general/CustomSeparator.astro';
-import FooterLink from '../general/Link.astro';
-import NavLink from '../header/NavLink.astro';
 import Disclaimer from './Disclaimer.astro';
 import Tecnologies from './Tecnologies.astro';
-import SocialLink from '../_unused/SocialLink.astro';
-import SocialLinks from './Links.astro';
+import SocialLinks from './SocialLinks.astro';
 import { getLocaleTranslation } from '@/i18n/ui';
+import FooterMain from './FooterMain.astro';
+import RepoLinks from './RepoLinks.astro';
 
 const locale = Astro.currentLocale ?? 'es';
 const ui = getLocaleTranslation(locale);
@@ -18,27 +17,18 @@ const ui = getLocaleTranslation(locale);
 <footer
   class="w-full max-w-7xl flex flex-col gap-4 p-6 text-content/80 bg dark:bg-transparent rounded">
   <section class="flex flex-col sm:flex-row justify-between gap-4">
-    <div class="flex flex-col gap-2 items-start">
-      <a
-        class="size-fit flex gap-1 items-center px-2 py-1 border-2 border-content/80 rounded-full cursor-pointer hover:text-accent hover:border-current hover:opacity-100 hover:scale-105 active:scale-100 transition duration-200"
-        href={ui.links.repo.url}
-        target="_blank"
-        rel="noreferrer"
-        title={ui.links.repo.title}>
-        <span>{ui.links.repo.title}</span>
-        <Icon name={ui.links.repo.icon} class="size-6" />
-      </a>
-      <p>{ui.textContent.footer.main}</p>
-      <p class="">
-        {ui.textContent.footer.lastUpdated}
-      </p>
-
-      <FooterLink title="Admin" link="/admin" icon="tabler:user" />
+    <div class="flex flex-col gap-2">
+      <FooterMain />
+      <RepoLinks />
     </div>
     <CustomSeparator class="sm:hidden w-full text-content/30" />
-    <SocialLinks />
+    <div class="flex flex-col gap-2">
+      <SocialLinks />
+    </div>
     <CustomSeparator class="sm:hidden w-full text-content/30" />
-    <Tecnologies />
+    <div class="flex flex-col gap-2">
+      <Tecnologies />
+    </div>
   </section>
   <CustomSeparator class="sm:hidden w-full text-content/30" />
   <Disclaimer />

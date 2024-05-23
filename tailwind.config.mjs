@@ -34,9 +34,9 @@ export default {
       },
       gridTemplateColumns: {
         'auto-fill': 'repeat(auto-fill, minmax(20rem, 1fr))',
-        'auto-fill-sm': 'repeat(auto-fill, minmax(15rem, 1fr))',
+        'auto-fill-sm': 'repeat(auto-fill, minmax(18rem, 1fr))',
         'auto-fit': 'repeat(auto-fit, minmax(20rem, 1fr))',
-        'auto-fit-sm': 'repeat(auto-fit, minmax(13rem, 1fr))'
+        'auto-fit-sm': 'repeat(auto-fit, minmax(18rem, 1fr))'
       }
     },
   },

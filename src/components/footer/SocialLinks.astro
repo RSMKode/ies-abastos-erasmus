@@ -8,8 +8,10 @@ const { links } = getLocaleTranslation(locale);
 
 <nav class="flex flex-col gap-2 items-start">
   {
-    Object.entries(links).map(([key, value]) => (
-      <Link title={value.title} link={value.url} icon={value.icon} />
-    ))
+    Object.entries(links).map(([key, value]) => {
+      if (key === 'repo' || key === 'portfolio') return;
+
+      return <Link title={value.title} link={value.url} icon={value.icon} />;
+    })
   }
 </nav>

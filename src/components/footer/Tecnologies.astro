@@ -3,7 +3,7 @@ import FooterLink from '../general/Link.astro';
 import { getLocaleTranslation } from '@/i18n/ui';
 
 const locale = Astro.currentLocale ?? 'es';
-const { technologies } = getLocaleTranslation(locale);
+const { technologies, links } = getLocaleTranslation(locale);
 ---
 
 <nav class="flex flex-col gap-2 items-start">

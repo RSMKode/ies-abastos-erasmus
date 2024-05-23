@@ -14,7 +14,7 @@ export const formatDate = (dateString: string, locale) => {
 };
 
 /**
- *
+ * Obtiene el slug de un archivo sin el idioma.
  * @param {string} slugWithLang - El slug que contiene el idioma.
  * @returns {string} El slug sin el idioma.
  */
@@ -35,6 +35,12 @@ export const getImageUrls = (imageUrls?: string) => {
   return images.length > 0 ? images : [];
 };
 
+/**
+ * Obtiene una URL de un string si no contiene http.
+ *
+ * @param {string} videoUrls - La cadena de URLs de vídeos.
+ * @returns {string[]} Un array de URLs de vídeos.
+ */
 export const fixWebUrl = (webUrl: string) => {
   if (webUrl.includes('http')) return webUrl;
   return `http://${webUrl}`;
@@ -68,7 +74,7 @@ export const normalizeSlug = name => {
   return name.replace(/ /g, '-').toLowerCase();
 };
 
-//!Deprecated
+//! DESCONTINUADAS --------------------------------------------
 // export const mapPosts = ({ posts, projects, categories }) => {
 //   return posts.map(post => {
 //     const { project: projectName } = post.frontmatter;

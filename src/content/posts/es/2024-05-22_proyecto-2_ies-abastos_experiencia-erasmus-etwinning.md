@@ -1,6 +1,6 @@
 ---
 author: IES Abastos
-title: Experiencia Erasmu+ eTwinning
+title: Experiencia Erasmus+ eTwinning
 description: Esta es mi experiencia eTwinning
 date: 2024-05-22T21:12:00.000Z
 project: proyecto-2
