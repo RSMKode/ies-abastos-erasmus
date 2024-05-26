@@ -18,6 +18,8 @@ const isActive = Astro.url.pathname === link;
   class={'flex items-start justify-center border-b-2 border-transparent hover:text-accent hover:border-accent font-medium gap-1 hover:scale-[1.05] active:scale-[1] transition duration-300 hover:shadow-current w-fit px-0 ' +
     className}
   href={link}
+  target="_blank"
+  rel="noopener noreferrer"
   title={title}>
   <Icon name={icon} size={20} class="" />
   <span class="">{title}</span>

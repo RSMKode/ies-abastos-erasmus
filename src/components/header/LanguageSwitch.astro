@@ -15,7 +15,7 @@ const targetUrl = `/${targetLanguage}/${currentUrl.join('/')}`;
 
 <a
   href={targetUrl}
-  class="flex gap-1 hover:scale-110 transition duration-300 p-1 cursor-pointer items-start rounded border-2 border-transparent hover:border-accent">
+  class="flex gap-1 hover:scale-110 transition duration-300 p-1 cursor-pointer items-start rounded-lg border-2 border-transparent hover:border-accent">
   <Icon name="tabler:language" size={20} class="" />
   {locale && <Icon name={languages[locale].flag} size={20} class="" />}
 </a>
