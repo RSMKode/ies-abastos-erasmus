@@ -61,9 +61,14 @@ export const fixVideoURL = (videoUrl?: string) => {
   if (videoUrl?.includes('drive.google.com')) {
     urlType = 'googleDrive';
     fixedVideoUrl = videoUrl.replace('view?usp=sharing', 'preview');
-  } else if (videoUrl?.includes('youtube.com')) {
+  } else if (
+    videoUrl?.includes('youtube.com') ||
+    videoUrl?.includes('youtu.be')
+  ) {
     urlType = 'youtube';
-    fixedVideoUrl = videoUrl.replace('watch?v=', 'embed/');
+    fixedVideoUrl = videoUrl?.includes('?si=')
+      ? videoUrl.split('youtu.be/')[1]
+      : videoUrl.split('watch?v=')[1];
   }
   return { urlType, fixedVideoUrl };
 };

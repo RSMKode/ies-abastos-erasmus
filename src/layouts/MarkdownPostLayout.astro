@@ -13,6 +13,7 @@ import {
 import ProjectCard from '@/components/ProjectCard.astro';
 import ImageGalery from '@/components/ImageGalery.astro';
 import { getLocaleTranslation } from '@/i18n/ui';
+import VideoPlayer from '@/components/VideoPlayer.astro';
 
 // interface Props {
 //   frontmatter: {
@@ -52,7 +53,7 @@ const postProject = await getEntry('projects', `${locale}/${project}`);
 const postProjectSlug = getSlugWithoutLang(postProject?.slug);
 
 const { urlType, fixedVideoUrl } = fixVideoURL(videoUrl);
-console.log({ fixedVideoUrl });
+console.log({ videoUrl, fixedVideoUrl });
 
 const animationDelay = 1000;
 ---
@@ -90,11 +91,8 @@ const animationDelay = 1000;
       )
     }
     {
-      fixedVideoUrl && urlType === 'googleDrive' && (
-        <iframe
-          src={fixedVideoUrl}
-          class="w-full aspect-video object-cover bg-gray-800 rounded border flex-1"
-        />
+      fixedVideoUrl && (
+        <VideoPlayer videoUrl={fixedVideoUrl} urlType={urlType} />
       )
     }
   </section>

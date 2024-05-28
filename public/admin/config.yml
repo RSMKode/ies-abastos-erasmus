@@ -156,7 +156,7 @@ collections:
           i18n: true,
         }
 
-  - name: 'posts' # Usado en rutas, por ejemplo, /admin/collections/blog
+  - name: 'posts' # Usado en rutas, por ejemplo, /admin/collections/posts
     slug: '{{year}}-{{month}}-{{day}}_{{project}}_{{author}}_{{slug}}' # Archivos en la carpeta de documentos tendrán un nombre similar a 2020-01-07_autor_my-post.md
     label: 'Posts' # Usado en la interfaz de usuario de /admin
     label_singular: 'Post' # Usado en la interfaz de usuario de /admin

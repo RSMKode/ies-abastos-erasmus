@@ -1,0 +1,31 @@
+---
+// export interface Props {
+//   images: string[];
+//   slidesPerView: number;
+// }
+
+const { urlType, videoUrl } = Astro.props;
+---
+
+{
+  urlType === 'googleDrive' && (
+    <iframe
+      src={videoUrl}
+      class="w-full aspect-video object-cover bg-gray-800 rounded border flex-1"
+    />
+  )
+}
+{
+  urlType === 'youtube' && (
+    // <lite-youtube videoid={videoUrl} playlabel={'Video'} />
+    <iframe
+      src={`https://www.youtube.com/embed/${videoUrl}`}
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen
+      class="w-full aspect-video object-cover bg-gray-800 rounded-lg border-2 border-black/40 flex-1"
+    />
+  )
+}

@@ -7,10 +7,16 @@ import CategoryIndex from '@/components/CategoryIndex.astro';
 import CustomSeparator from '@/components/general/CustomSeparator.astro';
 import { getEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
-import { fixWebUrl, formatDate, getImageUrls } from '@/utils/utils';
+import {
+  fixVideoURL,
+  fixWebUrl,
+  formatDate,
+  getImageUrls,
+} from '@/utils/utils';
 import { getLocaleTranslation } from '@/i18n/ui';
 import Link from '@/components/general/Link.astro';
 import ImageGalery from '@/components/ImageGalery.astro';
+import VideoPlayer from '@/components/VideoPlayer.astro';
 
 const locale = Astro.currentLocale ?? 'es';
 const ui = getLocaleTranslation(locale);
@@ -49,6 +55,9 @@ const filteredPosts = await getCollection('posts', post => {
 
 const formattedDate = formatDate(date, locale);
 
+const { urlType, fixedVideoUrl } = fixVideoURL(videoUrl);
+console.log({ fixedVideoUrl });
+
 const pageTitle = title.includes('proyecto')
   ? `${ui.textContent.projects.projectLayout.title}: ${title}`
   : title;
@@ -86,7 +95,10 @@ const pageDescription = `${ui.textContent.general.project}: ${title} | ${ui.text
           <p>
             <em>{description}</em>
           </p>
-          {images && <ImageGalery images={images} />}
+          {images.length > 0 && <ImageGalery images={images} />}
+          {fixedVideoUrl && (
+            <VideoPlayer videoUrl={fixedVideoUrl} urlType={urlType} />
+          )}
         </header>
         <section class="content flex flex-col gap-2 text-lg">
           <slot />

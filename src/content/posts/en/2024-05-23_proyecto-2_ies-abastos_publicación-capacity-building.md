@@ -8,7 +8,7 @@ images:
   - /assets/images/uploads/ErasmusMundusCabecera3.jpg
   - /assets/images/uploads/erasmusdays_logo_2021_sin_fechas.jpg
   - /assets/images/uploads/images.png
-videoUrl: https://youtu.be/znNYMg0DEBY?si=FfqvtVt4N1-j0eT1
+videoUrl: https://youtu.be/r5mFhH07CrU?si=6I_Cm8sIHkOzSCcD
 ---
 **Hello everyone!**
 
