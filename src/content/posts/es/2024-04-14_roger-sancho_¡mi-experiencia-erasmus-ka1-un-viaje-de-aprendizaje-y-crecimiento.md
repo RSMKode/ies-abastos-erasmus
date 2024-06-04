@@ -10,7 +10,7 @@ images:
 imageUrls: https://redespanolafal.iemed.org/uploads/20180123/652._Erasmus_Plus.0.jpg
 ---
 
-**¡Hola a todos!**
+## **¡Hola a todos!**
 
 Hoy quiero compartir con ustedes mi experiencia en un proyecto KA1 de Erasmus+. Como muchos saben, Erasmus+ es un programa de la Unión Europea que ofrece oportunidades de aprendizaje y movilidad a estudiantes, docentes y personal de instituciones educativas.
 
