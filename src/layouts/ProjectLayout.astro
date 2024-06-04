@@ -61,7 +61,7 @@ const formattedDate = formatDate(date, locale);
 const { urlType, fixedVideoUrl } = fixVideoURL(videoUrl);
 console.log({ fixedVideoUrl });
 
-const pageTitle = title.includes('proyecto')
+const pageTitle = title?.includes('proyecto')
   ? `${ui.textContent.projects.projectLayout.title}: ${title}`
   : title;
 const pageDescription = `${ui.textContent.general.project}: ${title} | ${ui.textContent.general.projectType}: ${type} | ${ui.textContent.general.sector}: ${sector} | ${ui.textContent.general.author}: ${author} | ${ui.textContent.general.date}: ${formattedDate}.`;

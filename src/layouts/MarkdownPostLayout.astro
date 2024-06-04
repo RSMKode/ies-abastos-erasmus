@@ -59,6 +59,8 @@ const animationDelay = 1000;
 ---
 
 <Layout pageTitle={title} pageDescription={description} isContentPage>
+  {title && description ? (
+<>
   <header
     class="flex flex-wrap justify-between animate-blurred-fade-in items-center gap-2">
     <section class="flex flex-col gap-2 text-xl max-w-[60%]">
@@ -99,6 +101,9 @@ const animationDelay = 1000;
   <section class="content flex flex-col gap-2 text sm:text-lg break-words">
     <slot />
   </section>
+  </> ) : (
+      <h1 class="text-2xl text-center">{ui.textContent.noPageTranslation}</h1>
+    )}
   
   <style>
     .content {
