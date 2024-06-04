@@ -40,10 +40,13 @@ const {
   videoUrl,
   type,
   sector,
+  inProgress
 } = frontmatter;
 
 const projectType = await getEntry(frontmatter.type);
 const projectSector = await getEntry(frontmatter.sector);
+
+const projectCategories = [projectType, projectSector];
 
 const filteredPosts = await getCollection('posts', post => {
   const postSlug = post.slug;
@@ -90,6 +93,10 @@ const pageDescription = `${ui.textContent.general.project}: ${title} | ${ui.text
                 {ui.textContent.general.date}:{' '}
                 <strong class="">{formattedDate}</strong>
               </p>
+              <p>
+                <strong class="text-accent">{inProgress ? ui.textContent.general.inProgress : ui.textContent.general.finishedSingular}</strong>
+              </p>
+
             </div>
           </section>
           <p>
@@ -104,6 +111,8 @@ const pageDescription = `${ui.textContent.general.project}: ${title} | ${ui.text
           <slot />
         </section>
         <CustomSeparator class="text-accent" />
+        <CategoryIndex categories={projectCategories} />
+
         <section class="flex flex-col gap-4">
           <h2 class="text-2xl font-bold">
             {ui.textContent.general.relatedPosts}
@@ -119,8 +128,45 @@ const pageDescription = `${ui.textContent.general.project}: ${title} | ${ui.text
       <h1 class="text-2xl text-center">{ui.textContent.noPageTranslation}</h1>
     )
   }
+
+  <style>
+    .content {
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-weight: 500;
+        color: hsl(var(--color-accent));
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+      }
+
+      h3 {
+        font-size: 1.4rem;
+      }
+
+      h4 {
+        font-size: 1.2rem;
+      }
+
+      ul {
+        list-style: disc;
+      }
+      li {
+        margin: 0 2rem;
+      }
+      strong {
+        color: hsl(var(--color-accent));
+      }
+    }
+  </style>
 </Layout>
-<!-- <CategoryIndex categories={filteredCategories} class="w-1/2" /> -->
 <!-- {
   filteredCategories.map(category => {
     const { frontmatter, url } = category;
@@ -132,12 +178,3 @@ const pageDescription = `${ui.textContent.general.project}: ${title} | ${ui.text
     );
   })
 } -->
-
-<style>
-  ul {
-    list-style: disc;
-  }
-  li {
-    margin: 0 2rem;
-  }
-</style>

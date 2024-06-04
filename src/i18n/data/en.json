@@ -82,6 +82,7 @@
             "sector": "Sector",
             "inProgress": "In Progress",
             "finished": "Finished",
+            "finishedSingular": "Finished",
             "posts": "Posts",
             "post": "Post",
             "noPosts": "No posts available",

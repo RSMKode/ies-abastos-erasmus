@@ -99,8 +99,33 @@ const animationDelay = 1000;
   <section class="content flex flex-col gap-2 text sm:text-lg break-words">
     <slot />
   </section>
+  
   <style>
     .content {
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-weight: 500;
+        color: hsl(var(--color-accent));
+      }
+  
+      h1 {
+        font-size: 1.8rem;
+      }
+  
+      h2 {
+        font-size: 1.6rem;
+      }
+  
+      h3 {
+        font-size: 1.4rem;
+      }
+  
+      h4 {
+        font-size: 1.2rem;
+      }
+  
       ul {
         list-style: disc;
       }

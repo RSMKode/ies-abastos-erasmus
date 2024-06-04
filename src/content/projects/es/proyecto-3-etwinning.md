@@ -8,4 +8,8 @@ type: project_etwinning
 sector: sector_educacion-superior
 inProgress: true
 ---
-Este es el proyecto 3 - eTwinning
+## Este es el proyecto 3 - eTwinning
+
+Contenido del proyecto 3
+
+Este proyecto  es de tipo eTwinning y pertenece al sector de la educación superior.

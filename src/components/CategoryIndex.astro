@@ -7,7 +7,7 @@ const { categories, class: className } = Astro.props;
 const locale = Astro.currentLocale ?? 'es';
 ---
 
-<section class={'grid gap-4 grid-cols-auto-fit-sm ' + className}>
+<section class={'grid gap-4 grid-cols-auto-fit-xs ' + className}>
   {
     categories.map((category, index) => {
       let animationDelay = index * 100;

@@ -82,6 +82,7 @@
             "sector": "Sector",
             "inProgress": "En curso",
             "finished": "Finalizados",
+            "finishedSingular": "Finalizado",
             "posts": "Publicaciones",
             "post": "Publicación",
             "noPosts": "No hay publicaciones",
